@@ -12,7 +12,7 @@ public class ListController {
 
     @GetMapping
     public List<Integer> getList() {
-        return List.of(1, 2, 3);
+        return List.of(1, 2, 3, 4, 5);
     }
 
 }

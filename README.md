@@ -1,6 +1,6 @@
-# Spring boot & Svelte
+# WebApp educacional baseado em Spring boot & Svelte
 
-A simple web application build with Spring Boot And Svelte
+A simple web application build with a Spring Boot And Svelte template
 
 ## Frontend Compilation
 

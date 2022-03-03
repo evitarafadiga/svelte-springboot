@@ -2,10 +2,10 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "../../../../../svelte/src/App.svelte",
-    "../../../../../svelte/src/app/routing/Router.svelte",
-    "../../../../../svelte/src/app/component/Sidenav.svelte",
-    "../../../../../svelte/src/app/component/RouterLink.svelte"
+    "../../../../svelte/src/App.svelte",
+    "../../../../svelte/src/app/routing/Router.svelte",
+    "../../../../svelte/src/app/component/Sidenav.svelte",
+    "../../../../svelte/src/app/component/RouterLink.svelte"
   ],
   "sourcesContent": [
     "<script>\n\timport Router from './app/routing/Router.svelte';\n\timport Sidenav from './app/component/Sidenav.svelte';\n</script>\n\n<style>\n  .app-shell {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: flex;\n  }\n</style>\n\n<div class=\"app-shell\">\n  <Sidenav class=\"sidenav\" />\n  <Router />\n</div>",

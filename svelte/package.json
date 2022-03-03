@@ -14,5 +14,8 @@
   "scripts": {
     "java:dev": "rollup -c -w",
     "java": "rollup -c"
+  },
+  "dependencies": {
+    "google-trends-api": "^4.9.2"
   }
 }
