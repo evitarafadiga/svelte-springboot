@@ -1,4 +1,4 @@
-package tech.worldwild.application.controller;
+package br.com.fateczl.ProjetoLibero.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -2,6 +2,8 @@
   import { hash } from '../services/route.serv'
   import Homepage from '../pages/Homepage.svelte';
   import Notfound from '../pages/Notfound.svelte';
+  import ListaAssunto from '../pages/ListaAssuntos.svelte';
+import ListaAssuntos from '../pages/ListaAssuntos.svelte';
 
   let value = Notfound;
 
@@ -9,6 +11,9 @@
     switch(valu) {
       case '':
         value = Homepage;
+        break;
+      case 'listaassuntos':
+        value = ListaAssuntos;
         break;
       default:
         value = Notfound;

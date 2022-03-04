@@ -1,4 +1,4 @@
-package tech.worldwild.application.controller.rest;
+package br.com.fateczl.ProjetoLibero.controller.rest;
 
 import java.util.List;
 

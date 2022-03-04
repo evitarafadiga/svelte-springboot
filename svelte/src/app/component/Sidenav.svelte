@@ -20,13 +20,16 @@
 </style>
 
 <nav>
-  <h1>Sidenav</h1>
+  <h1>Líbero</h1>
   <ul>
     <li>
-      <RouterLink url=''>Homepage</RouterLink>
+      <RouterLink url=''>Home</RouterLink>
     </li>
     <li>
-      <RouterLink url='asas'>WrongPage</RouterLink>
+      <RouterLink url='asas'>Erro</RouterLink>
+    </li>
+    <li>
+      <RouterLink url='listaassuntos'>Lista de Assuntos</RouterLink>
     </li>
   </ul>
 </nav>

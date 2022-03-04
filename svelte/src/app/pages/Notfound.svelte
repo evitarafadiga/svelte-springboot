@@ -1,1 +1,1 @@
-<h1>Wrong way, go back.</h1>
+<h1>Conteúdo não encontrado.</h1>

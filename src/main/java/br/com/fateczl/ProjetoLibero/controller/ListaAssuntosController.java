@@ -14,32 +14,30 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.fateczl.ProjetoLibero.model.Assunto;
 import br.com.fateczl.ProjetoLibero.persistence.AssuntoDao;
 
-@Controller
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("listaassuntos")
 public class ListaAssuntosController {
 	
 	@Autowired
 	AssuntoDao aDao;
 	
-	@RequestMapping (name = "listaassuntos", value = "/listaassuntos", method = RequestMethod.GET)
-	public ModelAndView init(ModelMap model) {
+
+	@GetMapping
+    public List<Assunto> getListAssunto() {
 		List<Assunto> listaAssuntos = new ArrayList<Assunto>();
-		
-		String erro = "";
+        String erro = "";
 		try {
 			listaAssuntos = aDao.listaAssuntos();
-			
+			//System.out.println(listaAssuntos);
 		} catch (ClassNotFoundException | SQLException e) {
 			erro = e.getMessage();
-		} finally {
-			model.addAttribute("listaAssuntos", listaAssuntos);
-			model.addAttribute("erro", erro);
-		}
-		
-		return new ModelAndView("listaassuntos");
-	}
-	
-	@RequestMapping (name = "listaassuntos", value = "/listaassuntos", method = RequestMethod.POST)
-	public ModelAndView op(ModelMap model) {
-		return new ModelAndView("listaassuntos");
-	}
+		} 
+		return listaAssuntos;
+    }
 }
+
+

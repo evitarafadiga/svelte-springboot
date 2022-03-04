@@ -14,7 +14,7 @@
 </script>
 
 {#await promise}
-	<p>...waiting</p>
+	<p>...carregando</p>
 {:then response}
 	{#each response as element}
 	  <p>The number is {element}</p>

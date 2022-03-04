@@ -2,7 +2,7 @@ html, body {
 	position: relative;
 	width: 100%;
   height: 100%;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 body {
@@ -12,17 +12,17 @@ body {
 	box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   
-  --primary-color: #25333D;
-  --primary-color-1: #25333D;
-  --primary-color-2: #314351;
-  --primary-color-3: #495A67;
-  --primary-color-4: #61717D;
+  --primary-color: white;
+  --primary-color-1: whitesmoke;
+  --primary-color-2: #e7e7e7;
+  --primary-color-3: #c5c5c5;
+  --primary-color-4: #979797;
 
-  --second-color: #FAFAFA;
-  --second-color-1: #FAFAFA;
-  --second-color-2: #F2F2F2;
-  --second-color-3: #EEEEEE;
-  --second-color-4: #DDDDDD;
+  --second-color: black;
+  --second-color-1: #363636;
+  --second-color-2: #525252;
+  --second-color-3: #6b6b6b;
+  --second-color-4: #c0c0c0;
 
 }
 
