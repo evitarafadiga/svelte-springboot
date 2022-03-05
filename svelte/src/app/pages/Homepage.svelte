@@ -2,7 +2,7 @@
   import GetList from '../component/GetList.svelte'
 </script>
 
-<h1>Líbero Web App</h1>
+<h1>Home</h1>
 
 <GetList />
 
