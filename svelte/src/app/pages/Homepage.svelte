@@ -1,28 +1,37 @@
 <script>
-  import GetList from '../component/GetList.svelte'
   import Perfil from '../component/Perfil.svelte';
   import Box from '../component/Box.svelte';
+  import Trends from '../component/Trends.svelte';
 </script>
 
-<div>
-  <Perfil>
-
-  </Perfil>
-  <div class="topics-div">
-    <Box value="nome">Assuntos</Box>
-    <Box>Roadmaps</Box>
-    <Box>Tendências</Box>
+<div class="container">
+  <div class="wrapper">
+    <div class="content">
+      <Perfil />
+      <Trends />
+    </div>
+    
+    <div class="content">
+    <Box />
+    <Box />
+    <Box />
+    </div>
   </div>
-  <GetList />
 </div>
 
 <style>
-
-  div {
-    flex-direction: column;
+  .container {
+    margin: 0 auto;
   }
-  .topics-div {
-    flex-direction: row;
+  .wrapper {
+    overflow: hidden;
+    margin: 1rem;
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+    border-top: 10px rgb(0, 0, 0);
+    padding: 10px 250px;
   }
 </style>
 
