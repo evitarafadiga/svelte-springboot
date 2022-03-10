@@ -5,20 +5,30 @@
 <nav>
   <div class="wrapper">
     <div class="content">
-      <h1>Líbero</h1>
-      <RouterLink url=''>Home</RouterLink>
-      <RouterLink url='asas'>Erro</RouterLink>
-      <RouterLink url='listaassuntos'>Lista de Assuntos</RouterLink>
+      <ul>
+        <li>
+          <RouterLink url=''><h1>Líbero</h1></RouterLink>
+        </li>
+        <li>
+          <RouterLink url='perfil'>Perfil</RouterLink>
+        </li>
+        <li>
+          <RouterLink url='lista-roadmaps'>Lista de Roadmaps</RouterLink>
+        </li>
+        <li>
+          <RouterLink url='lista-assuntos'>Lista de Assuntos</RouterLink>
+        </li>
+      </ul>     
     </div>
   </div> 
 </nav>
 
 <style>
   nav {
-    flex-basis: 10rem;
+    height: 56px;
+    flex-basis: 1rem;
     background-color: var(--primary-color);
     color: var(--second-color-4);
-    padding: 1rem; 
   }
 
   nav ul {
@@ -26,18 +36,19 @@
   }
 
   nav ul li {
-    padding: .5rem 0;
+    display: inline;
+    padding: .5rem 54px;
+  }
+
+  nav h1 {
+    display: inline;
   }
 
   .wrapper {
-    max-height: 32px;
+    padding-left: 216px;
   }
   .content {
-    display: flex;
-    justify-content: space-between;
-    vertical-align: middle;
     border-top: 10px rgb(204, 204, 204);
-    padding: 1px 170px;
   }
 </style>
 

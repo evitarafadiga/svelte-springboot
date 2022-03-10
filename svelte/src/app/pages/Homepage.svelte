@@ -12,9 +12,9 @@
     </div>
     
     <div class="content">
-    <Box />
-    <Box />
-    <Box />
+    <Box url='assuntos' topic={"Assuntos"} />
+    <Box url='roadmaps' topic={"Roadmaps"} />
+    <Box url='tendencias' topic={"Tendências"} />
     </div>
   </div>
 </div>

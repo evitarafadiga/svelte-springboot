@@ -1,15 +1,19 @@
 <script>
-
+    import RouterLink from './RouterLink.svelte'
+    export let url
+    export let topic
 </script>
+
 <div class="container">
     <div class="wrapper">
         <div class="content">
             <h1>
-                Lorem ipsum
+                <RouterLink url={url}>{topic}</RouterLink>
             </h1>
         </div>
     </div>
 </div>
+
 <style>
     .container {
         margin: 0 auto;
@@ -23,13 +27,13 @@
     }
     .content {
         padding-top: 5rem;
-        padding-left: 5rem;
+        padding-left: 3rem;
         padding-right: 5rem;
         padding-bottom: 5rem;
         
     }
     .content h1 {
-        font-size: 24px;
+        font-size: 32px;
         color: white;
     }
 </style>

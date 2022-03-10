@@ -3,6 +3,11 @@
   import Homepage from '../pages/Homepage.svelte';
   import Notfound from '../pages/Notfound.svelte';
   import ListaAssuntos from '../pages/ListaAssuntos.svelte';
+  import Assuntos from '../pages/Assuntos.svelte';
+  import Roadmaps from '../pages/Roadmaps.svelte';
+  import Tendencias from '../pages/Tendencias.svelte';
+  import ListaRoadmaps from '../pages/ListaRoadmaps.svelte';
+  import PerfilDeUsuario from '../pages/PerfilDeUsuario.svelte';
 
   let value = Notfound;
 
@@ -11,8 +16,23 @@
       case '':
         value = Homepage;
         break;
-      case 'listaassuntos':
+      case 'lista-assuntos':
         value = ListaAssuntos;
+        break;
+      case 'lista-roadmaps':
+        value = ListaRoadmaps;
+        break;
+      case 'assuntos':
+        value = Assuntos;
+        break;
+      case 'roadmaps':
+        value = Roadmaps;
+        break;
+      case 'perfil':
+        value = PerfilDeUsuario;
+        break;
+      case 'tendencias':
+        value = Tendencias;
         break;
       default:
         value = Notfound;
