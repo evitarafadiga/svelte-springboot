@@ -1,3 +1,9 @@
+/*
+USE master
+GO
+DROP DATABASE libero
+*/
+
 CREATE DATABASE libero;
 GO
 USE libero;
@@ -7,12 +13,9 @@ CREATE TABLE assunto (
     idstr               VARCHAR(50)     NOT NULL,
     criadoem            VARCHAR(100)    NOT NULL,
     qtdfavoritos        INT             NOT NULL,
-    favoritado          BIT             NOT NULL,
     qtdcompartilhamento INT             NOT NULL,
-    compartilhado       BIT             NOT NULL,
     fonte               VARCHAR(400)    NOT NULL,
     descricao           VARCHAR(400)    NOT NULL,
-    estudado            BIT             NOT NULL,
     atualizadoem        VARCHAR(100)    NOT NULL,
 PRIMARY KEY (id, idstr));
 
@@ -51,7 +54,7 @@ CREATE TABLE palavraschave (
     texto               VARCHAR(400)    NOT NULL,
 PRIMARY KEY(indice));
 
-CREATE TABLE local (
+CREATE TABLE localizacao (
     id                  INT             NOT NULL,
     idstr               VARCHAR(50)     NOT NULL,
     atributos           VARCHAR(200)    NOT NULL,
@@ -91,31 +94,81 @@ CREATE TABLE comentarios (
     descricao           VARCHAR(400)    NOT NULL,
 PRIMARY KEY(id, idstr));
 
+CREATE TABLE assuntosdeusuario (
+    id_usuario          INT             NOT NULL,
+    idstr_usuario       VARCHAR(50)    NOT NULL,
+    id_assunto          INT             NOT NULL,
+    idstr_assunto       VARCHAR(50)    NOT NULL,
+    favoritado          BIT             NOT NULL,
+    compartilhado       BIT             NOT NULL,
+    estudado            BIT             NOT NULL,
+PRIMARY KEY(id_usuario, id_assunto),
+FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+FOREIGN KEY (id_assunto) REFERENCES assunto(id));
+
+CREATE TABLE detalhes (
+    id                  INT             NOT NULL,
+    id_assunto          INT             NOT NULL,
+    idstr_assunto       VARCHAR(50)    NOT NULL,
+    id_roadmap          INT             NOT NULL,
+    idstr_roadmap       VARCHAR(50)    NOT NULL,
+PRIMARY KEY (id, id_assunto, id_roadmap),
+FOREIGN KEY (id_assunto) REFERENCES assunto(id),
+FOREIGN KEY (id_roadmap) REFERENCES roadmap(id));
+
+CREATE TABLE comentariosderoadmap (
+    id_comentarios      INT             NOT NULL,
+    id_roadmap          INT             NOT NULL,
+PRIMARY KEY (id_comentarios, id_roadmap),
+FOREIGN KEY (id_comentarios) REFERENCES comentarios(id),
+FOREIGN KEY (id_roadmap) REFERENCES roadmap(id));
+
+CREATE TABLE palavraschavededetalhes (
+    id_detalhes         INT             NOT NULL,
+    indice_palavra      INT             NOT NULL,
+PRIMARY KEY (id_detalhes, indice_palavra),
+FOREIGN KEY (id_detalhes) REFERENCES detalhes(id),
+FOREIGN KEY (indice_palavra) REFERENCES palavraschave(indice));
+
+CREATE TABLE midiasdedetalhes (
+    id_detalhes         INT             NOT NULL,
+    id_midia            INT             NOT NULL,
+PRIMARY KEY (id_detalhes, id_midia),
+FOREIGN KEY (id_detalhes) REFERENCES detalhes(id),
+FOREIGN KEY (id_midia) REFERENCES midia(id));
+
+CREATE TABLE locaisdeassunto (
+    id_local            INT             NOT NULL,
+    id_assunto            INT             NOT NULL,
+PRIMARY KEY (id_local, id_assunto),
+FOREIGN KEY (id_local) REFERENCES localizacao(id),
+FOREIGN KEY (id_assunto) REFERENCES assunto(id));
+
 --SELECT * FROM assunto;
 
 --DROP TABLE assunto;
 
 INSERT INTO assunto VALUES
-(1,'a','2021-01-24',0,0,0,0,'Líbero','Cartografia',0,'2021-01-24'),
-(2,'a','2021-01-24',0,0,0,0,'Líbero','Climas e Anomalias',0,'2021-01-24'),
-(3,'a','2021-01-24',0,0,0,0,'Líbero','Dinâmica Atmosférica',0,'2021-01-24'),
-(4,'a','2021-01-24',0,0,0,0,'Líbero','Dinâmica Climática',0,'2021-01-24'),
-(5,'a','2021-01-24',0,0,0,0,'Líbero','Polígonos',0,'2021-01-24'),
-(6,'a','2021-01-24',0,0,0,0,'Líbero','Potência de Ponto',0,'2021-01-24'),
-(7,'a','2021-01-24',0,0,0,0,'Líbero','Acréscimos e Descontos',0,'2021-01-24'),
-(8,'a','2021-01-24',0,0,0,0,'Líbero','Porcentagem',0,'2021-01-24'),
-(9,'a','2021-01-24',0,0,0,0,'Líbero','Concordância',0,'2021-01-24'),
-(10,'a','2021-01-24',0,0,0,0,'Líbero','A Geração de 30 - Prosa',0,'2021-01-24'),
-(11,'a','2021-01-24',0,0,0,0,'Líbero','Eletrosfera',0,'2021-01-24'),
-(12,'a','2021-01-24',0,0,0,0,'Líbero','A Revolução Cubana',0,'2021-01-24'),
-(13,'a','2021-01-24',0,0,0,0,'Líbero','A Nova República',0,'2021-01-24'),
-(14,'a','2021-01-24',0,0,0,0,'Líbero','Alelos Múltiplos e Polialelia',0,'2021-01-24'),
-(15,'a','2021-01-24',0,0,0,0,'Líbero','Evolução',0,'2021-01-24'),
-(16,'a','2021-01-24',0,0,0,0,'Líbero','Anelídeos',0,'2021-01-24'),
-(17,'a','2021-01-24',0,0,0,0,'Líbero','Bipolaridade e Multipolaridade',0,'2021-01-24'),
-(18,'a','2021-01-24',0,0,0,0,'Líbero','Forma Algébrica',0,'2021-01-24'),
-(19,'a','2021-01-24',0,0,0,0,'Líbero','Equações Trigonométricas',0,'2021-01-24'),
-(20,'a','2021-01-24',0,0,0,0,'Líbero','Probabilidade',0,'2021-01-24');
+(1,'a','2021-01-24',0,0,'Líbero','Cartografia','2021-01-24'),
+(2,'a','2021-01-24',0,0,'Líbero','Climas e Anomalias','2021-01-24'),
+(3,'a','2021-01-24',0,0,'Líbero','Dinâmica Atmosférica','2021-01-24'),
+(4,'a','2021-01-24',0,0,'Líbero','Dinâmica Climática','2021-01-24'),
+(5,'a','2021-01-24',0,0,'Líbero','Polígonos','2021-01-24'),
+(6,'a','2021-01-24',0,0,'Líbero','Potência de Ponto','2021-01-24'),
+(7,'a','2021-01-24',0,0,'Líbero','Acréscimos e Descontos','2021-01-24'),
+(8,'a','2021-01-24',0,0,'Líbero','Porcentagem','2021-01-24'),
+(9,'a','2021-01-24',0,0,'Líbero','Concordância','2021-01-24'),
+(10,'a','2021-01-24',0,0,'Líbero','A Geração de 30 - Prosa','2021-01-24'),
+(11,'a','2021-01-24',0,0,'Líbero','Eletrosfera','2021-01-24'),
+(12,'a','2021-01-24',0,0,'Líbero','A Revolução Cubana','2021-01-24'),
+(13,'a','2021-01-24',0,0,'Líbero','A Nova República','2021-01-24'),
+(14,'a','2021-01-24',0,0,'Líbero','Alelos Múltiplos e Polialelia','2021-01-24'),
+(15,'a','2021-01-24',0,0,'Líbero','Evolução','2021-01-24'),
+(16,'a','2021-01-24',0,0,'Líbero','Anelídeos','2021-01-24'),
+(17,'a','2021-01-24',0,0,'Líbero','Bipolaridade e Multipolaridade','2021-01-24'),
+(18,'a','2021-01-24',0,0,'Líbero','Forma Algébrica','2021-01-24'),
+(19,'a','2021-01-24',0,0,'Líbero','Equações Trigonométricas','2021-01-24'),
+(20,'a','2021-01-24',0,0,'Líbero','Probabilidade','2021-01-24');
 
 --DROP TABLE midia
 INSERT INTO usuario VALUES

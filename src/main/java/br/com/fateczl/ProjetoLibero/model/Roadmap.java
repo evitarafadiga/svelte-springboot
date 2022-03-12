@@ -3,13 +3,11 @@ package br.com.fateczl.ProjetoLibero.model;
 public class Roadmap {
 	
 	private Comentarios comentarios;
+
 	private int id;
-	private String idStr;
 	private String criadoEm;
 	private int qtdFavoritos;
-	private boolean favoritado;
 	private int qtdCompartilhamento;
-	private boolean compartilhado;
 	private String fonte;
 	private String descricao;
 	private String nome;
@@ -20,12 +18,6 @@ public class Roadmap {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getIdStr() {
-		return idStr;
-	}
-	public void setIdStr(String idStr) {
-		this.idStr = idStr;
 	}
 	public String getCriadoEm() {
 		return criadoEm;
@@ -39,23 +31,11 @@ public class Roadmap {
 	public void setQtdFavoritos(int qtdFavoritos) {
 		this.qtdFavoritos = qtdFavoritos;
 	}
-	public boolean isFavoritado() {
-		return favoritado;
-	}
-	public void setFavoritado(boolean favoritado) {
-		this.favoritado = favoritado;
-	}
 	public int getQtdCompartilhamento() {
 		return qtdCompartilhamento;
 	}
 	public void setQtdCompartilhamento(int qtdCompartilhamento) {
 		this.qtdCompartilhamento = qtdCompartilhamento;
-	}
-	public boolean isCompartilhado() {
-		return compartilhado;
-	}
-	public void setCompartilhado(boolean compartilhado) {
-		this.compartilhado = compartilhado;
 	}
 	public String getFonte() {
 		return fonte;
@@ -83,9 +63,8 @@ public class Roadmap {
 	}
 	@Override
 	public String toString() {
-		return "\nRoadmap [id=" + id + ", idStr=" + idStr + ", criadoEm=" + criadoEm + ", qtdFavoritos=" + qtdFavoritos
-				+ ", favoritado=" + favoritado + ", qtdCompartilhamento=" + qtdCompartilhamento + ", compartilhado="
-				+ compartilhado + ", fonte=" + fonte + ", descricao=" + descricao + ", nome=" + nome + ", atualizadoEm="
+		return "\nRoadmap [id=" + id + ", criadoEm=" + criadoEm + ", qtdFavoritos=" + qtdFavoritos
+				+ ", qtdCompartilhamento=" + qtdCompartilhamento + ", fonte=" + fonte + ", descricao=" + descricao + ", nome=" + nome + ", atualizadoEm="
 				+ atualizadoEm + "]";
 	}
 	public Comentarios getComentarios() {

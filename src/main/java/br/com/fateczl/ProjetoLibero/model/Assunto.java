@@ -6,16 +6,12 @@ public class Assunto {
 	private Detalhes detalhes;
 	private Local local;
 	
-	private int id;
-	private String idStr;	
+	private int id;	
 	private String criadoEm;
 	private int qtdFavoritos;
-	private boolean favoritado;
 	private int qtdCompartilhamento;
-	private boolean compartilhado;
 	private String fonte;
 	private String descricao;
-	private boolean estudado;
 	private String atualizadoEm;
 	
 	public int getId() {
@@ -23,12 +19,6 @@ public class Assunto {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getIdStr() {
-		return idStr;
-	}
-	public void setIdStr(String idStr) {
-		this.idStr = idStr;
 	}
 	public String getCriadoEm() {
 		return criadoEm;
@@ -42,23 +32,11 @@ public class Assunto {
 	public void setQtdFavoritos(int qtdFavoritos) {
 		this.qtdFavoritos = qtdFavoritos;
 	}
-	public boolean isFavoritado() {
-		return favoritado;
-	}
-	public void setFavoritado(boolean favoritado) {
-		this.favoritado = favoritado;
-	}
 	public int getQtdCompartilhamento() {
 		return qtdCompartilhamento;
 	}
 	public void setQtdCompartilhamento(int qtdCompartilhamento) {
 		this.qtdCompartilhamento = qtdCompartilhamento;
-	}
-	public boolean isCompartilhado() {
-		return compartilhado;
-	}
-	public void setCompartilhado(boolean compartilhado) {
-		this.compartilhado = compartilhado;
 	}
 	public String getFonte() {
 		return fonte;
@@ -72,12 +50,6 @@ public class Assunto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public boolean isEstudado() {
-		return estudado;
-	}
-	public void setEstudado(boolean estudado) {
-		this.estudado = estudado;
-	}
 	public String getAtualizadoEm() {
 		return atualizadoEm;
 	}
@@ -86,9 +58,8 @@ public class Assunto {
 	}
 	@Override
 	public String toString() {
-		return "\nAssunto [id=" + id + ", idStr=" + idStr + ", criadoEm=" + criadoEm + ", qtdFavoritos=" + qtdFavoritos
-				+ ", favoritado=" + favoritado + ", qtdCompartilhamento=" + qtdCompartilhamento + ", compartilhado="
-				+ compartilhado + ", fonte=" + fonte + ", descricao=" + descricao + ", estudado=" + estudado
+		return "\nAssunto [id=" + id + ", criadoEm=" + criadoEm + ", qtdFavoritos=" + qtdFavoritos
+				+ ", qtdCompartilhamento=" + qtdCompartilhamento + ", fonte=" + fonte + ", descricao=" + descricao 
 				+ ", atualizadoEm=" + atualizadoEm + "]";
 	}
 	public Contribuidor getContribuidor() {

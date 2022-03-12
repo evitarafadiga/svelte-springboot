@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Local {
 	
 	private int id;
-	private String idStr;
 	private String[] atributos;
 	private String pais;
 	private String idPais;
@@ -15,12 +14,6 @@ public class Local {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getIdStr() {
-		return idStr;
-	}
-	public void setIdStr(String idStr) {
-		this.idStr = idStr;
 	}
 	public String[] getAtributos() {
 		return atributos;
@@ -48,7 +41,7 @@ public class Local {
 	}
 	@Override
 	public String toString() {
-		return "Local [id=" + id + ", idStr=" + idStr + ", atributos=" + Arrays.toString(atributos) + ", pais=" + pais
+		return "Local [id=" + id + ", atributos=" + Arrays.toString(atributos) + ", pais=" + pais
 				+ ", idPais=" + idPais + ", nome=" + nome + "]";
 	}
 

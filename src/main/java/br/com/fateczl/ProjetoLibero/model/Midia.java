@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Midia {
 	
 	private int id;
-	private String idStr;
 	private String midiaUrl;
 	private String tipo;
 	private int[] indice;
@@ -15,12 +14,6 @@ public class Midia {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getIdStr() {
-		return idStr;
-	}
-	public void setIdStr(String idStr) {
-		this.idStr = idStr;
 	}
 	public String getMidiaUrl() {
 		return midiaUrl;
@@ -42,7 +35,7 @@ public class Midia {
 	}
 	@Override
 	public String toString() {
-		return "Midia [id=" + id + ", idStr=" + idStr + ", midiaUrl=" + midiaUrl + ", tipo=" + tipo + ", indice="
+		return "Midia [id=" + id + ", midiaUrl=" + midiaUrl + ", tipo=" + tipo + ", indice="
 				+ Arrays.toString(indice) + "]";
 	}
 	

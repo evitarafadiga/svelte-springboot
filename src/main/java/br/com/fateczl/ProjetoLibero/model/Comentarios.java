@@ -3,7 +3,6 @@ package br.com.fateczl.ProjetoLibero.model;
 public class Comentarios {
 	
 	private int id;
-	private String idStr;
 	private String criadoEm;
 	private int qtdFavoritos;
 	private boolean favoritado;
@@ -14,12 +13,6 @@ public class Comentarios {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getIdStr() {
-		return idStr;
-	}
-	public void setIdStr(String idStr) {
-		this.idStr = idStr;
 	}
 	public String getCriadoEm() {
 		return criadoEm;
@@ -47,7 +40,7 @@ public class Comentarios {
 	}
 	@Override
 	public String toString() {
-		return "Comentarios [id=" + id + ", idStr=" + idStr + ", criadoEm=" + criadoEm + ", qtdFavoritos="
+		return "Comentarios [id=" + id + ", criadoEm=" + criadoEm + ", qtdFavoritos="
 				+ qtdFavoritos + ", favoritado=" + favoritado + ", descricao=" + descricao + "]";
 	}
 	

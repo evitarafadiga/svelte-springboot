@@ -3,7 +3,6 @@ package br.com.fateczl.ProjetoLibero.model;
 public class Contribuidor {
 
 	private int id;
-	private String idStr;
 	private String nome;
 	
 	public int getId() {
@@ -11,12 +10,6 @@ public class Contribuidor {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getIdStr() {
-		return idStr;
-	}
-	public void setIdStr(String idStr) {
-		this.idStr = idStr;
 	}
 	public String getNome() {
 		return nome;
@@ -26,7 +19,7 @@ public class Contribuidor {
 	}
 	@Override
 	public String toString() {
-		return "Contribuidor [id=" + id + ", idStr=" + idStr + ", nome=" + nome + "]";
+		return "Contribuidor [id=" + id + ", nome=" + nome + "]";
 	}
 	
 }

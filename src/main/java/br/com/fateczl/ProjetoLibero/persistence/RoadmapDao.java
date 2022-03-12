@@ -22,18 +22,15 @@ public class RoadmapDao implements IRoadmapDao{
 	public List<Roadmap> listaRoadmaps() throws SQLException, ClassNotFoundException {
 		Connection c = gDao.getConnection();
 		List<Roadmap> lista = new ArrayList<Roadmap>();
-		String sql = "SELECT r.id, r.idstr, r.criadoem, r.qtdfavoritos, r.favoritado, r.qtdcompartilhamento, r.compartilhado, r.fonte, r.descricao, r.nome, r.atualizadoem FROM roadmap r;";
+		String sql = "SELECT r.id_roa, r.criadoem, r.qtdfavoritos, r.qtdcompartilhamento, r.fonte, r.descricao, r.nome, r.atualizadoem FROM roadmap r";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			Roadmap r = new Roadmap();
-			r.setId(rs.getInt("id"));
-			r.setIdStr(rs.getString("idstr"));
+			r.setId(rs.getInt("id_roa"));
 			r.setCriadoEm(rs.getString("criadoem"));
 			r.setQtdFavoritos(rs.getInt("qtdfavoritos"));
-			r.setFavoritado(rs.getBoolean("favoritado"));
 			r.setQtdCompartilhamento(rs.getInt("qtdcompartilhamento"));
-			r.setCompartilhado(rs.getBoolean("compartilhado"));
 			r.setFonte(rs.getString("fonte"));
 			r.setDescricao(rs.getString("descricao"));
 			r.setNome(rs.getString("nome"));

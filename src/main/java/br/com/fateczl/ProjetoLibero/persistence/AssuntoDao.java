@@ -21,21 +21,17 @@ public class AssuntoDao implements IAssuntoDao {
 	public List<Assunto> listaAssuntos() throws SQLException, ClassNotFoundException {
 		Connection c = gDao.getConnection();
 		List<Assunto> lista = new ArrayList<Assunto>();
-		String sql = "SELECT a.id, a.idstr, a.criadoem, a.qtdfavoritos, a.favoritado, a.qtdcompartilhamento, a.compartilhado, a.fonte, a.descricao, a.estudado, a.atualizadoem FROM assunto a";
+		String sql = "SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem FROM assunto a";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			Assunto a = new Assunto();
-			a.setId(rs.getInt("id"));
-			a.setIdStr(rs.getString("idstr"));
+			a.setId(rs.getInt("id_as"));
 			a.setCriadoEm(rs.getString("criadoem"));
 			a.setQtdFavoritos(rs.getInt("qtdfavoritos"));
-			a.setFavoritado(rs.getBoolean("favoritado"));
 			a.setQtdCompartilhamento(rs.getInt("qtdcompartilhamento"));
-			a.setCompartilhado(rs.getBoolean("compartilhado"));
 			a.setFonte(rs.getString("fonte"));
 			a.setDescricao(rs.getString("descricao"));
-			a.setEstudado(rs.getBoolean("estudado"));
 			a.setAtualizadoEm(rs.getString("atualizadoem"));
 			
 			lista.add(a);

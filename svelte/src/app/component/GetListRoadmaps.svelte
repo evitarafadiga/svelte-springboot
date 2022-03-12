@@ -1,8 +1,8 @@
 <script>
-    let promise = getListAssunto();
+    let promise = GetListRoadmaps();
   
-    async function getListAssunto() {
-      const res = await fetch(`listaassuntos`);
+    async function GetListRoadmaps() {
+      const res = await fetch(`listaroadmaps`);
           const text = await res.json();
   
           if (res.ok) {
@@ -18,8 +18,9 @@
   {:then response}
       {#each response as element}
         <div>
-        <p>Assunto: {element.descricao} id:{element.id}</p>
-        <p>criado em:{element.criadoEm} Fonte: {element.fonte}</p>
+        <p>Roadmap: {element.nome} id:{element.id} favoritos: {element.qtdFavoritos} compartilhamentos: {element.qtdCompartilhamento}</p>
+        <p>criado em:{element.criadoEm} atualizado em:{element.atualizadoEm} Fonte: {element.fonte}</p>
+        <p>descrição:{element.descricao}</p>
         </div>
       {/each}
   {:catch error}
