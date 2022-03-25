@@ -9,4 +9,12 @@ public interface IAssuntoDao {
 
 	List<Assunto> listaAssuntos() throws SQLException, ClassNotFoundException;
 
+	void insereAssunto(Assunto a) throws SQLException, ClassNotFoundException;
+
+	String insertAssunto(Assunto a) throws SQLException;
+
+	String updateAssunto(Assunto a) throws SQLException;
+
+	String deleteAssunto(Assunto a) throws SQLException;
+
 }
