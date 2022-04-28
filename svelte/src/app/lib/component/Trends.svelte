@@ -1,5 +1,6 @@
 <script>
-    import GetList from '../component/GetList.svelte'
+    import GetList from './GetList.svelte'
+    
 </script>
 
 <div class="container">

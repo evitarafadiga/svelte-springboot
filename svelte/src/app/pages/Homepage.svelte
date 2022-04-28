@@ -1,7 +1,22 @@
 <script>
-  import Perfil from '../component/Perfil.svelte';
-  import Box from '../component/Box.svelte';
-  import Trends from '../component/Trends.svelte';
+  import Perfil from '../lib/component/Perfil.svelte';
+  import Box from '../lib/objects/Box.svelte';
+  import Rectangle from '../lib/objects/Rectangle.svelte';
+  import Trends from '../lib/component/Trends.svelte';
+
+  function crudAssunto(event) {
+    console.log("Assunto.");
+  }
+
+  function crudRoadmap(event) {
+    console.log("Roadmaps.");
+  }
+
+  function viewTrends(event) {
+    console.log("Tendências.");
+    
+  }
+
 </script>
 
 <div class="container">
@@ -12,9 +27,9 @@
     </div>
     
     <div class="content">
-    <Box url='assuntos' topic={"Assuntos"} />
-    <Box url='roadmaps' topic={"Roadmaps"} />
-    <Box url='tendencias' topic={"Tendências"} />
+      <Box topic={"Assuntos"} func={crudAssunto} />
+      <Box topic={"Roadmaps"} func={crudRoadmap} />
+      <Box topic={"Tendências"} func={viewTrends} />
     </div>
   </div>
 </div>

@@ -49,6 +49,7 @@
   }
   .content {
     border-top: 10px rgb(204, 204, 204);
+    border: 10px;
   }
 </style>
 

@@ -2,14 +2,17 @@
 USE master
 GO
 DROP DATABASE libero
+
+--DROP PROCEDURE sp_iud_assunto
 */
 
 CREATE DATABASE libero;
 GO
 USE libero;
+GO
 
 CREATE TABLE assunto (
-    id_as               INT IDENTITY(101,1) NOT NULL,
+    id_as               INT IDENTITY(101,1),
     criadoem            VARCHAR(100)        NOT NULL,
     qtdfavoritos        INT                 NOT NULL,
     qtdcompartilhamento INT                 NOT NULL,
@@ -25,7 +28,7 @@ CREATE TABLE usuario (
     senha               VARCHAR(200)        NOT NULL,
     imagempadrao        BIT                 NOT NULL,
     descricao           VARCHAR(400)        NOT NULL,
-    qtdfavoritos        VARCHAR(100)        NOT NULL,
+    qtdfavoritos        INT                 NOT NULL,
     lingua              VARCHAR(100)        NOT NULL,
     locacao             VARCHAR(200)        NOT NULL,
     nome                VARCHAR(200)        NOT NULL,
@@ -48,7 +51,7 @@ PRIMARY KEY(id_con));
 
 CREATE TABLE palavraschave (
     indice              INT IDENTITY(1,1),
-    texto               VARCHAR(400)        NOT NULL,
+    texto               VARCHAR(50)        NOT NULL,
 PRIMARY KEY(indice));
 
 CREATE TABLE localizacao (
@@ -197,11 +200,221 @@ INSERT INTO roadmap VALUES
 ('2021-01-25',0,0,0,0,'Líbero','Esse projeto tem como objetivo auxiliar os estudos do aluno de medicina.','Projeto Medicina','2021-01-25'),
 ('2021-01-25',0,0,0,0,'Líbero','Um roadmap especial com os principais temas discutidos sobre o Enem de 2022.','Enem 2022','2021-01-25');
 
---SELECT * FROM palavraschave
---SELECT * FROM midia
---SELECT * FROM assunto;
 
---DROP TABLE assunto;
+GO
+
+CREATE PROCEDURE sp_iud_assunto (@cod CHAR(1), @id_as INT, @criadoem VARCHAR(100), @qtdfavoritos INT,
+    @qtdcompartilhamento INT, @fonte VARCHAR(400), @descricao VARCHAR(400), @atualizadoem VARCHAR(100), @saida VARCHAR(50) OUTPUT)
+AS
+    IF (UPPER(@cod) = 'I')
+    BEGIN
+        SET IDENTITY_INSERT assunto ON;
+        INSERT INTO assunto VALUES
+        (@criadoem, @qtdfavoritos, @qtdcompartilhamento, @fonte, @descricao, @atualizadoem)
+        SET @saida = 'Assunto inserido com sucesso'
+    END
+    ELSE
+    BEGIN
+        IF (UPPER(@cod) = 'U')
+        BEGIN
+            UPDATE assunto
+            SET qtdfavoritos = @qtdfavoritos, qtdcompartilhamento = @qtdcompartilhamento, fonte = @fonte, descricao = @descricao, atualizadoem = @atualizadoem
+            WHERE id_as = @id_as
+            SET @saida = 'Assunto atualizado com sucesso'
+            END
+            ELSE
+            BEGIN
+                IF (UPPER(@cod) = 'D')
+                BEGIN
+                    DELETE assunto
+                    WHERE id_as = @id_as
+                    SET @saida = 'Assunto excluido com sucesso'
+                END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Codigo invalido',16,1)
+            END
+        END
+        SET IDENTITY_INSERT assunto OFF;
+    END
+GO
+
+GO
+
+CREATE PROCEDURE sp_iud_usuario (@cod CHAR(1), @id_usr INT, @criadoem VARCHAR(100),
+    @email VARCHAR(200), @senha VARCHAR(200), @imagempadrao BIT, @descricao VARCHAR(400),
+    @qtdfavoritos INT, @lingua VARCHAR(100), @locacao VARCHAR(200), @nome VARCHAR(200),
+    @notificacoes BIT, @imagemdoperfilurl VARCHAR(400), @contribuidor BIT, @staff BIT,
+    @professor BIT, @saida VARCHAR(50) OUTPUT)
+AS
+    IF (UPPER(@cod) = 'I')
+    BEGIN
+        SET IDENTITY_INSERT usuario ON;
+        INSERT INTO usuario VALUES
+        (@criadoem, @email, @senha, @imagempadrao, @descricao, @qtdfavoritos, @lingua, @locacao, @nome, @notificacoes, @imagemdoperfilurl, @contribuidor, @staff, @professor)
+        SET @saida = 'Usuario inserido com sucesso'
+    END
+    ELSE
+    BEGIN
+        IF (UPPER(@cod) = 'U')
+        BEGIN
+            UPDATE usuario
+            SET criadoem = @criadoem, 
+                email = @email, 
+                senha = @senha, 
+                imagempadrao = @imagempadrao, 
+                descricao = @descricao, 
+                qtdfavoritos = @qtdfavoritos, 
+                lingua = @lingua, 
+                locacao = @locacao, 
+                nome = @nome, 
+                notificacoes = @notificacoes, 
+                imagemdoperfilurl = @imagemdoperfilurl, 
+                contribuidor = @contribuidor, 
+                staff = @staff, 
+                professor = @professor
+            WHERE id_usr = @id_usr
+            SET @saida = 'Usuario atualizado com sucesso'
+            END
+            ELSE
+            BEGIN
+                IF (UPPER(@cod) = 'D')
+                BEGIN
+                    DELETE usuario
+                    WHERE id_usr = @id_usr
+                    SET @saida = 'Usuario excluido com sucesso'
+                END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Codigo invalido',16,1)
+            END
+        END
+        SET IDENTITY_INSERT usuario OFF;  
+    END
+
+GO
+
+GO
+CREATE PROCEDURE sp_iud_roadmap (@cod CHAR(1), @id_roa INT, @criadoem VARCHAR(100),
+    @qtdfavoritos INT, @favoritado BIT, @qtdcompartilhamento INT, @compartilhado BIT,
+    @fonte VARCHAR(400), @descricao VARCHAR(400), @nome VARCHAR(200), @atualizadoem VARCHAR(100),
+    @saida VARCHAR(50) OUTPUT)
+AS
+    IF (UPPER(@cod) = 'I')
+    BEGIN
+        SET IDENTITY_INSERT roadmap ON;
+        INSERT INTO roadmap VALUES
+        (@criadoem, @qtdfavoritos, @favoritado, @qtdcompartilhamento, @compartilhado, @fonte, @descricao, @nome, @atualizadoem)
+        SET @saida = 'Roadmap inserido com sucesso'
+    END
+    ELSE
+    BEGIN
+        IF (UPPER(@cod) = 'U')
+        BEGIN
+            UPDATE roadmap
+            SET criadoem = @criadoem, 
+                qtdfavoritos = @qtdfavoritos, 
+                favoritado = @favoritado, 
+                qtdcompartilhamento = @qtdcompartilhamento,
+                compartilhado = @compartilhado,
+                fonte = @fonte,
+                descricao = @descricao,
+                nome = @nome,
+                atualizadoem = @atualizadoem
+            WHERE id_roa = @id_roa
+            SET @saida = 'Roadmap atualizado com sucesso'
+            END
+            ELSE
+            BEGIN
+                IF (UPPER(@cod) = 'D')
+                BEGIN
+                    DELETE roadmap
+                    WHERE id_roa = @id_roa
+                    SET @saida = 'Roadmap excluido com sucesso'
+                END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Codigo invalido',16,1)
+            END
+        END
+        SET IDENTITY_INSERT roadmap OFF; 
+    END
+
+GO
+
+GO
+CREATE PROCEDURE sp_iud_carreiras (@cod CHAR(1), @id_car INT, @nome VARCHAR(100), @saida VARCHAR(50) OUTPUT)
+AS
+    IF(UPPER(@cod) = 'I')
+    BEGIN
+        SET IDENTITY_INSERT carreiras ON;
+        INSERT INTO carreiras VALUES
+        (@nome)
+        SET @saida = 'Carreira inserida com sucesso'
+    END
+    ELSE
+    BEGIN
+        IF (UPPER(@cod) = 'U')
+        BEGIN
+            UPDATE carreiras
+            SET nome = @nome
+        WHERE id_car = @id_car
+        SET @saida = 'Carreira inserida com sucesso'
+        END
+        ELSE
+        BEGIN
+            IF (UPPER(@cod) = 'D')
+            BEGIN
+                    DELETE carreiras
+                    WHERE id_car = @id_car
+                    SET @saida = 'Carreira excluida com sucesso'
+                END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Codigo invalido',16,1)
+            END
+        END
+        SET IDENTITY_INSERT carreiras OFF;  
+    END
+
+GO
+
+GO
+CREATE PROCEDURE sp_iud_palavraschave (@cod CHAR(1), @indice INT, @texto VARCHAR(50), @saida VARCHAR(50) OUTPUT)
+AS
+    IF(UPPER(@cod) = 'I')
+    BEGIN
+        SET IDENTITY_INSERT palavraschave ON;
+        INSERT INTO palavraschave VALUES
+        (@texto)
+        SET @saida = 'Palavra inserida com sucesso'
+    END
+    ELSE
+    BEGIN
+        IF (UPPER(@cod) = 'U')
+        BEGIN
+            UPDATE palavraschave
+            SET texto = @texto
+        WHERE indice = @indice
+        SET @saida = 'Palavra inserida com sucesso'
+        END
+        ELSE
+        BEGIN
+            IF (UPPER(@cod) = 'D')
+            BEGIN
+                    DELETE palavraschave
+                    WHERE indice = @indice
+                    SET @saida = 'Palavra excluida com sucesso'
+                END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Codigo invalido',16,1)
+            END
+        END
+        SET IDENTITY_INSERT palavraschave OFF;  
+    END
+
+GO
 
 SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem FROM assunto a;
 

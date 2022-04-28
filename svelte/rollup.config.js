@@ -13,6 +13,7 @@ export default {
 		name: 'app',
 		file: '../src/main/resources/static/bundle.js'
 	},
+	external: [ ],
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production

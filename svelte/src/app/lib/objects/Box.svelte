@@ -1,17 +1,15 @@
 <script>
-    import RouterLink from './RouterLink.svelte'
-    export let url
-    export let topic
+    export let topic;
+    export let func;
+
 </script>
 
 <div class="container">
-    <div class="wrapper">
+    <button class="wrapper" on:click={func}>
         <div class="content">
-            <h1>
-                <RouterLink url={url}>{topic}</RouterLink>
-            </h1>
+            <h1>{topic}</h1>
         </div>
-    </div>
+    </button>
 </div>
 
 <style>
@@ -26,13 +24,10 @@
         border-radius: 15px;
     }
     .content {
-        padding-top: 5rem;
-        padding-left: 3rem;
-        padding-right: 5rem;
-        padding-bottom: 5rem;
+        box-sizing: 10px;
         
     }
-    .content h1 {
+    h1 {
         font-size: 32px;
         color: white;
     }

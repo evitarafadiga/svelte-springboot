@@ -1,6 +1,6 @@
 <script>
 	import Router from './app/routing/Router.svelte';
-	import Sidenav from './app/component/Sidenav.svelte';
+	import Sidenav from './app/lib/component/Sidenav.svelte';
 </script>
 
 <style>

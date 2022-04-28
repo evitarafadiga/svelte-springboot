@@ -1,5 +1,5 @@
 <script>
-    import GetListRoadmaps from '../component/GetListRoadmaps.svelte';
+    import GetListRoadmaps from '../lib/component/GetListRoadmaps.svelte';
 </script>
       
 <h1>Lista de Roadmaps</h1>
