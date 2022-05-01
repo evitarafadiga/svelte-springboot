@@ -40,7 +40,7 @@ public class AssuntoDao implements IAssuntoDao {
 	}
 	
 	@Override
-	public void insereAssunto(Assunto a) throws SQLException, ClassNotFoundException {
+	public Assunto insereAssunto(Assunto a) throws SQLException, ClassNotFoundException {
 		Connection c = gDao.getConnection();
 		String sql = "INSERT INTO assunto VALUES (?,?,?,?,?,?) ";
 		PreparedStatement ps = c.prepareStatement(sql);
@@ -53,6 +53,8 @@ public class AssuntoDao implements IAssuntoDao {
 		ps.execute();
 		ps.close();
 		c.close();
+		
+		return a;
 	}
 	
 	public String insUpdDel(Assunto a, String cod) throws SQLException {

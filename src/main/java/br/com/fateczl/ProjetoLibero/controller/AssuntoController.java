@@ -13,13 +13,13 @@ import br.com.fateczl.ProjetoLibero.model.Assunto;
 import br.com.fateczl.ProjetoLibero.persistence.AssuntoDao;
 
 @RestController
-@RequestMapping("assuntos")
+@RequestMapping("listaassuntos")
 public class AssuntoController {
 	
 	@Autowired
 	AssuntoDao aDao;
 	
-	@PostMapping(path = "assuntos")
+	@PostMapping(path = "listaassuntos")
 	public Assunto op(@RequestBody Assunto assuntos) {
 		
 		List<Assunto> listaAssuntos = new ArrayList<Assunto>();
