@@ -42,13 +42,22 @@
 
 <style>
   main {
-    flex-grow: 1;
+    margin: 0 auto;
+    display: flex;
     background-color: var(--primary-color-2);
     color: var(--second-color);
     padding: 1rem;
   }
+
+  .content {
+    justify-content: center;
+    border-top: 10px rgb(0, 0, 0);
+    padding: 17px 17px 50px 250px;
+  }
 </style>
 
 <main>
-  <svelte:component this={value}/>
+  <div class="content">
+    <svelte:component this={value}/>
+  </div>
 </main>

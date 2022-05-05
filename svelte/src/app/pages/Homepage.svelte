@@ -3,6 +3,7 @@
   import Box from '../lib/objects/Box.svelte';
   import Rectangle from '../lib/objects/Rectangle.svelte';
   import Trends from '../lib/component/Trends.svelte';
+  import Searchbox from '../lib/objects/Searchbox.svelte';
 
   function crudAssunto(event) {
     console.log("Assunto.");
@@ -21,6 +22,7 @@
 
 <div class="container">
   <div class="wrapper">
+    <Searchbox />
     <div class="content">
       <Perfil />
       <Trends />
@@ -46,7 +48,7 @@
     display: flex;
     justify-content: center;
     border-top: 10px rgb(0, 0, 0);
-    padding: 10px 250px;
+    padding: 10px 50px;
   }
 </style>
 

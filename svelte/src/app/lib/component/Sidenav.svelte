@@ -2,33 +2,44 @@
   import RouterLink from './RouterLink.svelte'
 </script>
 
-<nav>
-  <div class="wrapper">
-    <div class="content">
-      <ul>
-        <li>
-          <RouterLink url=''><h1>Líbero</h1></RouterLink>
-        </li>
-        <li>
-          <RouterLink url='perfil'>Perfil</RouterLink>
-        </li>
-        <li>
-          <RouterLink url='lista-roadmaps'>Lista de Roadmaps</RouterLink>
-        </li>
-        <li>
-          <RouterLink url='lista-assuntos'>Lista de Assuntos</RouterLink>
-        </li>
-      </ul>     
-    </div>
-  </div> 
-</nav>
+<main>
+    <nav>
+      <div class="wrapper">
+        <div class="content">
+          <ul>
+            <li class="title">
+              <RouterLink url=''><h1>Líbero</h1></RouterLink>
+            </li>
+            <li>
+              <RouterLink url='perfil'>Perfil</RouterLink>
+            </li>
+            <li>
+              <RouterLink url='lista-roadmaps'>Lista de Roadmaps</RouterLink>
+            </li>
+            <li>
+              <RouterLink url='lista-assuntos'>Lista de Assuntos</RouterLink>
+            </li>
+          </ul>     
+        </div>
+      </div> 
+    </nav>
+</main>
+
 
 <style>
-  nav {
-    height: 56px;
-    flex-basis: 1rem;
+  main {
+    position: fixed;
+    display: block;
+    height: 2508px;
+    width: 33%;
     background-color: var(--primary-color);
     color: var(--second-color-4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  }
+  nav {
+    
+    flex-basis: 10rem;
+    padding: 1rem; 
   }
 
   nav ul {
@@ -36,16 +47,14 @@
   }
 
   nav ul li {
-    display: inline;
-    padding: .5rem 54px;
+    padding: .5rem 0;
   }
 
-  nav h1 {
-    display: inline;
+  .title {
+    padding-bottom: 5rem;
   }
-
   .wrapper {
-    padding-left: 216px;
+    padding-right: 100px;
   }
   .content {
     border-top: 10px rgb(204, 204, 204);

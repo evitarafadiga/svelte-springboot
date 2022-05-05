@@ -5,20 +5,22 @@ export let username;
 let src = '../src/app/public/profile-picture.png'
 
 </script>
-
-<Rectangle>
-    <div class="wrapper">
-        <figure>
-            <img src={src} alt="Profile default" /> 
-        </figure>
-        <div>
-            {username}
-            <div class="carreiras">
-            Carreiras
+<main>
+    <Rectangle class="cinza">
+        <div class="wrapper">
+            <figure>
+                <img src={src} alt="Profile default" /> 
+            </figure>
+            <div>
+                {username}
+                <div class="carreiras">
+                Carreiras
+                </div>
             </div>
         </div>
-    </div>
-</Rectangle>
+    </Rectangle>
+</main>
+
 
 <style>
     .wrapper {
