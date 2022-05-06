@@ -1,10 +1,10 @@
 <script>
     import GetList from './GetList.svelte'
-    
 </script>
 
 <div class="container">
     <div class="wrapper">
+        <h1>Tendências</h1>
         <GetList />
     </div>
 </div>

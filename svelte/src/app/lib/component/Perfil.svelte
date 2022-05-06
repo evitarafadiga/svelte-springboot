@@ -2,20 +2,20 @@
 import Rectangle from "../objects/Rectangle.svelte";
 export let username;
 
-let src = '../src/app/public/profile-picture.png'
+let src = '/profile-picture.png'
 
 </script>
 <main>
-    <Rectangle class="cinza">
+    <Rectangle>
         <div class="wrapper">
             <figure>
                 <img src={src} alt="Profile default" /> 
             </figure>
             <div>
-                {username}
-                <div class="carreiras">
+                Bem vindo(a), {username}.
+            </div>
+            <div class="carreiras">
                 Carreiras
-                </div>
             </div>
         </div>
     </Rectangle>

@@ -17,7 +17,7 @@
 	<p>...carregando</p>
 {:then response}
 	{#each response as element}
-	  <p>The number is {element}</p>
+	  <p>{element}</p>
 	{/each}
 {:catch error}
 	<p style="color: red">{error.message}</p>

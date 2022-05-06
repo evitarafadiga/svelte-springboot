@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ListController {
 
     @GetMapping
-    public List<Integer> getList() {
-        return List.of(1, 2, 3, 4, 5);
+    public List<String> getList() {
+        return List.of("Enem 2022", "Medicina", "Probabilidade", "Economia", "Concurso Banco do Brasil");
     }
 
 }

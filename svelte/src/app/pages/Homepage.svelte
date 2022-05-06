@@ -24,14 +24,14 @@
   <div class="wrapper">
     <Searchbox />
     <div class="content">
-      <Perfil />
+      <Perfil username={"Fulano"}/>
       <Trends />
     </div>
     
     <div class="content">
-      <Box topic={"Assuntos"} func={crudAssunto} />
-      <Box topic={"Roadmaps"} func={crudRoadmap} />
-      <Box topic={"Tendências"} func={viewTrends} />
+      <Box topic={"+ Assunto"} func={crudAssunto} />
+      <Box topic={"+ Roadmap"} func={crudRoadmap} />
+      <Box topic={"Pesquisa"} func={viewTrends} />
     </div>
   </div>
 </div>

@@ -31,7 +31,7 @@
     position: fixed;
     display: block;
     height: 2508px;
-    width: 33%;
+    width: 23%;
     background-color: var(--primary-color);
     color: var(--second-color-4);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);

@@ -4,7 +4,7 @@ export let title
 </script>
 
 <main>
-    <h2>{title}Oi</h2>
+    <h2>{title}</h2>
 </main>
 
 <style>
@@ -21,5 +21,6 @@ export let title
 
     h2 {
         vertical-align: auto;
+        text-align: center;
     }   
 </style>
