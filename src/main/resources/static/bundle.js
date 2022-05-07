@@ -79,6 +79,10 @@ var app = (function () {
 		return document.createElement(name);
 	}
 
+	function svg_element(name) {
+		return document.createElementNS('http://www.w3.org/2000/svg', name);
+	}
+
 	function text(data) {
 		return document.createTextNode(data);
 	}
@@ -96,6 +100,18 @@ var app = (function () {
 		return () => node.removeEventListener(event, handler, options);
 	}
 
+	function stop_propagation(fn) {
+		return function(event) {
+			event.stopPropagation();
+			return fn.call(this, event);
+		};
+	}
+
+	function attr(node, attribute, value) {
+		if (value == null) node.removeAttribute(attribute);
+		else node.setAttribute(attribute, value);
+	}
+
 	function children(element) {
 		return Array.from(element.childNodes);
 	}
@@ -109,10 +125,23 @@ var app = (function () {
 		node.style.setProperty(key, value);
 	}
 
+	function toggle_class(element, name, toggle) {
+		element.classList[toggle ? 'add' : 'remove'](name);
+	}
+
 	let current_component;
 
 	function set_current_component(component) {
 		current_component = component;
+	}
+
+	function get_current_component() {
+		if (!current_component) throw new Error(`Function called outside component initialization`);
+		return current_component;
+	}
+
+	function onDestroy(fn) {
+		get_current_component().$$.on_destroy.push(fn);
 	}
 
 	const dirty_components = [];
@@ -128,6 +157,10 @@ var app = (function () {
 			update_scheduled = true;
 			resolved_promise.then(flush);
 		}
+	}
+
+	function add_binding_callback(fn) {
+		binding_callbacks.push(fn);
 	}
 
 	function add_render_callback(fn) {
@@ -699,13 +732,13 @@ var app = (function () {
 				div0 = element("div");
 				h1 = element("h1");
 				t = text(ctx.topic);
-				h1.className = "svelte-14t5ba5";
+				h1.className = "svelte-m5fhr5";
 				add_location(h1, file$2, 9, 12, 184);
-				div0.className = "content svelte-14t5ba5";
+				div0.className = "content svelte-m5fhr5";
 				add_location(div0, file$2, 8, 8, 149);
-				button.className = "wrapper svelte-14t5ba5";
+				button.className = "wrapper svelte-m5fhr5";
 				add_location(button, file$2, 7, 4, 99);
-				div1.className = "container svelte-14t5ba5";
+				div1.className = "container svelte-m5fhr5";
 				add_location(div1, file$2, 6, 0, 70);
 				dispose = listen(button, "click", ctx.func);
 			},
@@ -803,6 +836,7 @@ var app = (function () {
 				p = element("p");
 				t = text(t_value);
 				set_style(p, "color", "red");
+				p.className = "svelte-ui1k0c";
 				add_location(p, file$3, 22, 1, 378);
 			},
 
@@ -891,6 +925,7 @@ var app = (function () {
 			c: function create() {
 				p = element("p");
 				t = text(t_value);
+				p.className = "svelte-ui1k0c";
 				add_location(p, file$3, 19, 3, 333);
 			},
 
@@ -917,6 +952,7 @@ var app = (function () {
 			c: function create() {
 				p = element("p");
 				p.textContent = "...carregando";
+				p.className = "svelte-ui1k0c";
 				add_location(p, file$3, 16, 1, 260);
 			},
 
@@ -1020,7 +1056,7 @@ var app = (function () {
 	const file$4 = "src\\app\\lib\\component\\Trends.svelte";
 
 	function create_fragment$4(ctx) {
-		var div1, div0, h1, t_1, current;
+		var div1, div0, h2, t_1, current;
 
 		var getlist = new GetList({ $$inline: true });
 
@@ -1028,14 +1064,15 @@ var app = (function () {
 			c: function create() {
 				div1 = element("div");
 				div0 = element("div");
-				h1 = element("h1");
-				h1.textContent = "Tendências";
+				h2 = element("h2");
+				h2.textContent = "Top assuntos";
 				t_1 = space();
 				getlist.$$.fragment.c();
-				add_location(h1, file$4, 6, 8, 127);
-				div0.className = "wrapper svelte-k1b0em";
+				h2.className = "svelte-1dugvfc";
+				add_location(h2, file$4, 6, 8, 127);
+				div0.className = "wrapper svelte-1dugvfc";
 				add_location(div0, file$4, 5, 4, 96);
-				div1.className = "container svelte-k1b0em";
+				div1.className = "container svelte-1dugvfc";
 				add_location(div1, file$4, 4, 0, 67);
 			},
 
@@ -1046,7 +1083,7 @@ var app = (function () {
 			m: function mount(target, anchor) {
 				insert(target, div1, anchor);
 				append(div1, div0);
-				append(div0, h1);
+				append(div0, h2);
 				append(div0, t_1);
 				mount_component(getlist, div0, null);
 				current = true;
@@ -1100,17 +1137,17 @@ var app = (function () {
 				figure = element("figure");
 				img = element("img");
 				textarea.placeholder = "Digite aqui sua pesquisa...";
-				textarea.className = "svelte-1hs7r3a";
+				textarea.className = "svelte-7oq7q9";
 				add_location(textarea, file$5, 7, 8, 91);
 				add_location(form, file$5, 6, 4, 75);
 				img.src = src$1;
 				img.alt = "Search tool";
-				img.className = "svelte-1hs7r3a";
+				img.className = "svelte-7oq7q9";
 				add_location(img, file$5, 10, 8, 191);
-				figure.className = "svelte-1hs7r3a";
+				figure.className = "svelte-7oq7q9";
 				add_location(figure, file$5, 9, 4, 173);
 				add_location(div, file$5, 5, 4, 64);
-				main.className = "svelte-1hs7r3a";
+				main.className = "svelte-7oq7q9";
 				add_location(main, file$5, 4, 0, 52);
 			},
 
@@ -1149,12 +1186,587 @@ var app = (function () {
 		}
 	}
 
-	/* src\app\pages\Homepage.svelte generated by Svelte v3.1.0 */
+	/* src\app\lib\component\Modal.svelte generated by Svelte v3.1.0 */
 
-	const file$6 = "src\\app\\pages\\Homepage.svelte";
+	const file$6 = "src\\app\\lib\\component\\Modal.svelte";
 
 	function create_fragment$6(ctx) {
-		var div3, div2, t0, div0, t1, t2, div1, t3, t4, current;
+		var div2, div1, svg, circle, line0, line1, t, div0, current, dispose;
+
+		const default_slot_1 = ctx.$$slots.default;
+		const default_slot = create_slot(default_slot_1, ctx, null);
+
+		return {
+			c: function create() {
+				div2 = element("div");
+				div1 = element("div");
+				svg = svg_element("svg");
+				circle = svg_element("circle");
+				line0 = svg_element("line");
+				line1 = svg_element("line");
+				t = space();
+				div0 = element("div");
+
+				if (default_slot) default_slot.c();
+				attr(circle, "cx", "6");
+				attr(circle, "cy", "6");
+				attr(circle, "r", "6");
+				attr(circle, "class", "svelte-oazyq5");
+				add_location(circle, file$6, 63, 3, 1649);
+				attr(line0, "x1", "3");
+				attr(line0, "y1", "3");
+				attr(line0, "x2", "9");
+				attr(line0, "y2", "9");
+				attr(line0, "class", "svelte-oazyq5");
+				add_location(line0, file$6, 64, 3, 1678);
+				attr(line1, "x1", "9");
+				attr(line1, "y1", "3");
+				attr(line1, "x2", "3");
+				attr(line1, "y2", "9");
+				attr(line1, "class", "svelte-oazyq5");
+				add_location(line1, file$6, 65, 3, 1711);
+				attr(svg, "id", "close");
+				attr(svg, "viewBox", "0 0 12 12");
+				attr(svg, "class", "svelte-oazyq5");
+				add_location(svg, file$6, 62, 2, 1585);
+
+				div0.id = "modal-content";
+				div0.className = "svelte-oazyq5";
+				add_location(div0, file$6, 67, 2, 1753);
+				div1.id = "modal";
+				div1.className = "svelte-oazyq5";
+				add_location(div1, file$6, 61, 1, 1531);
+				div2.id = "topModal";
+				div2.className = "svelte-oazyq5";
+				toggle_class(div2, "visible", ctx.visible);
+				add_location(div2, file$6, 60, 0, 1453);
+
+				dispose = [
+					listen(svg, "click", ctx.click_handler),
+					listen(div1, "click", stop_propagation(click_handler_1)),
+					listen(div2, "click", ctx.click_handler_2)
+				];
+			},
+
+			l: function claim(nodes) {
+				if (default_slot) default_slot.l(div0_nodes);
+				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, div2, anchor);
+				append(div2, div1);
+				append(div1, svg);
+				append(svg, circle);
+				append(svg, line0);
+				append(svg, line1);
+				append(div1, t);
+				append(div1, div0);
+
+				if (default_slot) {
+					default_slot.m(div0, null);
+				}
+
+				add_binding_callback(() => ctx.div2_binding(div2, null));
+				current = true;
+			},
+
+			p: function update(changed, ctx) {
+				if (default_slot && default_slot.p && changed.$$scope) {
+					default_slot.p(get_slot_changes(default_slot_1, ctx, changed,), get_slot_context(default_slot_1, ctx, null));
+				}
+
+				if (changed.items) {
+					ctx.div2_binding(null, div2);
+					ctx.div2_binding(div2, null);
+				}
+
+				if (changed.visible) {
+					toggle_class(div2, "visible", ctx.visible);
+				}
+			},
+
+			i: function intro(local) {
+				if (current) return;
+				if (default_slot && default_slot.i) default_slot.i(local);
+				current = true;
+			},
+
+			o: function outro(local) {
+				if (default_slot && default_slot.o) default_slot.o(local);
+				current = false;
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(div2);
+				}
+
+				if (default_slot) default_slot.d(detaching);
+				ctx.div2_binding(null, div2);
+				run_all(dispose);
+			}
+		};
+	}
+
+	let onTop;   //keeping track of which open modal is on top
+	const modals={};  //all modals get registered here for easy future access
+
+	// 	returns an object for the modal specified by `id`, which contains the API functions (`open` and `close` )
+	function getModal(id=''){
+		return modals[id]
+	}
+
+	function click_handler_1() {}
+
+	function instance$4($$self, $$props, $$invalidate) {
+		let topDiv;
+	let visible=false;
+	let prevOnTop;
+	let closeCallback;
+
+	let { id='' } = $$props;
+
+	function keyPress(ev){
+		//only respond if the current modal is the top one
+		if(ev.key=="Escape" && onTop==topDiv) close(); //ESC
+	}
+
+	/**  API **/
+	function open(callback){
+		$$invalidate('closeCallback', closeCallback=callback);
+		if(visible) return
+		$$invalidate('prevOnTop', prevOnTop=onTop);
+		onTop=topDiv;
+		window.addEventListener("keydown",keyPress);
+		
+		//this prevents scrolling of the main window on larger screens
+		document.body.style.overflow="hidden"; 
+
+		$$invalidate('visible', visible=true);
+		//Move the modal in the DOM to be the last child of <BODY> so that it can be on top of everything
+		document.body.appendChild(topDiv);
+	}
+		
+	function close(retVal){
+		if(!visible) return
+		window.removeEventListener("keydown",keyPress);
+		onTop=prevOnTop;
+		if(onTop==null) document.body.style.overflow="";
+		$$invalidate('visible', visible=false);
+		if(closeCallback) closeCallback(retVal);
+	}
+		
+	//expose the API
+	modals[id]={open,close};
+		
+	onDestroy(()=>{
+		delete modals[id];
+		window.removeEventListener("keydown",keyPress);
+	});
+
+		let { $$slots = {}, $$scope } = $$props;
+
+		function click_handler() {
+			return close();
+		}
+
+		function div2_binding($$node, check) {
+			topDiv = $$node;
+			$$invalidate('topDiv', topDiv);
+		}
+
+		function click_handler_2() {
+			return close();
+		}
+
+		$$self.$set = $$props => {
+			if ('id' in $$props) $$invalidate('id', id = $$props.id);
+			if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+		};
+
+		return {
+			topDiv,
+			visible,
+			id,
+			close,
+			click_handler,
+			div2_binding,
+			click_handler_2,
+			$$slots,
+			$$scope
+		};
+	}
+
+	class Modal extends SvelteComponentDev {
+		constructor(options) {
+			super(options);
+			init(this, options, instance$4, create_fragment$6, safe_not_equal, ["id"]);
+
+			const { ctx } = this.$$;
+			const props = options.props || {};
+			if (ctx.id === undefined && !('id' in props)) {
+				console.warn("<Modal> was created without expected prop 'id'");
+			}
+		}
+
+		get id() {
+			throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+		}
+
+		set id(value) {
+			throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+		}
+	}
+
+	/* src\app\lib\component\AssuntoDialog.svelte generated by Svelte v3.1.0 */
+
+	const file$7 = "src\\app\\lib\\component\\AssuntoDialog.svelte";
+
+	// (28:0) <Modal>
+	function create_default_slot_1(ctx) {
+		var h1, t0, t1, t2;
+
+		return {
+			c: function create() {
+				h1 = element("h1");
+				t0 = text("Hello ");
+				t1 = text(name);
+				t2 = text("!");
+				add_location(h1, file$7, 28, 1, 913);
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, h1, anchor);
+				append(h1, t0);
+				append(h1, t1);
+				append(h1, t2);
+			},
+
+			p: noop,
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(h1);
+				}
+			}
+		};
+	}
+
+	// (33:0) <Modal id="second">
+	function create_default_slot$1(ctx) {
+		var t0, button0, t2, button1, dispose;
+
+		return {
+			c: function create() {
+				t0 = space();
+				button0 = element("button");
+				button0.textContent = "Select 1";
+				t2 = space();
+				button1 = element("button");
+				button1.textContent = "Select 2";
+				button0.className = "green svelte-129qiwt";
+				add_location(button0, file$7, 35, 1, 1047);
+				button1.className = "green svelte-129qiwt";
+				add_location(button1, file$7, 38, 1, 1139);
+
+				dispose = [
+					listen(button0, "click", ctx.click_handler_1),
+					listen(button1, "click", ctx.click_handler_2)
+				];
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, t0, anchor);
+				insert(target, button0, anchor);
+				insert(target, t2, anchor);
+				insert(target, button1, anchor);
+			},
+
+			p: noop,
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(t0);
+					detach(button0);
+					detach(t2);
+					detach(button1);
+				}
+
+				run_all(dispose);
+			}
+		};
+	}
+
+	function create_fragment$7(ctx) {
+		var h2, t1, ul, li0, t3, li1, t5, li2, t7, li3, t9, li4, t11, button, t13, t14, current, dispose;
+
+		var modal0 = new Modal({
+			props: {
+			$$slots: { default: [create_default_slot_1] },
+			$$scope: { ctx }
+		},
+			$$inline: true
+		});
+
+		var modal1 = new Modal({
+			props: {
+			id: "second",
+			$$slots: { default: [create_default_slot$1] },
+			$$scope: { ctx }
+		},
+			$$inline: true
+		});
+
+		return {
+			c: function create() {
+				h2 = element("h2");
+				h2.textContent = "Very Simple Modal Component";
+				t1 = space();
+				ul = element("ul");
+				li0 = element("li");
+				li0.textContent = "Sinlge .svelte file, no dependencies";
+				t3 = space();
+				li1 = element("li");
+				li1.textContent = "Code is simple and commented, easy to modify to your needs";
+				t5 = space();
+				li2 = element("li");
+				li2.textContent = "It will always display on top, even if placed low in the stacking context";
+				t7 = space();
+				li3 = element("li");
+				li3.textContent = "Supports multiple, nested modal popups";
+				t9 = space();
+				li4 = element("li");
+				li4.textContent = "Supports returning a value when closing modal popup";
+				t11 = space();
+				button = element("button");
+				button.textContent = "Open First Popup";
+				t13 = space();
+				modal0.$$.fragment.c();
+				t14 = space();
+				modal1.$$.fragment.c();
+				add_location(h2, file$7, 12, 0, 356);
+				add_location(li0, file$7, 14, 1, 401);
+				add_location(li1, file$7, 15, 1, 449);
+				add_location(li2, file$7, 16, 1, 519);
+				add_location(li3, file$7, 17, 1, 604);
+				add_location(li4, file$7, 18, 1, 654);
+				add_location(ul, file$7, 13, 0, 394);
+				add_location(button, file$7, 22, 0, 792);
+				dispose = listen(button, "click", ctx.click_handler);
+			},
+
+			l: function claim(nodes) {
+				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, h2, anchor);
+				insert(target, t1, anchor);
+				insert(target, ul, anchor);
+				append(ul, li0);
+				append(ul, t3);
+				append(ul, li1);
+				append(ul, t5);
+				append(ul, li2);
+				append(ul, t7);
+				append(ul, li3);
+				append(ul, t9);
+				append(ul, li4);
+				insert(target, t11, anchor);
+				insert(target, button, anchor);
+				insert(target, t13, anchor);
+				mount_component(modal0, target, anchor);
+				insert(target, t14, anchor);
+				mount_component(modal1, target, anchor);
+				current = true;
+			},
+
+			p: function update(changed, ctx) {
+				var modal0_changes = {};
+				if (changed.$$scope) modal0_changes.$$scope = { changed, ctx };
+				modal0.$set(modal0_changes);
+
+				var modal1_changes = {};
+				if (changed.$$scope) modal1_changes.$$scope = { changed, ctx };
+				modal1.$set(modal1_changes);
+			},
+
+			i: function intro(local) {
+				if (current) return;
+				modal0.$$.fragment.i(local);
+
+				modal1.$$.fragment.i(local);
+
+				current = true;
+			},
+
+			o: function outro(local) {
+				modal0.$$.fragment.o(local);
+				modal1.$$.fragment.o(local);
+				current = false;
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(h2);
+					detach(t1);
+					detach(ul);
+					detach(t11);
+					detach(button);
+					detach(t13);
+				}
+
+				modal0.$destroy(detaching);
+
+				if (detaching) {
+					detach(t14);
+				}
+
+				modal1.$destroy(detaching);
+
+				dispose();
+			}
+		};
+	}
+
+	let name = 'world';
+
+	function instance$5($$self, $$props, $$invalidate) {
+
+		function click_handler() {
+			return getModal().open();
+		}
+
+		function click_handler_1() {
+			return getModal('second').close(1);
+		}
+
+		function click_handler_2() {
+			return getModal('second').close(2);
+		}
+
+		return {
+			click_handler,
+			click_handler_1,
+			click_handler_2
+		};
+	}
+
+	class AssuntoDialog extends SvelteComponentDev {
+		constructor(options) {
+			super(options);
+			init(this, options, instance$5, create_fragment$7, safe_not_equal, []);
+		}
+	}
+
+	/* src\app\pages\Homepage.svelte generated by Svelte v3.1.0 */
+
+	const file$8 = "src\\app\\pages\\Homepage.svelte";
+
+	// (62:1) {#if selection}
+	function create_if_block(ctx) {
+		var p, t0, t1;
+
+		return {
+			c: function create() {
+				p = element("p");
+				t0 = text("Your selection was: ");
+				t1 = text(ctx.selection);
+				add_location(p, file$8, 62, 1, 1703);
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, p, anchor);
+				append(p, t0);
+				append(p, t1);
+			},
+
+			p: function update(changed, ctx) {
+				if (changed.selection) {
+					set_data(t1, ctx.selection);
+				}
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(p);
+				}
+			}
+		};
+	}
+
+	// (56:0) <Modal>
+	function create_default_slot$2(ctx) {
+		var h1, t0, t1, t2, t3, button, t5, if_block_anchor, dispose;
+
+		var if_block = (ctx.selection) && create_if_block(ctx);
+
+		return {
+			c: function create() {
+				h1 = element("h1");
+				t0 = text("Hello ");
+				t1 = text(name$1);
+				t2 = text("!");
+				t3 = space();
+				button = element("button");
+				button.textContent = "Open Nested Popup";
+				t5 = space();
+				if (if_block) if_block.c();
+				if_block_anchor = empty();
+				add_location(h1, file$8, 56, 1, 1496);
+				add_location(button, file$8, 58, 1, 1588);
+				dispose = listen(button, "click", ctx.click_handler);
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, h1, anchor);
+				append(h1, t0);
+				append(h1, t1);
+				append(h1, t2);
+				insert(target, t3, anchor);
+				insert(target, button, anchor);
+				insert(target, t5, anchor);
+				if (if_block) if_block.m(target, anchor);
+				insert(target, if_block_anchor, anchor);
+			},
+
+			p: function update(changed, ctx) {
+				if (ctx.selection) {
+					if (if_block) {
+						if_block.p(changed, ctx);
+					} else {
+						if_block = create_if_block(ctx);
+						if_block.c();
+						if_block.m(if_block_anchor.parentNode, if_block_anchor);
+					}
+				} else if (if_block) {
+					if_block.d(1);
+					if_block = null;
+				}
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(h1);
+					detach(t3);
+					detach(button);
+					detach(t5);
+				}
+
+				if (if_block) if_block.d(detaching);
+
+				if (detaching) {
+					detach(if_block_anchor);
+				}
+
+				dispose();
+			}
+		};
+	}
+
+	function create_fragment$8(ctx) {
+		var div3, div2, t0, div0, t1, t2, div1, t3, t4, t5, t6, current;
 
 		var searchbox = new Searchbox({ $$inline: true });
 
@@ -1166,17 +1778,36 @@ var app = (function () {
 		var trends = new Trends({ $$inline: true });
 
 		var box0 = new Box({
-			props: { topic: "+ Assunto", func: crudAssunto },
+			props: {
+			topic: "+ Assunto",
+			func: crudAssunto
+		},
 			$$inline: true
 		});
 
 		var box1 = new Box({
-			props: { topic: "+ Roadmap", func: crudRoadmap },
+			props: {
+			topic: "+ Roadmap",
+			func: crudRoadmap
+		},
 			$$inline: true
 		});
 
 		var box2 = new Box({
-			props: { topic: "Pesquisa", func: viewTrends },
+			props: {
+			topic: "Tendências",
+			func: viewTrends
+		},
+			$$inline: true
+		});
+
+		var assuntodialog = new AssuntoDialog({ $$inline: true });
+
+		var modal = new Modal({
+			props: {
+			$$slots: { default: [create_default_slot$2] },
+			$$scope: { ctx }
+		},
 			$$inline: true
 		});
 
@@ -1197,14 +1828,18 @@ var app = (function () {
 				box1.$$.fragment.c();
 				t4 = space();
 				box2.$$.fragment.c();
-				div0.className = "content svelte-zpduyb";
-				add_location(div0, file$6, 25, 4, 597);
-				div1.className = "content svelte-zpduyb";
-				add_location(div1, file$6, 30, 4, 697);
-				div2.className = "wrapper svelte-zpduyb";
-				add_location(div2, file$6, 23, 2, 551);
-				div3.className = "container svelte-zpduyb";
-				add_location(div3, file$6, 22, 0, 524);
+				t5 = space();
+				assuntodialog.$$.fragment.c();
+				t6 = space();
+				modal.$$.fragment.c();
+				div0.className = "content svelte-1m6kgxt";
+				add_location(div0, file$8, 37, 4, 1096);
+				div1.className = "content svelte-1m6kgxt";
+				add_location(div1, file$8, 42, 4, 1196);
+				div2.className = "wrapper svelte-1m6kgxt";
+				add_location(div2, file$8, 35, 2, 1050);
+				div3.className = "container svelte-1m6kgxt";
+				add_location(div3, file$8, 34, 0, 1023);
 			},
 
 			l: function claim(nodes) {
@@ -1227,6 +1862,10 @@ var app = (function () {
 				mount_component(box1, div1, null);
 				append(div1, t4);
 				mount_component(box2, div1, null);
+				append(div2, t5);
+				mount_component(assuntodialog, div2, null);
+				insert(target, t6, anchor);
+				mount_component(modal, target, anchor);
 				current = true;
 			},
 
@@ -1242,6 +1881,10 @@ var app = (function () {
 				var box2_changes = {};
 				if (changed.viewTrends) box2_changes.func = viewTrends;
 				box2.$set(box2_changes);
+
+				var modal_changes = {};
+				if (changed.$$scope || changed.selection) modal_changes.$$scope = { changed, ctx };
+				modal.$set(modal_changes);
 			},
 
 			i: function intro(local) {
@@ -1258,6 +1901,10 @@ var app = (function () {
 
 				box2.$$.fragment.i(local);
 
+				assuntodialog.$$.fragment.i(local);
+
+				modal.$$.fragment.i(local);
+
 				current = true;
 			},
 
@@ -1268,6 +1915,8 @@ var app = (function () {
 				box0.$$.fragment.o(local);
 				box1.$$.fragment.o(local);
 				box2.$$.fragment.o(local);
+				assuntodialog.$$.fragment.o(local);
+				modal.$$.fragment.o(local);
 				current = false;
 			},
 
@@ -1287,42 +1936,70 @@ var app = (function () {
 				box1.$destroy();
 
 				box2.$destroy();
+
+				assuntodialog.$destroy();
+
+				if (detaching) {
+					detach(t6);
+				}
+
+				modal.$destroy(detaching);
 			}
 		};
 	}
 
+	let name$1 = 'world';
+
 	function crudAssunto(event) {
-	  console.log("Assunto.");
+	  console.log("Chamado cadastro de assunto");
+	  getModal().open();
 	}
 
 	function crudRoadmap(event) {
-	  console.log("Roadmaps.");
+	  console.log("Chamado cadastro de roadmap");
 	}
 
 	function viewTrends(event) {
-	  console.log("Tendências.");
+	  console.log("Chamado pesquisa e tendências.");
 	  
+	}
+
+	function instance$6($$self, $$props, $$invalidate) {
+		
+		
+		let selection;
+		
+		// Callback function provided to the `open` function, it receives the value given to the `close` function call, or `undefined` if the Modal was closed with escape or clicking the X, etc.
+		function setSelection(res){
+			$$invalidate('selection', selection=res);
+		}
+
+		function click_handler() {
+			return getModal('second').open(setSelection);
+		}
+
+		return { selection, setSelection, click_handler };
 	}
 
 	class Homepage extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$6, safe_not_equal, []);
+			init(this, options, instance$6, create_fragment$8, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\Notfound.svelte generated by Svelte v3.1.0 */
 
-	const file$7 = "src\\app\\pages\\Notfound.svelte";
+	const file$9 = "src\\app\\pages\\Notfound.svelte";
 
-	function create_fragment$7(ctx) {
+	function create_fragment$9(ctx) {
 		var h1;
 
 		return {
 			c: function create() {
 				h1 = element("h1");
 				h1.textContent = "Conteúdo não encontrado.";
-				add_location(h1, file$7, 0, 0, 0);
+				add_location(h1, file$9, 0, 0, 0);
 			},
 
 			l: function claim(nodes) {
@@ -1348,13 +2025,13 @@ var app = (function () {
 	class Notfound extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$7, safe_not_equal, []);
+			init(this, options, null, create_fragment$9, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\lib\component\GetListAssunto.svelte generated by Svelte v3.1.0 */
 
-	const file$8 = "src\\app\\lib\\component\\GetListAssunto.svelte";
+	const file$a = "src\\app\\lib\\component\\GetListAssunto.svelte";
 
 	function get_each_context$1(ctx, list, i) {
 		const child_ctx = Object.create(ctx);
@@ -1371,7 +2048,7 @@ var app = (function () {
 				p = element("p");
 				t = text(t_value);
 				set_style(p, "color", "red");
-				add_location(p, file$8, 25, 6, 636);
+				add_location(p, file$a, 25, 6, 636);
 			},
 
 			m: function mount(target, anchor) {
@@ -1470,9 +2147,9 @@ var app = (function () {
 				t7 = text(" Fonte: ");
 				t8 = text(t8_value);
 				t9 = space();
-				add_location(p0, file$8, 20, 8, 460);
-				add_location(p1, file$8, 21, 8, 521);
-				add_location(div, file$8, 19, 8, 445);
+				add_location(p0, file$a, 20, 8, 460);
+				add_location(p1, file$a, 21, 8, 521);
+				add_location(div, file$a, 19, 8, 445);
 			},
 
 			m: function mount(target, anchor) {
@@ -1509,7 +2186,7 @@ var app = (function () {
 			c: function create() {
 				p = element("p");
 				p.textContent = "...carregando";
-				add_location(p, file$8, 16, 6, 360);
+				add_location(p, file$a, 16, 6, 360);
 			},
 
 			m: function mount(target, anchor) {
@@ -1526,7 +2203,7 @@ var app = (function () {
 		};
 	}
 
-	function create_fragment$8(ctx) {
+	function create_fragment$a(ctx) {
 		var await_block_anchor, promise_1;
 
 		let info = {
@@ -1594,7 +2271,7 @@ var app = (function () {
 	        } 
 	  }
 
-	function instance$4($$self) {
+	function instance$7($$self) {
 		let promise = getListAssunto();
 
 		return { promise };
@@ -1603,15 +2280,15 @@ var app = (function () {
 	class GetListAssunto extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, instance$4, create_fragment$8, safe_not_equal, []);
+			init(this, options, instance$7, create_fragment$a, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\ListaAssuntos.svelte generated by Svelte v3.1.0 */
 
-	const file$9 = "src\\app\\pages\\ListaAssuntos.svelte";
+	const file$b = "src\\app\\pages\\ListaAssuntos.svelte";
 
-	function create_fragment$9(ctx) {
+	function create_fragment$b(ctx) {
 		var h1, t_1, current;
 
 		var getlistassunto = new GetListAssunto({ $$inline: true });
@@ -1622,7 +2299,7 @@ var app = (function () {
 				h1.textContent = "Lista de Assuntos";
 				t_1 = space();
 				getlistassunto.$$.fragment.c();
-				add_location(h1, file$9, 4, 0, 95);
+				add_location(h1, file$b, 4, 0, 95);
 			},
 
 			l: function claim(nodes) {
@@ -1664,22 +2341,22 @@ var app = (function () {
 	class ListaAssuntos extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$9, safe_not_equal, []);
+			init(this, options, null, create_fragment$b, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\Assuntos.svelte generated by Svelte v3.1.0 */
 
-	const file$a = "src\\app\\pages\\Assuntos.svelte";
+	const file$c = "src\\app\\pages\\Assuntos.svelte";
 
-	function create_fragment$a(ctx) {
+	function create_fragment$c(ctx) {
 		var p;
 
 		return {
 			c: function create() {
 				p = element("p");
 				p.textContent = "Assuntos";
-				add_location(p, file$a, 4, 0, 25);
+				add_location(p, file$c, 4, 0, 25);
 			},
 
 			l: function claim(nodes) {
@@ -1705,13 +2382,13 @@ var app = (function () {
 	class Assuntos extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$a, safe_not_equal, []);
+			init(this, options, null, create_fragment$c, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\Roadmaps.svelte generated by Svelte v3.1.0 */
 
-	function create_fragment$b(ctx) {
+	function create_fragment$d(ctx) {
 		return {
 			c: noop,
 
@@ -1730,13 +2407,13 @@ var app = (function () {
 	class Roadmaps extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$b, safe_not_equal, []);
+			init(this, options, null, create_fragment$d, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\Tendencias.svelte generated by Svelte v3.1.0 */
 
-	function create_fragment$c(ctx) {
+	function create_fragment$e(ctx) {
 		return {
 			c: noop,
 
@@ -1755,15 +2432,15 @@ var app = (function () {
 	class Tendencias extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$c, safe_not_equal, []);
+			init(this, options, null, create_fragment$e, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\lib\component\TitleArea.svelte generated by Svelte v3.1.0 */
 
-	const file$b = "src\\app\\lib\\component\\TitleArea.svelte";
+	const file$d = "src\\app\\lib\\component\\TitleArea.svelte";
 
-	function create_fragment$d(ctx) {
+	function create_fragment$f(ctx) {
 		var main, h2, t;
 
 		return {
@@ -1772,9 +2449,9 @@ var app = (function () {
 				h2 = element("h2");
 				t = text(ctx.title);
 				h2.className = "svelte-4mwzy5";
-				add_location(h2, file$b, 6, 4, 55);
+				add_location(h2, file$d, 6, 4, 55);
 				main.className = "svelte-4mwzy5";
-				add_location(main, file$b, 5, 0, 43);
+				add_location(main, file$d, 5, 0, 43);
 			},
 
 			l: function claim(nodes) {
@@ -1804,7 +2481,7 @@ var app = (function () {
 		};
 	}
 
-	function instance$5($$self, $$props, $$invalidate) {
+	function instance$8($$self, $$props, $$invalidate) {
 		let { title } = $$props;
 
 		$$self.$set = $$props => {
@@ -1817,7 +2494,7 @@ var app = (function () {
 	class TitleArea extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, instance$5, create_fragment$d, safe_not_equal, ["title"]);
+			init(this, options, instance$8, create_fragment$f, safe_not_equal, ["title"]);
 
 			const { ctx } = this.$$;
 			const props = options.props || {};
@@ -1837,10 +2514,10 @@ var app = (function () {
 
 	/* src\app\lib\objects\Card.svelte generated by Svelte v3.1.0 */
 
-	const file$c = "src\\app\\lib\\objects\\Card.svelte";
+	const file$e = "src\\app\\lib\\objects\\Card.svelte";
 
 	// (10:4) <Rectangle>
-	function create_default_slot$1(ctx) {
+	function create_default_slot$3(ctx) {
 		var t0, h3, t1, t2, t3, div, h2, t4, current;
 
 		var titlearea = new TitleArea({
@@ -1860,10 +2537,10 @@ var app = (function () {
 				h2 = element("h2");
 				t4 = text(ctx.desc);
 				h3.className = "svelte-1huk45u";
-				add_location(h3, file$c, 11, 4, 248);
+				add_location(h3, file$e, 11, 4, 248);
 				h2.className = "svelte-1huk45u";
-				add_location(h2, file$c, 13, 8, 286);
-				add_location(div, file$c, 12, 4, 271);
+				add_location(h2, file$e, 13, 8, 286);
+				add_location(div, file$e, 12, 4, 271);
 			},
 
 			m: function mount(target, anchor) {
@@ -1918,12 +2595,12 @@ var app = (function () {
 		};
 	}
 
-	function create_fragment$e(ctx) {
+	function create_fragment$g(ctx) {
 		var main, current;
 
 		var rectangle = new Rectangle({
 			props: {
-			$$slots: { default: [create_default_slot$1] },
+			$$slots: { default: [create_default_slot$3] },
 			$$scope: { ctx }
 		},
 			$$inline: true
@@ -1934,7 +2611,7 @@ var app = (function () {
 				main = element("main");
 				rectangle.$$.fragment.c();
 				main.className = "svelte-1huk45u";
-				add_location(main, file$c, 8, 0, 187);
+				add_location(main, file$e, 8, 0, 187);
 			},
 
 			l: function claim(nodes) {
@@ -1975,7 +2652,7 @@ var app = (function () {
 		};
 	}
 
-	function instance$6($$self, $$props, $$invalidate) {
+	function instance$9($$self, $$props, $$invalidate) {
 		
 
 	let { nome, desc, id, fav, comp, criado, att, fonte } = $$props;
@@ -2006,7 +2683,7 @@ var app = (function () {
 	class Card extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, instance$6, create_fragment$e, safe_not_equal, ["nome", "desc", "id", "fav", "comp", "criado", "att", "fonte"]);
+			init(this, options, instance$9, create_fragment$g, safe_not_equal, ["nome", "desc", "id", "fav", "comp", "criado", "att", "fonte"]);
 
 			const { ctx } = this.$$;
 			const props = options.props || {};
@@ -2103,7 +2780,7 @@ var app = (function () {
 
 	/* src\app\lib\component\GetListRoadmaps.svelte generated by Svelte v3.1.0 */
 
-	const file$d = "src\\app\\lib\\component\\GetListRoadmaps.svelte";
+	const file$f = "src\\app\\lib\\component\\GetListRoadmaps.svelte";
 
 	function get_each_context$2(ctx, list, i) {
 		const child_ctx = Object.create(ctx);
@@ -2120,7 +2797,7 @@ var app = (function () {
 				p = element("p");
 				t = text(t_value);
 				set_style(p, "color", "red");
-				add_location(p, file$d, 34, 6, 1115);
+				add_location(p, file$f, 34, 6, 1115);
 			},
 
 			m: function mount(target, anchor) {
@@ -2232,7 +2909,7 @@ var app = (function () {
 	}
 
 	// (23:6) <Card nome={element.nome} desc={element.descricao}          criado={element.criadoEm} id={element.id} fav={element.qtdFavoritos}          comp={element.qtdCompartilhamento} att={element.atualizadoEm} fonte={element.fonte} >
-	function create_default_slot$2(ctx) {
+	function create_default_slot$4(ctx) {
 		var div, p0, t0, t1_value = ctx.element.nome, t1, t2, t3_value = ctx.element.id, t3, t4, t5_value = ctx.element.qtdFavoritos, t5, t6, t7_value = ctx.element.qtdCompartilhamento, t7, t8, p1, t9, t10_value = ctx.element.criadoEm, t10, t11, t12_value = ctx.element.atualizadoEm, t12, t13, t14_value = ctx.element.fonte, t14, t15, p2, t16, t17_value = ctx.element.descricao, t17, t18;
 
 		return {
@@ -2260,10 +2937,10 @@ var app = (function () {
 				t16 = text("descrição:");
 				t17 = text(t17_value);
 				t18 = space();
-				add_location(p0, file$d, 26, 12, 745);
-				add_location(p1, file$d, 27, 12, 888);
-				add_location(p2, file$d, 28, 12, 997);
-				add_location(div, file$d, 25, 8, 726);
+				add_location(p0, file$f, 26, 12, 745);
+				add_location(p1, file$f, 27, 12, 888);
+				add_location(p2, file$f, 28, 12, 997);
+				add_location(div, file$f, 25, 8, 726);
 			},
 
 			m: function mount(target, anchor) {
@@ -2317,7 +2994,7 @@ var app = (function () {
 			comp: ctx.element.qtdCompartilhamento,
 			att: ctx.element.atualizadoEm,
 			fonte: ctx.element.fonte,
-			$$slots: { default: [create_default_slot$2] },
+			$$slots: { default: [create_default_slot$4] },
 			$$scope: { ctx }
 		},
 			$$inline: true
@@ -2373,7 +3050,7 @@ var app = (function () {
 			c: function create() {
 				p = element("p");
 				p.textContent = "...carregando";
-				add_location(p, file$d, 19, 6, 410);
+				add_location(p, file$f, 19, 6, 410);
 			},
 
 			m: function mount(target, anchor) {
@@ -2392,7 +3069,7 @@ var app = (function () {
 		};
 	}
 
-	function create_fragment$f(ctx) {
+	function create_fragment$h(ctx) {
 		var await_block_anchor, promise_1, current;
 
 		let info = {
@@ -2475,7 +3152,7 @@ var app = (function () {
 	        } 
 	  }
 
-	function instance$7($$self) {
+	function instance$a($$self) {
 		let promise = GetListRoadmaps();
 
 		return { promise };
@@ -2484,15 +3161,15 @@ var app = (function () {
 	class GetListRoadmaps_1 extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, instance$7, create_fragment$f, safe_not_equal, []);
+			init(this, options, instance$a, create_fragment$h, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\ListaRoadmaps.svelte generated by Svelte v3.1.0 */
 
-	const file$e = "src\\app\\pages\\ListaRoadmaps.svelte";
+	const file$g = "src\\app\\pages\\ListaRoadmaps.svelte";
 
-	function create_fragment$g(ctx) {
+	function create_fragment$i(ctx) {
 		var h1, t_1, current;
 
 		var getlistroadmaps = new GetListRoadmaps_1({ $$inline: true });
@@ -2503,7 +3180,7 @@ var app = (function () {
 				h1.textContent = "Lista de Roadmaps";
 				t_1 = space();
 				getlistroadmaps.$$.fragment.c();
-				add_location(h1, file$e, 4, 0, 105);
+				add_location(h1, file$g, 4, 0, 105);
 			},
 
 			l: function claim(nodes) {
@@ -2545,15 +3222,15 @@ var app = (function () {
 	class ListaRoadmaps extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$g, safe_not_equal, []);
+			init(this, options, null, create_fragment$i, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\pages\PerfilDeUsuario.svelte generated by Svelte v3.1.0 */
 
-	const file$f = "src\\app\\pages\\PerfilDeUsuario.svelte";
+	const file$h = "src\\app\\pages\\PerfilDeUsuario.svelte";
 
-	function create_fragment$h(ctx) {
+	function create_fragment$j(ctx) {
 		var main, current;
 
 		var card = new Card({ $$inline: true });
@@ -2562,7 +3239,7 @@ var app = (function () {
 			c: function create() {
 				main = element("main");
 				card.$$.fragment.c();
-				add_location(main, file$f, 5, 0, 73);
+				add_location(main, file$h, 5, 0, 73);
 			},
 
 			l: function claim(nodes) {
@@ -2602,15 +3279,15 @@ var app = (function () {
 	class PerfilDeUsuario extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$h, safe_not_equal, []);
+			init(this, options, null, create_fragment$j, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\routing\Router.svelte generated by Svelte v3.1.0 */
 
-	const file$g = "src\\app\\routing\\Router.svelte";
+	const file$i = "src\\app\\routing\\Router.svelte";
 
-	function create_fragment$i(ctx) {
+	function create_fragment$k(ctx) {
 		var main, div, current;
 
 		var switch_value = ctx.value;
@@ -2629,9 +3306,9 @@ var app = (function () {
 				div = element("div");
 				if (switch_instance) switch_instance.$$.fragment.c();
 				div.className = "content svelte-1ns3i2o";
-				add_location(div, file$g, 59, 2, 1463);
+				add_location(div, file$i, 59, 2, 1463);
 				main.className = "svelte-1ns3i2o";
-				add_location(main, file$g, 58, 0, 1453);
+				add_location(main, file$i, 58, 0, 1453);
 			},
 
 			l: function claim(nodes) {
@@ -2695,7 +3372,7 @@ var app = (function () {
 		};
 	}
 
-	function instance$8($$self, $$props, $$invalidate) {
+	function instance$b($$self, $$props, $$invalidate) {
 		
 
 	  let value = Notfound;
@@ -2734,29 +3411,40 @@ var app = (function () {
 	class Router extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, instance$8, create_fragment$i, safe_not_equal, []);
+			init(this, options, instance$b, create_fragment$k, safe_not_equal, []);
 		}
 	}
 
 	/* src\app\lib\component\RouterLink.svelte generated by Svelte v3.1.0 */
 
-	const file$h = "src\\app\\lib\\component\\RouterLink.svelte";
+	const file$j = "src\\app\\lib\\component\\RouterLink.svelte";
 
-	function create_fragment$j(ctx) {
-		var a, a_href_value, current;
+	function create_fragment$l(ctx) {
+		var div, figure, img, t, a, a_href_value, current;
 
 		const default_slot_1 = ctx.$$slots.default;
 		const default_slot = create_slot(default_slot_1, ctx, null);
 
 		return {
 			c: function create() {
+				div = element("div");
+				figure = element("figure");
+				img = element("img");
+				t = space();
 				a = element("a");
 
 				if (default_slot) default_slot.c();
+				img.src = ctx.src;
+				img.alt = "[O]";
+				img.className = "svelte-pihxs1";
+				add_location(img, file$j, 24, 4, 351);
+				add_location(figure, file$j, 23, 2, 337);
 
 				a.href = a_href_value = "#/" + ctx.url;
-				a.className = "svelte-hh9rz7";
-				add_location(a, file$h, 10, 0, 112);
+				a.className = "svelte-pihxs1";
+				add_location(a, file$j, 26, 2, 395);
+				div.className = "flex svelte-pihxs1";
+				add_location(div, file$j, 22, 0, 315);
 			},
 
 			l: function claim(nodes) {
@@ -2765,7 +3453,11 @@ var app = (function () {
 			},
 
 			m: function mount(target, anchor) {
-				insert(target, a, anchor);
+				insert(target, div, anchor);
+				append(div, figure);
+				append(figure, img);
+				append(div, t);
+				append(div, a);
 
 				if (default_slot) {
 					default_slot.m(a, null);
@@ -2775,6 +3467,10 @@ var app = (function () {
 			},
 
 			p: function update(changed, ctx) {
+				if (!current || changed.src) {
+					img.src = ctx.src;
+				}
+
 				if (default_slot && default_slot.p && changed.$$scope) {
 					default_slot.p(get_slot_changes(default_slot_1, ctx, changed,), get_slot_context(default_slot_1, ctx, null));
 				}
@@ -2797,7 +3493,7 @@ var app = (function () {
 
 			d: function destroy(detaching) {
 				if (detaching) {
-					detach(a);
+					detach(div);
 				}
 
 				if (default_slot) default_slot.d(detaching);
@@ -2805,28 +3501,32 @@ var app = (function () {
 		};
 	}
 
-	function instance$9($$self, $$props, $$invalidate) {
-		let { url } = $$props;
+	function instance$c($$self, $$props, $$invalidate) {
+		let { url, src } = $$props;
 
 		let { $$slots = {}, $$scope } = $$props;
 
 		$$self.$set = $$props => {
 			if ('url' in $$props) $$invalidate('url', url = $$props.url);
+			if ('src' in $$props) $$invalidate('src', src = $$props.src);
 			if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
 		};
 
-		return { url, $$slots, $$scope };
+		return { url, src, $$slots, $$scope };
 	}
 
 	class RouterLink extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, instance$9, create_fragment$j, safe_not_equal, ["url"]);
+			init(this, options, instance$c, create_fragment$l, safe_not_equal, ["url", "src"]);
 
 			const { ctx } = this.$$;
 			const props = options.props || {};
 			if (ctx.url === undefined && !('url' in props)) {
 				console.warn("<RouterLink> was created without expected prop 'url'");
+			}
+			if (ctx.src === undefined && !('src' in props)) {
+				console.warn("<RouterLink> was created without expected prop 'src'");
 			}
 		}
 
@@ -2837,42 +3537,111 @@ var app = (function () {
 		set url(value) {
 			throw new Error("<RouterLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 		}
+
+		get src() {
+			throw new Error("<RouterLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+		}
+
+		set src(value) {
+			throw new Error("<RouterLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+		}
 	}
 
 	/* src\app\lib\component\Sidenav.svelte generated by Svelte v3.1.0 */
 
-	const file$i = "src\\app\\lib\\component\\Sidenav.svelte";
+	const file$k = "src\\app\\lib\\component\\Sidenav.svelte";
 
-	// (11:14) <RouterLink url=''>
-	function create_default_slot_3(ctx) {
-		var h1;
+	// (20:18) <RouterLink url=''>
+	function create_default_slot_6(ctx) {
+		var t;
 
 		return {
 			c: function create() {
-				h1 = element("h1");
-				h1.textContent = "Líbero";
-				add_location(h1, file$i, 10, 33, 231);
+				t = text("Líbero");
 			},
 
 			m: function mount(target, anchor) {
-				insert(target, h1, anchor);
+				insert(target, t, anchor);
 			},
 
 			d: function destroy(detaching) {
 				if (detaching) {
-					detach(h1);
+					detach(t);
 				}
 			}
 		};
 	}
 
-	// (14:14) <RouterLink url='perfil'>
+	// (27:14) <RouterLink url='perfil'>
+	function create_default_slot_5(ctx) {
+		var t;
+
+		return {
+			c: function create() {
+				t = text("Conta");
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, t, anchor);
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(t);
+				}
+			}
+		};
+	}
+
+	// (30:14) <RouterLink url='meus-roadmaps'>
+	function create_default_slot_4(ctx) {
+		var t;
+
+		return {
+			c: function create() {
+				t = text("Meus Roadmaps");
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, t, anchor);
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(t);
+				}
+			}
+		};
+	}
+
+	// (33:14) <RouterLink url='meus-assuntos'>
+	function create_default_slot_3(ctx) {
+		var t;
+
+		return {
+			c: function create() {
+				t = text("Meus Assuntos");
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, t, anchor);
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(t);
+				}
+			}
+		};
+	}
+
+	// (36:14) <RouterLink url='lista-roadmaps'>
 	function create_default_slot_2(ctx) {
 		var t;
 
 		return {
 			c: function create() {
-				t = text("Perfil");
+				t = text("Todos os Roadmaps");
 			},
 
 			m: function mount(target, anchor) {
@@ -2887,13 +3656,13 @@ var app = (function () {
 		};
 	}
 
-	// (17:14) <RouterLink url='lista-roadmaps'>
-	function create_default_slot_1(ctx) {
+	// (39:14) <RouterLink url='lista-assuntos'>
+	function create_default_slot_1$1(ctx) {
 		var t;
 
 		return {
 			c: function create() {
-				t = text("Lista de Roadmaps");
+				t = text("Todos os Assuntos");
 			},
 
 			m: function mount(target, anchor) {
@@ -2908,13 +3677,13 @@ var app = (function () {
 		};
 	}
 
-	// (20:14) <RouterLink url='lista-assuntos'>
-	function create_default_slot$3(ctx) {
+	// (42:14) <RouterLink url='signout'>
+	function create_default_slot$5(ctx) {
 		var t;
 
 		return {
 			c: function create() {
-				t = text("Lista de Assuntos");
+				t = text("Sair");
 			},
 
 			m: function mount(target, anchor) {
@@ -2929,13 +3698,13 @@ var app = (function () {
 		};
 	}
 
-	function create_fragment$k(ctx) {
-		var main, nav, div1, div0, ul, li0, t0, li1, t1, li2, t2, li3, current;
+	function create_fragment$m(ctx) {
+		var style, t1, main, nav, div2, div0, ul0, li0, h2, t2, div1, ul1, li1, t3, li2, t4, li3, t5, li4, t6, li5, t7, li6, current;
 
 		var routerlink0 = new RouterLink({
 			props: {
 			url: "",
-			$$slots: { default: [create_default_slot_3] },
+			$$slots: { default: [create_default_slot_6] },
 			$$scope: { ctx }
 		},
 			$$inline: true
@@ -2944,7 +3713,7 @@ var app = (function () {
 		var routerlink1 = new RouterLink({
 			props: {
 			url: "perfil",
-			$$slots: { default: [create_default_slot_2] },
+			$$slots: { default: [create_default_slot_5] },
 			$$scope: { ctx }
 		},
 			$$inline: true
@@ -2952,8 +3721,8 @@ var app = (function () {
 
 		var routerlink2 = new RouterLink({
 			props: {
-			url: "lista-roadmaps",
-			$$slots: { default: [create_default_slot_1] },
+			url: "meus-roadmaps",
+			$$slots: { default: [create_default_slot_4] },
 			$$scope: { ctx }
 		},
 			$$inline: true
@@ -2961,8 +3730,35 @@ var app = (function () {
 
 		var routerlink3 = new RouterLink({
 			props: {
+			url: "meus-assuntos",
+			$$slots: { default: [create_default_slot_3] },
+			$$scope: { ctx }
+		},
+			$$inline: true
+		});
+
+		var routerlink4 = new RouterLink({
+			props: {
+			url: "lista-roadmaps",
+			$$slots: { default: [create_default_slot_2] },
+			$$scope: { ctx }
+		},
+			$$inline: true
+		});
+
+		var routerlink5 = new RouterLink({
+			props: {
 			url: "lista-assuntos",
-			$$slots: { default: [create_default_slot$3] },
+			$$slots: { default: [create_default_slot_1$1] },
+			$$scope: { ctx }
+		},
+			$$inline: true
+		});
+
+		var routerlink6 = new RouterLink({
+			props: {
+			url: "signout",
+			$$slots: { default: [create_default_slot$5] },
 			$$scope: { ctx }
 		},
 			$$inline: true
@@ -2970,40 +3766,67 @@ var app = (function () {
 
 		return {
 			c: function create() {
+				style = element("style");
+				style.textContent = "@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');\r\n        @import url('https://fonts.googleapis.com/css?family=Lato');\r\n        @import url('https://fonts.googleapis.com/css?family=Rubik');";
+				t1 = space();
 				main = element("main");
 				nav = element("nav");
-				div1 = element("div");
+				div2 = element("div");
 				div0 = element("div");
-				ul = element("ul");
+				ul0 = element("ul");
 				li0 = element("li");
+				h2 = element("h2");
 				routerlink0.$$.fragment.c();
-				t0 = space();
+				t2 = space();
+				div1 = element("div");
+				ul1 = element("ul");
 				li1 = element("li");
 				routerlink1.$$.fragment.c();
-				t1 = space();
+				t3 = space();
 				li2 = element("li");
 				routerlink2.$$.fragment.c();
-				t2 = space();
+				t4 = space();
 				li3 = element("li");
 				routerlink3.$$.fragment.c();
-				li0.className = "title svelte-1hwi7k4";
-				add_location(li0, file$i, 9, 12, 178);
-				li1.className = "svelte-1hwi7k4";
-				add_location(li1, file$i, 12, 12, 292);
-				li2.className = "svelte-1hwi7k4";
-				add_location(li2, file$i, 15, 12, 389);
-				li3.className = "svelte-1hwi7k4";
-				add_location(li3, file$i, 18, 12, 505);
-				ul.className = "svelte-1hwi7k4";
-				add_location(ul, file$i, 8, 10, 160);
-				div0.className = "content svelte-1hwi7k4";
-				add_location(div0, file$i, 7, 8, 127);
-				div1.className = "wrapper svelte-1hwi7k4";
-				add_location(div1, file$i, 6, 6, 96);
-				nav.className = "svelte-1hwi7k4";
-				add_location(nav, file$i, 5, 4, 83);
-				main.className = "svelte-1hwi7k4";
-				add_location(main, file$i, 4, 0, 71);
+				t5 = space();
+				li4 = element("li");
+				routerlink4.$$.fragment.c();
+				t6 = space();
+				li5 = element("li");
+				routerlink5.$$.fragment.c();
+				t7 = space();
+				li6 = element("li");
+				routerlink6.$$.fragment.c();
+				add_location(style, file$k, 1, 4, 19);
+				h2.className = "svelte-vh08wg";
+				add_location(h2, file$k, 19, 14, 487);
+				li0.className = "svelte-vh08wg";
+				add_location(li0, file$k, 18, 12, 467);
+				ul0.className = "svelte-vh08wg";
+				add_location(ul0, file$k, 17, 10, 449);
+				div0.className = "content svelte-vh08wg";
+				add_location(div0, file$k, 16, 8, 416);
+				li1.className = "svelte-vh08wg";
+				add_location(li1, file$k, 25, 12, 636);
+				li2.className = "svelte-vh08wg";
+				add_location(li2, file$k, 28, 12, 732);
+				li3.className = "svelte-vh08wg";
+				add_location(li3, file$k, 31, 12, 843);
+				li4.className = "svelte-vh08wg";
+				add_location(li4, file$k, 34, 12, 954);
+				li5.className = "svelte-vh08wg";
+				add_location(li5, file$k, 37, 12, 1070);
+				li6.className = "svelte-vh08wg";
+				add_location(li6, file$k, 40, 12, 1186);
+				ul1.className = "svelte-vh08wg";
+				add_location(ul1, file$k, 24, 10, 618);
+				add_location(div1, file$k, 23, 8, 601);
+				div2.className = "wrapper";
+				add_location(div2, file$k, 15, 6, 385);
+				nav.className = "svelte-vh08wg";
+				add_location(nav, file$k, 14, 4, 372);
+				main.className = "svelte-vh08wg";
+				add_location(main, file$k, 13, 0, 360);
 			},
 
 			l: function claim(nodes) {
@@ -3011,22 +3834,36 @@ var app = (function () {
 			},
 
 			m: function mount(target, anchor) {
+				append(document.head, style);
+				insert(target, t1, anchor);
 				insert(target, main, anchor);
 				append(main, nav);
-				append(nav, div1);
-				append(div1, div0);
-				append(div0, ul);
-				append(ul, li0);
-				mount_component(routerlink0, li0, null);
-				append(ul, t0);
-				append(ul, li1);
+				append(nav, div2);
+				append(div2, div0);
+				append(div0, ul0);
+				append(ul0, li0);
+				append(li0, h2);
+				mount_component(routerlink0, h2, null);
+				append(div2, t2);
+				append(div2, div1);
+				append(div1, ul1);
+				append(ul1, li1);
 				mount_component(routerlink1, li1, null);
-				append(ul, t1);
-				append(ul, li2);
+				append(ul1, t3);
+				append(ul1, li2);
 				mount_component(routerlink2, li2, null);
-				append(ul, t2);
-				append(ul, li3);
+				append(ul1, t4);
+				append(ul1, li3);
 				mount_component(routerlink3, li3, null);
+				append(ul1, t5);
+				append(ul1, li4);
+				mount_component(routerlink4, li4, null);
+				append(ul1, t6);
+				append(ul1, li5);
+				mount_component(routerlink5, li5, null);
+				append(ul1, t7);
+				append(ul1, li6);
+				mount_component(routerlink6, li6, null);
 				current = true;
 			},
 
@@ -3046,6 +3883,18 @@ var app = (function () {
 				var routerlink3_changes = {};
 				if (changed.$$scope) routerlink3_changes.$$scope = { changed, ctx };
 				routerlink3.$set(routerlink3_changes);
+
+				var routerlink4_changes = {};
+				if (changed.$$scope) routerlink4_changes.$$scope = { changed, ctx };
+				routerlink4.$set(routerlink4_changes);
+
+				var routerlink5_changes = {};
+				if (changed.$$scope) routerlink5_changes.$$scope = { changed, ctx };
+				routerlink5.$set(routerlink5_changes);
+
+				var routerlink6_changes = {};
+				if (changed.$$scope) routerlink6_changes.$$scope = { changed, ctx };
+				routerlink6.$set(routerlink6_changes);
 			},
 
 			i: function intro(local) {
@@ -3058,6 +3907,12 @@ var app = (function () {
 
 				routerlink3.$$.fragment.i(local);
 
+				routerlink4.$$.fragment.i(local);
+
+				routerlink5.$$.fragment.i(local);
+
+				routerlink6.$$.fragment.i(local);
+
 				current = true;
 			},
 
@@ -3066,11 +3921,17 @@ var app = (function () {
 				routerlink1.$$.fragment.o(local);
 				routerlink2.$$.fragment.o(local);
 				routerlink3.$$.fragment.o(local);
+				routerlink4.$$.fragment.o(local);
+				routerlink5.$$.fragment.o(local);
+				routerlink6.$$.fragment.o(local);
 				current = false;
 			},
 
 			d: function destroy(detaching) {
+				detach(style);
+
 				if (detaching) {
+					detach(t1);
 					detach(main);
 				}
 
@@ -3081,6 +3942,12 @@ var app = (function () {
 				routerlink2.$destroy();
 
 				routerlink3.$destroy();
+
+				routerlink4.$destroy();
+
+				routerlink5.$destroy();
+
+				routerlink6.$destroy();
 			}
 		};
 	}
@@ -3088,15 +3955,15 @@ var app = (function () {
 	class Sidenav extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$k, safe_not_equal, []);
+			init(this, options, null, create_fragment$m, safe_not_equal, []);
 		}
 	}
 
 	/* src\App.svelte generated by Svelte v3.1.0 */
 
-	const file$j = "src\\App.svelte";
+	const file$l = "src\\App.svelte";
 
-	function create_fragment$l(ctx) {
+	function create_fragment$n(ctx) {
 		var div, t, current;
 
 		var sidenav = new Sidenav({
@@ -3113,7 +3980,7 @@ var app = (function () {
 				t = space();
 				router.$$.fragment.c();
 				div.className = "app-shell svelte-17simda";
-				add_location(div, file$j, 16, 0, 280);
+				add_location(div, file$l, 17, 0, 282);
 			},
 
 			l: function claim(nodes) {
@@ -3160,7 +4027,7 @@ var app = (function () {
 	class App extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			init(this, options, null, create_fragment$l, safe_not_equal, []);
+			init(this, options, null, create_fragment$n, safe_not_equal, []);
 		}
 	}
 

@@ -13,6 +13,11 @@
 </div>
 
 <style>
+    h1 {
+        font-family: 'Rubik';
+        font-weight: bolder;
+        font-stretch: expanded;
+    }
     .container {
         margin: 0 auto;
     }
@@ -20,7 +25,8 @@
         overflow: hidden;
         width: 250px;
         height: 250px;
-        background-color: orange;
+        background: rgb(255,237,30);
+        background: linear-gradient(165deg, rgba(255,237,30,1) 0%, rgba(255,165,0,1) 100%);  
         border-radius: 15px;
     }
     .content {

@@ -22,3 +22,9 @@
 {:catch error}
 	<p style="color: red">{error.message}</p>
 {/await}
+
+<style>
+	* {
+		font-family: 'Lato';
+	}
+</style>

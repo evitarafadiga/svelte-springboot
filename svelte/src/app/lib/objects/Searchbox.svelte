@@ -5,7 +5,7 @@
 <main>
     <div>
     <form>
-        <textarea placeholder="Digite aqui sua pesquisa..."></textarea>
+        <textarea placeholder="Pesquisar..."></textarea>
     </form>
     <figure>
         <img src={src} alt="Search tool" />
@@ -26,6 +26,7 @@
         box-sizing: border-box;
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
         display: flexbox;
+        margin-bottom: 1rem;
     }
 
     h1 {
