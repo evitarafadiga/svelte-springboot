@@ -1,10 +1,10 @@
 <script>
-import Card from "../lib/objects/Card.svelte";
+import RoadmapCard from "../lib/objects/RoadmapCard.svelte";
 
 </script>
 
 <main>
-    <Card />
+    <RoadmapCard />
 </main>
 
 <style>

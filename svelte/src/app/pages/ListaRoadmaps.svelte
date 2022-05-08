@@ -2,7 +2,7 @@
     import GetListRoadmaps from '../lib/component/GetListRoadmaps.svelte';
 </script>
       
-<h1>Lista de Roadmaps</h1>
+<h1>Todos os Roadmaps</h1>
       
 <GetListRoadmaps />
       

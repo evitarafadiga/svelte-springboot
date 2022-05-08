@@ -1,5 +1,5 @@
 <script>
-import Card from "../objects/Card.svelte";
+import RoadmapCard from "../objects/RoadmapCard.svelte";
 
 
     let promise = GetListRoadmaps();
@@ -20,15 +20,10 @@ import Card from "../objects/Card.svelte";
       <p>...carregando</p>
   {:then response}
       {#each response as element}
-      <Card nome={element.nome} desc={element.descricao}
+      <RoadmapCard nome={element.nome} desc={element.descricao}
         criado={element.criadoEm} id={element.id} fav={element.qtdFavoritos}
         comp={element.qtdCompartilhamento} att={element.atualizadoEm} fonte={element.fonte} >
-        <div>
-            <p>Roadmap: {element.nome} id:{element.id} favoritos: {element.qtdFavoritos} compartilhamentos: {element.qtdCompartilhamento}</p>
-            <p>criado em:{element.criadoEm} atualizado em:{element.atualizadoEm} Fonte: {element.fonte}</p>
-            <p>descrição:{element.descricao}</p>
-        </div>
-      </Card>
+      </RoadmapCard>
         
       {/each}
   {:catch error}

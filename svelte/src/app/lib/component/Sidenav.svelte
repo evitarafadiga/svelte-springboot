@@ -27,10 +27,10 @@
               <RouterLink url='perfil'>Conta</RouterLink>
             </li>
             <li>
-              <RouterLink url='meus-roadmaps'>Meus Roadmaps</RouterLink>
+              <RouterLink url='roadmaps'>Meus Roadmaps</RouterLink>
             </li>
             <li>
-              <RouterLink url='meus-assuntos'>Meus Assuntos</RouterLink>
+              <RouterLink url='assuntos'>Meus Assuntos</RouterLink>
             </li>
             <li>
               <RouterLink url='lista-roadmaps'>Todos os Roadmaps</RouterLink>
@@ -59,6 +59,7 @@
     color: var(--second-color-4);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
+  
   nav {
     flex-basis: 10rem;
   }

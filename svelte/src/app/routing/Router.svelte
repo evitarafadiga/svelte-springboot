@@ -8,6 +8,7 @@
   import Tendencias from '../pages/Tendencias.svelte';
   import ListaRoadmaps from '../pages/ListaRoadmaps.svelte';
   import PerfilDeUsuario from '../pages/PerfilDeUsuario.svelte';
+  import Signout from '../pages/Signout.svelte';
 
   let value = Notfound;
 
@@ -33,6 +34,9 @@
         break;
       case 'tendencias':
         value = Tendencias;
+        break;
+      case 'signout':
+        value = Signout;
         break;
       default:
         value = Notfound;

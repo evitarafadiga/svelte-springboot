@@ -4,23 +4,26 @@ export let title
 </script>
 
 <main>
-    <h2>{title}</h2>
+    <h1>{title}</h1>
 </main>
 
 <style>
+    
     main {
-        position: relative;
-        top: -95px;
+        position: static;
         min-width: 250px;
-        min-height: 60px;
+        min-height: 45px;
         background-color: #3E76BD;
         border-radius: 300px;
-        text-align: center;
-        justify-content: center;
+        font-family: 'Rubik';
     }
 
-    h2 {
-        vertical-align: auto;
+    h1 {
+        
+        padding-left: 1rem;
+        padding-right: 1rem;
         text-align: center;
+        vertical-align: bottom;
+        color: white;
     }   
 </style>
