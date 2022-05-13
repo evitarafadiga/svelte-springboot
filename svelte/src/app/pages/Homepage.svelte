@@ -7,8 +7,8 @@
   import AssuntoDialog from '../lib/component/AssuntoDialog.svelte';
 
   import Modal,{getModal} from '../lib/component/Modal.svelte'
-	let name = 'world';
-	
+	let name = 'Fulano da Silva';
+
 	let selection
 	
 	// Callback function provided to the `open` function, it receives the value given to the `close` function call, or `undefined` if the Modal was closed with escape or clicking the X, etc.
@@ -36,7 +36,7 @@
   <div class="wrapper">
     <Searchbox />
     <div class="content">
-      <Perfil username={"Fulano"}/>
+      <Perfil username={name}/>
       <Trends />
     </div>
     
@@ -52,10 +52,9 @@
   </div>
 </div>
 
-<!-- the modal without an `id` -->
 <Modal>
-	<h1>Hello {name}!</h1>
-	<!-- opening a model with an `id` and specifying a callback	 -->
+	<h1>Oi, {name}!</h1>
+	
 	<button on:click={()=>getModal('second').open(setSelection)}>
 		Open Nested Popup
 	</button>

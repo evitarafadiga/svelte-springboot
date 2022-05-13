@@ -9,4 +9,10 @@ public interface IRoadmapDao {
 
 	List<Roadmap> listaRoadmaps() throws SQLException, ClassNotFoundException;
 
+	String insertRoadmap(Roadmap r) throws SQLException;
+
+	String updateRoadmap(Roadmap r) throws SQLException;
+
+	String deleteRoadmap(Roadmap r) throws SQLException;
+
 }

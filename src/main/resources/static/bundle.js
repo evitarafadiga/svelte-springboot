@@ -1664,7 +1664,7 @@ var app = (function () {
 
 	const file$8 = "src\\app\\pages\\Homepage.svelte";
 
-	// (62:1) {#if selection}
+	// (61:1) {#if selection}
 	function create_if_block(ctx) {
 		var p, t0, t1;
 
@@ -1673,7 +1673,7 @@ var app = (function () {
 				p = element("p");
 				t0 = text("Your selection was: ");
 				t1 = text(ctx.selection);
-				add_location(p, file$8, 62, 1, 1703);
+				add_location(p, file$8, 61, 1, 1606);
 			},
 
 			m: function mount(target, anchor) {
@@ -1696,7 +1696,7 @@ var app = (function () {
 		};
 	}
 
-	// (56:0) <Modal>
+	// (55:0) <Modal>
 	function create_default_slot$2(ctx) {
 		var h1, t0, t1, t2, t3, button, t5, if_block_anchor, dispose;
 
@@ -1705,7 +1705,7 @@ var app = (function () {
 		return {
 			c: function create() {
 				h1 = element("h1");
-				t0 = text("Hello ");
+				t0 = text("Oi, ");
 				t1 = text(name$1);
 				t2 = text("!");
 				t3 = space();
@@ -1714,8 +1714,8 @@ var app = (function () {
 				t5 = space();
 				if (if_block) if_block.c();
 				if_block_anchor = empty();
-				add_location(h1, file$8, 56, 1, 1496);
-				add_location(button, file$8, 58, 1, 1588);
+				add_location(h1, file$8, 55, 1, 1465);
+				add_location(button, file$8, 57, 1, 1491);
 				dispose = listen(button, "click", ctx.click_handler);
 			},
 
@@ -1771,7 +1771,7 @@ var app = (function () {
 		var searchbox = new Searchbox({ $$inline: true });
 
 		var perfil = new Perfil({
-			props: { username: "Fulano" },
+			props: { username: name$1 },
 			$$inline: true
 		});
 
@@ -1833,13 +1833,13 @@ var app = (function () {
 				t6 = space();
 				modal.$$.fragment.c();
 				div0.className = "content svelte-1m6kgxt";
-				add_location(div0, file$8, 37, 4, 1096);
+				add_location(div0, file$8, 37, 4, 1105);
 				div1.className = "content svelte-1m6kgxt";
-				add_location(div1, file$8, 42, 4, 1196);
+				add_location(div1, file$8, 42, 4, 1201);
 				div2.className = "wrapper svelte-1m6kgxt";
-				add_location(div2, file$8, 35, 2, 1050);
+				add_location(div2, file$8, 35, 2, 1059);
 				div3.className = "container svelte-1m6kgxt";
-				add_location(div3, file$8, 34, 0, 1023);
+				add_location(div3, file$8, 34, 0, 1032);
 			},
 
 			l: function claim(nodes) {
@@ -1870,6 +1870,10 @@ var app = (function () {
 			},
 
 			p: function update(changed, ctx) {
+				var perfil_changes = {};
+				if (changed.name) perfil_changes.username = name$1;
+				perfil.$set(perfil_changes);
+
 				var box0_changes = {};
 				if (changed.crudAssunto) box0_changes.func = crudAssunto;
 				box0.$set(box0_changes);
@@ -1948,7 +1952,7 @@ var app = (function () {
 		};
 	}
 
-	let name$1 = 'world';
+	let name$1 = 'Fulano da Silva';
 
 	function crudAssunto(event) {
 	  console.log("Chamado cadastro de assunto");
@@ -1966,7 +1970,7 @@ var app = (function () {
 
 	function instance$6($$self, $$props, $$invalidate) {
 		
-		
+
 		let selection;
 		
 		// Callback function provided to the `open` function, it receives the value given to the `close` function call, or `undefined` if the Modal was closed with escape or clicking the X, etc.

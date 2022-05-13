@@ -17,24 +17,47 @@ import br.com.fateczl.ProjetoLibero.model.Assunto;
 import br.com.fateczl.ProjetoLibero.persistence.AssuntoDao;
 
 @RestController
-@RequestMapping(value = "/#/createassuntos", method = RequestMethod.POST)
+@RequestMapping("assuntos")
 public class AssuntoControllerRest {
 	
 	@Autowired
 	AssuntoDao aDao;
 
-	@PostMapping( path = "/createassuntos",
+	@SuppressWarnings("finally")
+	@PostMapping(
 	        consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 	        produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE } )
 	public ResponseEntity<Assunto> createAssunto(@RequestBody Assunto a, String cod) throws ClassNotFoundException, SQLException, ServerException {
-		Assunto a2 = aDao.insereAssunto(a);
+		
 		String err = "";
 		String saida = "";
-		if (a == null) {
-			throw new ServerException(err);
-		} else {
-			return new ResponseEntity<>(a2, HttpStatus.CREATED);
+		
+		try {
+			if (a == null) {
+				throw new ServerException(err);
+			}
+			if (cod.contains("I")) {
+				saida = aDao.insertAssunto(a);
+				Assunto assun = new Assunto();
+			}
+			if (cod.contains("D")) {
+				saida = aDao.deleteAssunto(a);
+				Assunto assun = new Assunto();
+			}
+			if (cod.contains("U")) {
+				saida = aDao.updateAssunto(a);
+				Assunto assun = new Assunto();
+			}
+			else {
+				return new ResponseEntity<>(a, HttpStatus.CREATED);
+			}
+		} catch (SQLException e) {
+			err = e.getMessage();
+		} finally {
+			return new ResponseEntity<> (a, HttpStatus.CREATED);
+			
 		}
+		
 	    
 	}	
 }

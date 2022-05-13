@@ -24,7 +24,6 @@ public class ListaAssuntosController {
 	
 	@Autowired
 	AssuntoDao aDao;
-	
 
 	@GetMapping
     public List<Assunto> getListAssunto() {
