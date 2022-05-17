@@ -4205,34 +4205,34 @@ var app = (function () {
 				li6 = element("li");
 				routerlink6.$$.fragment.c();
 				add_location(style, file$o, 1, 4, 19);
-				h2.className = "svelte-11jy79x";
+				h2.className = "svelte-10wtv4r";
 				add_location(h2, file$o, 19, 14, 487);
-				li0.className = "svelte-11jy79x";
+				li0.className = "svelte-10wtv4r";
 				add_location(li0, file$o, 18, 12, 467);
-				ul0.className = "svelte-11jy79x";
+				ul0.className = "svelte-10wtv4r";
 				add_location(ul0, file$o, 17, 10, 449);
-				div0.className = "content svelte-11jy79x";
+				div0.className = "content svelte-10wtv4r";
 				add_location(div0, file$o, 16, 8, 416);
-				li1.className = "svelte-11jy79x";
+				li1.className = "svelte-10wtv4r";
 				add_location(li1, file$o, 25, 12, 636);
-				li2.className = "svelte-11jy79x";
+				li2.className = "svelte-10wtv4r";
 				add_location(li2, file$o, 28, 12, 732);
-				li3.className = "svelte-11jy79x";
+				li3.className = "svelte-10wtv4r";
 				add_location(li3, file$o, 31, 12, 838);
-				li4.className = "svelte-11jy79x";
+				li4.className = "svelte-10wtv4r";
 				add_location(li4, file$o, 34, 12, 944);
-				li5.className = "svelte-11jy79x";
+				li5.className = "svelte-10wtv4r";
 				add_location(li5, file$o, 37, 12, 1060);
-				li6.className = "svelte-11jy79x";
+				li6.className = "svelte-10wtv4r";
 				add_location(li6, file$o, 40, 12, 1176);
-				ul1.className = "svelte-11jy79x";
+				ul1.className = "svelte-10wtv4r";
 				add_location(ul1, file$o, 24, 10, 618);
 				add_location(div1, file$o, 23, 8, 601);
 				div2.className = "wrapper";
 				add_location(div2, file$o, 15, 6, 385);
-				nav.className = "svelte-11jy79x";
+				nav.className = "svelte-10wtv4r";
 				add_location(nav, file$o, 14, 4, 372);
-				main.className = "svelte-11jy79x";
+				main.className = "svelte-10wtv4r";
 				add_location(main, file$o, 13, 0, 360);
 			},
 
@@ -4374,11 +4374,11 @@ var app = (function () {
 		var div, t, current;
 
 		var sidenav = new Sidenav({
-			props: { class: "sidenav" },
+			props: { class: "sidenav", id: "sidenav" },
 			$$inline: true
 		});
 
-		var router = new Router({ $$inline: true });
+		var router = new Router({ props: { id: "router" }, $$inline: true });
 
 		return {
 			c: function create() {
@@ -4386,8 +4386,8 @@ var app = (function () {
 				sidenav.$$.fragment.c();
 				t = space();
 				router.$$.fragment.c();
-				div.className = "app-shell svelte-17simda";
-				add_location(div, file$p, 17, 0, 282);
+				div.className = "app-shell svelte-1xqx8gv";
+				add_location(div, file$p, 46, 0, 778);
 			},
 
 			l: function claim(nodes) {
