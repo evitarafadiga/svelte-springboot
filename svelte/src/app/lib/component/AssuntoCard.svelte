@@ -1,7 +1,9 @@
 <script>
+import Modal from "./Modal.svelte";
 
-    export let title
-    export let id
+
+
+    export let title, id
 </script>
 
 <main>
@@ -10,6 +12,12 @@
     </button>
 </main>
 
+<Modal>
+	<h1>{title}</h1>
+	
+	
+</Modal>
+
 <style>
     
     main {
@@ -17,7 +25,7 @@
     }
 
     button {
-        max-width: 200px;
+        max-width: 700px;
         height: 60px;
         background-color: #BD6248;
         border-radius: 5px;

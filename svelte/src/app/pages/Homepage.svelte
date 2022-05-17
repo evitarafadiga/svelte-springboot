@@ -53,8 +53,13 @@
 </div>
 
 <Modal>
-	<h1>Oi, {name}!</h1>
-	
+	<h1>Criar assunto</h1>
+
+
+  <button on:click={()=>createAssunto()}>
+
+  </button>
+  
 	<button on:click={()=>getModal('second').open(setSelection)}>
 		Open Nested Popup
 	</button>
@@ -71,7 +76,6 @@
   }
   .wrapper {
     overflow: hidden;
-    margin: 1rem;
   }
   .content {
     display: flex;

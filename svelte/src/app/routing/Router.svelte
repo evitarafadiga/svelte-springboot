@@ -47,7 +47,7 @@
 <style>
   main {
     margin: 0 auto;
-    display: flex;
+    display: flexbox;
     background-color: var(--primary-color-2);
     color: var(--second-color);
     padding: 1rem;
@@ -56,7 +56,7 @@
   .content {
     justify-content: center;
     border-top: 10px rgb(0, 0, 0);
-    padding: 17px 17px 50px 250px;
+    padding: 10px 0px 20px 400px;
   }
 </style>
 

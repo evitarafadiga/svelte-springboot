@@ -1,4 +1,6 @@
 <script>
+    import AssuntoCard from "./AssuntoCard.svelte";
+
     let promise = getListAssunto();
   
     async function getListAssunto() {
@@ -11,19 +13,17 @@
               throw new Error(text);
           } 
     }
-  </script>
+</script>
   
-  {#await promise}
-      <p>...carregando</p>
-  {:then response}
-      {#each response as element}
-        <div>
-        <p>Assunto: {element.descricao} id:{element.id}</p>
-        <p>criado em:{element.criadoEm} Fonte: {element.fonte}</p>
-        </div>
-      {/each}
-  {:catch error}
-      <p style="color: red">{error.message}</p>
-  {/await}
-  
-  
+{#await promise}
+    <p>...carregando</p>
+{:then response}
+    {#each response as element}
+    <AssuntoCard title={element.descricao} id={element.id}> 
+    </AssuntoCard>
+     
+    {/each}
+{:catch error}
+    <p style="color: red">{error.message}</p>
+{/await}
+

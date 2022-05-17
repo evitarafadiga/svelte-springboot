@@ -51,7 +51,7 @@
 <style>
   
   main {
-    position: static;
+    position: fixed;
     display: block;
     height: 2508px;
     width: 321px;
