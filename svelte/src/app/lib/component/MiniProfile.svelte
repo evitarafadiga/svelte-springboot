@@ -11,7 +11,7 @@
                 <img src={src} alt="Profile default" /> 
             </figure>
             <div>
-                <h4>De: {username}</h4>
+                <h4>Criado por: {username}</h4>
             </div>
         </div>
     </main>
@@ -23,12 +23,14 @@
             height: 80px;
         }
     
-        figure, img {
+        figure {
             align-items: center;
-            width: 60px;
-            height: 60px;
+        }
+        img {
             border-radius: 50%;
             border: 4px solid rgb(192, 192, 192);
+            width: 60px;
+            height: 60px;
         }
 
         h4 {

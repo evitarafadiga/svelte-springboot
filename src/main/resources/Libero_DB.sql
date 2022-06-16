@@ -140,66 +140,70 @@ FOREIGN KEY (id_as_loc) REFERENCES assunto(id_as));
 GO
 
 INSERT INTO assunto VALUES
-('2021-01-24',0,0,'Líbero','Cartografia','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Climas e Anomalias','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Dinâmica Atmosférica','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Dinâmica Climática','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Polígonos','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Potência de Ponto','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Acréscimos e Descontos','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Porcentagem','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Concordância','2021-01-24'),
-('2021-01-24',0,0,'Líbero','A Geração de 30 - Prosa','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Eletrosfera','2021-01-24'),
-('2021-01-24',0,0,'Líbero','A Revolução Cubana','2021-01-24'),
-('2021-01-24',0,0,'Líbero','A Nova República','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Alelos Múltiplos e Polialelia','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Evolução','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Anelídeos','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Bipolaridade e Multipolaridade','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Forma Algébrica','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Equações Trigonométricas','2021-01-24'),
-('2021-01-24',0,0,'Líbero','Probabilidade','2021-01-24');
+('2022-06-13',0,0,'Líbero','Heap Sort','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Merge Sort','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Árvore Binária','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Grafos','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Diagrama de Sequência','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Diagrama de Caso de Uso','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Diagrama de Estados','2022-06-13'),
+('2022-06-13',0,0,'Líbero','UML','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Java 11','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Diagrama de Entidade Relacionamento','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Diagrama de Pacotes','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Diagrama de Classes','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Quick Sort','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Vetores','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Matrizes','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Variáveis','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Padrões de Projeto','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Padrão Singleton','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Padrão Prototype','2022-06-13'),
+('2022-06-13',0,0,'Líbero','Padrão Adapter','2022-06-13');
 
 INSERT INTO usuario VALUES
-('2021-01-25','fulano@fatec.sp.gov.br','123',1,'Estudante da FATEC ZONA LESTE',0,'Português','São Paulo, Brasil','Fulano',0,'imagemdoperfil',0,1,0);
+('2022-06-13','fulano@fatec.sp.gov.br','123',1,'Professor da FATEC ZONA LESTE',0,'Português','São Paulo, Brasil','Fulano da Silva',0,'imagemdoperfil',1,1,1);
 
 INSERT INTO carreiras VALUES
-('Medicina'),
-('Analista de Sistemas'),
-('Geólogo');
+('Análise de Sistemas'),
+('Engenharia de Software');
 
 INSERT INTO palavraschave VALUES
-('Geografia Física'),
-('Geometria Plana'),
-('Matemática Básica'),
-('Gramática'),
-('Literatura'),
-('Química Geral'),
-('História da América'),
-('História do Brasil'),
-('Genética'),
-('Zoologia'),
-('Geopolítica'),
-('Números Complexos'),
-('Trigonometria'),
-('Binômio de Newton e Probabilidade'),
-('Geografia'),
-('Matemática'),
-('Língua Portuguesa'),
-('Português'),
-('História'),
-('Biologia'),
-('Medicina'),
-('ENEM');
+('no silver bullet'),
+('estrutura de dados'),
+('arquitetura de software'),
+('software'),
+('hardware'),
+('algorítmos'),
+('lógica de programação'),
+('programação'),
+('desenvolvimento'),
+('dev'),
+('design patterns'),
+('padrão de projeto'),
+('spring boot'),
+('java'),
+('linux'),
+('sistemas operacionais'),
+('windows'),
+('sistema operacional'),
+('teste de software'),
+('TDD'),
+('ciclo de vida arquitetural'),
+('ADS');
 
 INSERT INTO midia VALUES
-('https://youtu.be/x0B7Wv6bCfU','Link de Vídeo')
+('https://www.youtube.com/watch?v=9GdesxWtOgs','Link de Vídeo do YouTube (especialista de mercado)')
 
 INSERT INTO roadmap VALUES
-('2021-01-25',0,0,0,0,'Líbero','Esse projeto tem como objetivo auxiliar os estudos do aluno de medicina.','Projeto Medicina','2021-01-25'),
-('2021-01-25',0,0,0,0,'Líbero','Um roadmap especial com os principais temas discutidos sobre o Enem de 2022.','Enem 2022','2021-01-25');
+('2022-06-13',0,0,0,0,'Líbero','Esse projeto tem como objetivo auxiliar os estudos do aluno de Engenharia de Software I','Engenharia de Software Feliz','2022-06-13'),
+('2022-06-13',0,0,0,0,'Líbero','Um roadmap especial feito para ajudar os alunos de Estrutura de Dados','Estrutura de Dados Fácil','2022-06-13');
 
+INSERT INTO midiasdedetalhes VALUES
+(101,1);
+
+INSERT INTO detalhes VALUES
+(103,1002);
 
 GO
 
@@ -419,4 +423,6 @@ GO
 SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem FROM assunto a;
 
 SELECT r.id_roa, r.criadoem, r.qtdfavoritos, r.qtdcompartilhamento, r.fonte, r.descricao, r.nome, r.atualizadoem FROM roadmap r;
+
+SELECT * from detalhes, midiasdedetalhes, midia
 

@@ -23,8 +23,8 @@
     }
     .wrapper {
         overflow: hidden;
-        width: 250px;
-        height: 250px;
+        width: 244px;
+        height: 64px;
         background: rgb(255,237,30);
         background: linear-gradient(165deg, rgba(255,237,30,1) 0%, rgba(255,165,0,1) 100%);  
         border-radius: 15px;
@@ -34,7 +34,7 @@
         
     }
     h1 {
-        font-size: 32px;
+        font-size: 18px;
         color: white;
     }
 </style>

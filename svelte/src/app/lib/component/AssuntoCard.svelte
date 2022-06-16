@@ -1,20 +1,19 @@
 <script>
-import Modal from "./Modal.svelte";
+    import Rectangle from "../objects/Rectangle.svelte";
+    import Modal from "./Modal.svelte";
 
-
-
-    export let title, id
+    export let title, id, descricao
 </script>
 
 <main>
-    <button>
-        <h2>{title}</h2>
-    </button>
+    <Rectangle>
+        <p>{title}</p>
+        {descricao}
+    </Rectangle>  
 </main>
 
 <Modal>
 	<h1>{title}</h1>
-	
 	
 </Modal>
 
@@ -22,6 +21,7 @@ import Modal from "./Modal.svelte";
     
     main {
         font-family: 'Rubik';
+        font-size: 12px;
     }
 
     button {
@@ -34,11 +34,12 @@ import Modal from "./Modal.svelte";
         vertical-align: middle;
     }
 
-    h2 {
-        color: white;
-
+    p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-size: 18px;
+        vertical-align: middle;
+        padding: 2px 10px 2px 10px;
     }   
 </style>

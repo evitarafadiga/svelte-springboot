@@ -18,9 +18,7 @@
     }
     .wrapper {
         overflow: visible;
-        min-width: 250px;
-        min-height: 250px;
-        padding: 0px 1em 12px 1em;
+        padding: 5px;
         border-radius: 3px;
         background: #FFFFFF;
         border: 1px solid #E7E7E7;
