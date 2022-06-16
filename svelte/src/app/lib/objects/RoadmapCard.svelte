@@ -29,11 +29,9 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
                 <div class="box box4"><h3>Favoritos</h3> {fav}</div>
                 <div class="box box5">
                     <h3>Assuntos</h3>
-
                 </div>
                 <div class="box box6">
                     <h3>Assuntos</h3>
-
                 </div>
             </div>
         </div>
