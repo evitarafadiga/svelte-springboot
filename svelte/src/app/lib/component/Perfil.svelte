@@ -25,12 +25,13 @@ let src = '/profile-picture.png'
 <style>
     .wrapper {
         width: 540px;
+        height: 250px;
     }
 
     figure, img {
         align-items: center;
-        width: 150px;
-        height: 150px;
+        width: 78px;
+        height: 78px;
         border-radius: 50%;
         border: 4px solid white;
     }

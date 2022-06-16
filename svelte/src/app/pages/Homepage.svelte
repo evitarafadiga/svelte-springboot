@@ -45,9 +45,9 @@
       <Box topic={"+ Roadmap"} func={crudRoadmap} />
       <Box topic={"Tendências"} func={viewTrends} />
     </div>
-    
+    <!--
     <AssuntoDialog />
-
+    -->
     
   </div>
 </div>
@@ -56,7 +56,7 @@
 	<h1>Criar assunto</h1>
 
 
-  <button on:click={()=>createAssunto()}>
+  <button on:click={()=>crudAssunto()}>
 
   </button>
   

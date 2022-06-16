@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="wrapper">
-        <h2>Top assuntos</h2>
+        <h2>Mais estudados</h2>
         <GetList />
     </div>
 </div>
