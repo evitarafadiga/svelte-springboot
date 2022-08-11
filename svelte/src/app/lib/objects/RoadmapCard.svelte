@@ -24,12 +24,11 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
                 <div class="box box3"><h3>Compartilhamentos</h3> {comp}</div>
                 <div class="box box4"><h3>Favoritos</h3> {fav}</div>
                 <div class="box box5">
-<<<<<<< HEAD
+
                     <h3>Assuntos</h3>
                 </div>
                 <div class="box box6">
                     <h3>Assuntos</h3>
-=======
                     <h4>ID: {id} </h4>
                     <br> 
                     <h4>Criado em: {criado}</h4>
@@ -40,7 +39,6 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
                 </div>
                 <div class="box box7">
                     <h3>Assuntos relacionados</h3>
->>>>>>> 4b4efd8 (Mudanças significativas no layout e dados.)
                 </div>
             </div>
         </div>

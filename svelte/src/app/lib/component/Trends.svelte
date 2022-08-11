@@ -21,7 +21,7 @@
     .wrapper {
     overflow: hidden;
     margin: 1rem;
-    max-width: 240px;
+    max-width: 600px;
     border-left: 10px --second-color;
     }
     

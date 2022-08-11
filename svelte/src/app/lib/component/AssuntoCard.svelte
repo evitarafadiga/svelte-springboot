@@ -21,7 +21,7 @@
     
     main {
         font-family: 'Rubik';
-        font-size: 12px;
+        font-size: 10px;
     }
 
     button {
@@ -38,8 +38,8 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 18px;
+        font-size: 16px;
         vertical-align: middle;
-        padding: 2px 10px 2px 10px;
+        padding: 2px 7px 2px 7px;
     }   
 </style>

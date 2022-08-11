@@ -1,10 +1,11 @@
 <script>
-import RoadmapCard from "../lib/objects/RoadmapCard.svelte";
+    import Perfil from "../lib/component/Perfil.svelte";
 
+    export let name;
 </script>
 
 <main>
-    <RoadmapCard />
+    <Perfil username={name}/>
 </main>
 
 <style>

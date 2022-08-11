@@ -2,7 +2,6 @@
 USE master
 GO
 DROP DATABASE libero
-
 --DROP PROCEDURE sp_iud_assunto
 */
 
@@ -137,6 +136,20 @@ PRIMARY KEY (id_locaisdeas, id_as_loc),
 FOREIGN KEY (id_locaisdeas) REFERENCES localizacao(id_loc),
 FOREIGN KEY (id_as_loc) REFERENCES assunto(id_as));
 
+CREATE TABLE edgesassunto (
+    id          INT IDENTITY        NOT NULL,
+    from_id     INT                 NOT NULL,
+    to_id       INT                 NOT NULL,
+    peso        INT                 NOT NULL,
+);
+
+CREATE TABLE edgespalavraschave (
+    id          INT IDENTITY        NOT NULL,
+    from_id     INT                 NOT NULL,
+    to_id       INT                 NOT NULL,
+    peso        INT                 NOT NULL,
+);
+
 GO
 
 INSERT INTO assunto VALUES
@@ -199,11 +212,22 @@ INSERT INTO roadmap VALUES
 ('2022-06-13',0,0,0,0,'Líbero','Esse projeto tem como objetivo auxiliar os estudos do aluno de Engenharia de Software I','Engenharia de Software Feliz','2022-06-13'),
 ('2022-06-13',0,0,0,0,'Líbero','Um roadmap especial feito para ajudar os alunos de Estrutura de Dados','Estrutura de Dados Fácil','2022-06-13');
 
-INSERT INTO midiasdedetalhes VALUES
-(101,1);
-
 INSERT INTO detalhes VALUES
 (103,1002);
+
+INSERT INTO edgesassunto VALUES
+(117,118,5)
+,(117,119,5)
+,(117,120,5)
+
+INSERT INTO edgespalavraschave VALUES
+(1,1,5)
+,(3,1,5);
+
+GO
+
+INSERT INTO midiasdedetalhes VALUES
+(101,1);
 
 GO
 
@@ -424,5 +448,12 @@ SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.de
 
 SELECT r.id_roa, r.criadoem, r.qtdfavoritos, r.qtdcompartilhamento, r.fonte, r.descricao, r.nome, r.atualizadoem FROM roadmap r;
 
-SELECT * from detalhes, midiasdedetalhes, midia
+SELECT * from detalhes;
+SELECT * from midiasdedetalhes;
+SELECT * from midia;
 
+SELECT * from assunto;
+SELECT * from palavraschave;
+
+SELECT * from edgesassunto;
+SELECT * from edgespalavraschave;

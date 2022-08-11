@@ -9,6 +9,14 @@
 
 <script>
   import RouterLink from './RouterLink.svelte'
+
+  let srcprofile = '/gear.svg';
+  let srctopics = '/collection.svg';
+  let srcroadmaps = '/book-fill.svg';
+  let srcmytopics = '/bezier.svg';
+  let srcmyroadmaps = '/book.svg';
+  let srcpower = '/power.svg';
+
 </script>
 
 <main>
@@ -24,22 +32,27 @@
         <div>
           <ul>
             <li>
-              <RouterLink url='perfil'>Conta</RouterLink>
+              <RouterLink url='perfil' src={srcprofile}>Perfil</RouterLink>
+            </li>
+            <br>
+            <br>
+            <li>
+              <RouterLink url='assuntos' src={srcmytopics}>Meus Assuntos</RouterLink>
             </li>
             <li>
-              <RouterLink url='roadmaps'>Meus Roadmaps</RouterLink>
+              <RouterLink url='lista-assuntos' src={srctopics}>Todos os Assuntos</RouterLink>
             </li>
             <li>
-              <RouterLink url='assuntos'>Meus Assuntos</RouterLink>
+              <RouterLink url='roadmaps' src={srcmyroadmaps}>Meus Roadmaps</RouterLink>
             </li>
             <li>
-              <RouterLink url='lista-roadmaps'>Todos os Roadmaps</RouterLink>
+              <RouterLink url='lista-roadmaps' src={srcroadmaps}>Todos os Roadmaps</RouterLink>
             </li>
+            <br>
+            <br>
+            <br>
             <li>
-              <RouterLink url='lista-assuntos'>Todos os Assuntos</RouterLink>
-            </li>
-            <li>
-              <RouterLink url='signout'>Sair</RouterLink>
+              <RouterLink url='signout'src={srcpower} >Sair</RouterLink>
             </li>
           </ul>
         </div>

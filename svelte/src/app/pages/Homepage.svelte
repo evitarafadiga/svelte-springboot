@@ -7,6 +7,7 @@
   import AssuntoDialog from '../lib/component/AssuntoDialog.svelte';
 
   import Modal,{getModal} from '../lib/component/Modal.svelte'
+import PageCard from '../lib/objects/PageCard.svelte';
 	let name = 'Fulano da Silva';
 
 	let selection
@@ -36,8 +37,8 @@
   <div class="wrapper">
     <Searchbox />
     <div class="content">
-      <Perfil username={name}/>
-      <Trends />
+      <PageCard name={'new'}/>
+      <PageCard name={''}/>
     </div>
     
     <div class="content">
