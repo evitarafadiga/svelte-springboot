@@ -51,21 +51,21 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
 <style>
 
     main {
-        width: 670px;
+        width: 460px;
     }
 
     div {
-        padding: 0 0 7px 0;
+        padding: 0 0 5px 0;
     }
 
     h4 {
         margin: 1em;
-        font-size: 12px;
+        font-size: 10px;
         color: #535353;
     }
     h3 {
         margin: 1em;
-        font-size: 16px;
+        font-size: 12px;
         color: #535353;
     }
 
@@ -77,7 +77,7 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
 
     .box {
         overflow: initial;
-        padding: 25px;
+        padding: 5px;
     }
     .box1 {
         text-align: justify;

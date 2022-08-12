@@ -39,6 +39,10 @@ import PageCard from '../lib/objects/PageCard.svelte';
     <div class="content">
       <PageCard name={'new'}/>
       <PageCard name={''}/>
+      <PageCard name={''}/>
+      <PageCard name={''}/>
+      <PageCard name={''}/>
+      <PageCard name={''}/>
     </div>
     
     <div class="content">

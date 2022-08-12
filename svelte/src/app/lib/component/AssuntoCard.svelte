@@ -2,7 +2,7 @@
     import Rectangle from "../objects/Rectangle.svelte";
     import Modal from "./Modal.svelte";
 
-    export let title, id, descricao
+    export let title, id, descricao;
 </script>
 
 <main>

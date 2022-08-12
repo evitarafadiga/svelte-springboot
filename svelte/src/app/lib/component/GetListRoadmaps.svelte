@@ -6,13 +6,13 @@ import RoadmapCard from "../objects/RoadmapCard.svelte";
   
     async function GetListRoadmaps() {
       const res = await fetch(`listaroadmaps`);
-          const text = await res.json();
-  
-          if (res.ok) {
-              return text;
-          } else {
-              throw new Error(text);
-          } 
+        const text = await res.json();
+
+        if (res.ok) {
+            return text;
+        } else {
+            throw new Error(text);
+        } 
     }
   </script>
   

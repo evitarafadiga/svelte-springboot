@@ -19,8 +19,8 @@
     
     <style>
         .wrapper {
-            width: 100px;
-            height: 80px;
+            width: 80px;
+            height: 54px;
         }
     
         figure {
