@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import br.com.fateczl.ProjetoLibero.persistence.AssuntoDao;
 import br.com.fateczl.ProjetoLibero.persistence.RoadmapDao;
 import br.com.fateczl.ProjetoLibero.model.Assunto;
+import br.com.fateczl.ProjetoLibero.model.AssuntosDeUsuario;
 import br.com.fateczl.ProjetoLibero.model.Roadmap;
 
 public class ProjetoLiberoApplicationTests {
@@ -26,18 +27,20 @@ public class ProjetoLiberoApplicationTests {
 		
 		List<Assunto> listaAssuntos = new ArrayList<Assunto>();
 		List<Roadmap> listaRoadmaps = new ArrayList<Roadmap>();
+		List<AssuntosDeUsuario> listaAssuntosDeUsuario = new ArrayList<AssuntosDeUsuario>();
 		
 		try {
 			
-			listaAssuntos = aDao.listaAssuntos();
-			listaRoadmaps = rDao.listaRoadmaps();
-			
+			//listaAssuntos = aDao.listaAssuntos();
+			//listaRoadmaps = rDao.listaRoadmaps();
+			//listaAssuntosDeUsuario = aDao.listaAssuntosDeUsuario(1);
+			listaAssuntos = aDao.listaAssuntosDeUsuario(1);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			System.out.println(listaAssuntos.toString());
-			System.out.println(listaRoadmaps.toString());
+			//System.out.println(listaRoadmaps.toString());
 			
 		}
 	}

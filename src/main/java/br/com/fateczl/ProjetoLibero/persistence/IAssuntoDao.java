@@ -17,4 +17,6 @@ public interface IAssuntoDao {
 
 	String deleteAssunto(Assunto a) throws SQLException;
 
+	List<Assunto> listaAssuntosDeUsuario(int id) throws SQLException, ClassNotFoundException;
+
 }

@@ -175,7 +175,9 @@ INSERT INTO assunto VALUES
 ('2022-06-13',0,0,'Líbero','Padrão Adapter','2022-06-13');
 
 INSERT INTO usuario VALUES
-('2022-06-13','fulano@fatec.sp.gov.br','123',1,'Professor da FATEC ZONA LESTE',0,'Português','São Paulo, Brasil','Fulano da Silva',0,'imagemdoperfil',1,1,1);
+('2022/06/13','fulano@fatec.sp.gov.br','123',1,'Professor da FATEC ZONA LESTE',0,'Português','São Paulo, Brasil','Fulano da Silva',0,'',1,1,1);
+INSERT INTO usuario VALUES
+('2022/08/15','ciclano@fatec.sp.gov.br','123',1,'Usuário do Líbero',2,'Português','Rio de Janeiro, Brasil','Ciclano da Silva',0,'',1,1,1);
 
 INSERT INTO carreiras VALUES
 ('Análise de Sistemas'),
@@ -228,6 +230,12 @@ GO
 
 INSERT INTO midiasdedetalhes VALUES
 (101,1);
+
+INSERT INTO assuntosdeusuario VALUES
+(1,101,1,1,0),
+(1,102,1,0,0),
+(1,103,0,0,0),
+(1,104,1,1,1);
 
 GO
 
@@ -444,6 +452,7 @@ AS
 
 GO
 
+--/
 SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem FROM assunto a;
 
 SELECT r.id_roa, r.criadoem, r.qtdfavoritos, r.qtdcompartilhamento, r.fonte, r.descricao, r.nome, r.atualizadoem FROM roadmap r;
@@ -453,7 +462,15 @@ SELECT * from midiasdedetalhes;
 SELECT * from midia;
 
 SELECT * from assunto;
+SELECT * from usuario;
 SELECT * from palavraschave;
 
 SELECT * from edgesassunto;
 SELECT * from edgespalavraschave;
+
+SELECT * from assuntosdeusuario;
+
+SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem,
+    u.nome, u.descricao FROM assunto a, usuario u, assuntosdeusuario adeu
+    WHERE a.id_as = adeu.id_assunto
+    AND adeu.id_usuario = u.id_usr

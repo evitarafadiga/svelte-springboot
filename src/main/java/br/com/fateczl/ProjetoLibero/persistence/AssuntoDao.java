@@ -104,10 +104,10 @@ public class AssuntoDao implements IAssuntoDao {
 	}
 
 	@Override
-	public List<Assunto> listaAssuntosDeUsuario(id) throws SQLException, ClassNotFoundException {
+	public List<Assunto> listaAssuntosDeUsuario(int id) throws SQLException, ClassNotFoundException {
 		Connection c = gDao.getConnection();
 		List<Assunto> lista = new ArrayList<Assunto>();
-		String sql = "SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem FROM assunto a";
+		String sql = "SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem, u.nome, u.descricao FROM assunto a, usuario u, assuntosdeusuario adeu WHERE a.id_as = adeu.id_assunto AND adeu.id_usuario = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {

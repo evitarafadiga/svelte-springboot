@@ -6,7 +6,7 @@ import Rectangle from '../lib/objects/Rectangle.svelte';
 
 
 <div class="container">
-    <h1>Todos os assuntos criados</h1>
+    <h1>Todos os assuntos</h1>
     <div class="wrapper">
         <GetListAssunto id="assunto"/>
     </div>   
