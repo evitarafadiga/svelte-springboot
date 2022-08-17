@@ -73,15 +73,16 @@ public class RoadmapDao implements IRoadmapDao{
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-			Roadmap r = new Roadmap();
-			r.setId(rs.getInt("id_roa"));
-			r.setCriadoEm(rs.getString("criadoem"));
-			r.setQtdFavoritos(rs.getInt("qtdfavoritos"));
-			r.setQtdCompartilhamento(rs.getInt("qtdcompartilhamento"));
-			r.setFonte(rs.getString("fonte"));
-			r.setDescricao(rs.getString("descricao"));
-			r.setNome(rs.getString("nome"));
-			r.setAtualizadoEm(rs.getString("atualizadoem"));
+			Roadmap r = new Roadmap.Builder(rs.getInt("id_roa"))
+					.criadoEm(rs.getString("criadoem"))
+					.qtdFavoritos(rs.getInt("qtdfavoritos"))
+					.qtdCompartilhamento(rs.getInt("qtdcompartilhamento"))
+					.fonte(rs.getString("fonte"))
+					.descricao(rs.getString("descricao"))
+					.atualizadoEm(rs.getString("atualizadoem"))
+					.nome(rs.getString("nome"))
+					.build();
+			
 			
 			lista.add(r);
 		}
