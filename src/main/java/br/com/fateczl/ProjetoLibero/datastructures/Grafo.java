@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Grafo {
 	private int qtdMaximaVertices;
+	@SuppressWarnings("unused")
 	private boolean isQtdMaximaDefinida;
 	private int qtdAtualVertices = 0;
 	private Map<String, Integer> rotulosEmIndices = new HashMap<String, Integer>();

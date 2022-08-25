@@ -7,6 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.python.util.PythonInterpreter;
 
 //@RunWith(SpringRunner.class)
+@SuppressWarnings("unused")
 @SpringBootTest
 public class ApplicationTests {
 
