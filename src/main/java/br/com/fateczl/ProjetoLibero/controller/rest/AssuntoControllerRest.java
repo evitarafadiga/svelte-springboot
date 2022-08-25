@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fateczl.ProjetoLibero.model.Assunto;
@@ -30,6 +29,7 @@ public class AssuntoControllerRest {
 	public ResponseEntity<Assunto> createAssunto(@RequestBody Assunto a, String cod) throws ClassNotFoundException, SQLException, ServerException {
 		
 		String err = "";
+		@SuppressWarnings("unused")
 		String saida = "";
 		
 		try {
@@ -38,15 +38,18 @@ public class AssuntoControllerRest {
 			}
 			if (cod.contains("I")) {
 				saida = aDao.insertAssunto(a);
-				Assunto assun = new Assunto();
+				@SuppressWarnings("unused")
+				Assunto assun = new Assunto.Builder(a.getId()).build();
 			}
 			if (cod.contains("D")) {
 				saida = aDao.deleteAssunto(a);
-				Assunto assun = new Assunto();
+				@SuppressWarnings("unused")
+				Assunto assun = new Assunto.Builder(a.getId()).build();
 			}
 			if (cod.contains("U")) {
 				saida = aDao.updateAssunto(a);
-				Assunto assun = new Assunto();
+				@SuppressWarnings("unused")
+				Assunto assun = new Assunto.Builder(a.getId()).build();
 			}
 			else {
 				return new ResponseEntity<>(a, HttpStatus.CREATED);

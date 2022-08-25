@@ -24,7 +24,8 @@ public class ListaAssuntosDeUsuarioController {
         int id = 1;
 
         List<Assunto> listaAssuntosDeUsuario = new ArrayList<Assunto>();
-        String erro = "";
+        @SuppressWarnings("unused")
+		String erro = "";
         
         try {
             listaAssuntosDeUsuario = aDao.listaAssuntosDeUsuario(id);

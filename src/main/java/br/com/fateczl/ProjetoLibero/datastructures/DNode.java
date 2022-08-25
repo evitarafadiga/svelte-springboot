@@ -42,12 +42,14 @@ public class DNode<E> implements Position {
 		return 0;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 	String s = "Nó A";
 	String t = "Nó B";
 	String u = "Nó C";
 		
 		
+	
 	DNode n = new DNode(null, null, s);	
 	DNode o = new DNode(null, null, t);
 	DNode p = new DNode(null, null, u);

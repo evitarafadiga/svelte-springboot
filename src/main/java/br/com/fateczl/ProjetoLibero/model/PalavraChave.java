@@ -1,7 +1,5 @@
 package br.com.fateczl.ProjetoLibero.model;
 
-import java.util.Arrays;
-
 public class PalavraChave {
 	private int indice;
 	private String texto;

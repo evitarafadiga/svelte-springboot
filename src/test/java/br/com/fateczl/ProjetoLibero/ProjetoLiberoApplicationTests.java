@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestComponent;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.fateczl.ProjetoLibero.persistence.AssuntoDao;
 import br.com.fateczl.ProjetoLibero.persistence.RoadmapDao;
@@ -23,6 +20,7 @@ public class ProjetoLiberoApplicationTests {
 	@Autowired
 	RoadmapDao rDao;
 	
+	@SuppressWarnings("unused")
 	public void contextLoads() {
 		
 		List<Assunto> listaAssuntos = new ArrayList<Assunto>();

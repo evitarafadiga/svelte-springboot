@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.fateczl.ProjetoLibero.model.Assunto;
 import br.com.fateczl.ProjetoLibero.model.Roadmap;
 
 @Component

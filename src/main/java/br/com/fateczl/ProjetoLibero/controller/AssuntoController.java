@@ -22,8 +22,11 @@ public class AssuntoController {
 	@PostMapping(path = "listaassuntos")
 	public Assunto op(@RequestBody Assunto assuntos) {
 		
+		@SuppressWarnings("unused")
 		List<Assunto> listaAssuntos = new ArrayList<Assunto>();
+		@SuppressWarnings("unused")
 		int cod = assuntos.getId();
+		@SuppressWarnings("unused")
 		String cmd = "";
 		
 		return assuntos;

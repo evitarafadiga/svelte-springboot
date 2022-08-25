@@ -90,6 +90,7 @@ public class NodePositionList<E> implements Position {
 		return oldElt;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static <E> String toString(Position l) {
 		Iterator<E> it = (Iterator<E>) ((List<Member>) l).iterator();
 		String s = " [";

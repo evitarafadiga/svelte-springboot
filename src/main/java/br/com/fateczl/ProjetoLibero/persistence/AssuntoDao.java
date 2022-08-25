@@ -84,14 +84,14 @@ public class AssuntoDao implements IAssuntoDao {
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-			Assunto a = new Assunto();
-			a.setId(rs.getInt("id_as"));
-			a.setCriadoEm(rs.getString("criadoem"));
-			a.setQtdFavoritos(rs.getInt("qtdfavoritos"));
-			a.setQtdCompartilhamento(rs.getInt("qtdcompartilhamento"));
-			a.setFonte(rs.getString("fonte"));
-			a.setDescricao(rs.getString("descricao"));
-			a.setAtualizadoEm(rs.getString("atualizadoem"));
+			Assunto a = new Assunto.Builder(rs.getInt("id_as"))
+			.criadoEm(rs.getString("criadoem"))
+			.qtdFavoritos(rs.getInt("qtdfavoritos"))
+			.qtdCompartilhamento(rs.getInt("qtdcompartilhamento"))
+			.fonte(rs.getString("fonte"))
+			.descricao(rs.getString("descricao"))
+			.atualizadoEm(rs.getString("atualizadoem"))
+			.build();
 			
 			lista.add(a);
 		}
@@ -111,14 +111,14 @@ public class AssuntoDao implements IAssuntoDao {
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-			Assunto a = new Assunto();
-			a.setId(rs.getInt("id_as"));
-			a.setCriadoEm(rs.getString("criadoem"));
-			a.setQtdFavoritos(rs.getInt("qtdfavoritos"));
-			a.setQtdCompartilhamento(rs.getInt("qtdcompartilhamento"));
-			a.setFonte(rs.getString("fonte"));
-			a.setDescricao(rs.getString("descricao"));
-			a.setAtualizadoEm(rs.getString("atualizadoem"));
+			Assunto a = new Assunto.Builder(rs.getInt("id_as"))
+					.criadoEm(rs.getString("criadoem"))
+					.qtdFavoritos(rs.getInt("qtdfavoritos"))
+					.qtdCompartilhamento(rs.getInt("qtdcompartilhamento"))
+					.fonte(rs.getString("fonte"))
+					.descricao(rs.getString("descricao"))
+					.atualizadoEm(rs.getString("atualizadoem"))
+					.build();
 			
 			lista.add(a);
 		}
