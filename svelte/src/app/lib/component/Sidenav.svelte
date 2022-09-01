@@ -16,6 +16,7 @@
   let srcmytopics = '/bezier.svg';
   let srcmyroadmaps = '/book.svg';
   let srcpower = '/power.svg';
+  let srclogo = '/logo.png';
 
 </script>
 
@@ -25,7 +26,7 @@
         <div class="content">
           <ul>
             <li>
-              <h2><RouterLink url=''>Líbero</RouterLink></h2>
+              <h2><RouterLink url='' src={srclogo}></RouterLink></h2>
             </li>
           </ul>     
         </div>

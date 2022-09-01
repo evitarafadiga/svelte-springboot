@@ -1,11 +1,9 @@
 <script>
-    import Perfil from "../lib/component/Perfil.svelte";
-
-    export let name;
+	import GetUsuario from "../lib/component/GetUsuario.svelte";
 </script>
 
-<main>
-    <Perfil username={name}/>
+<main>    
+    <GetUsuario />
 </main>
 
 <style>

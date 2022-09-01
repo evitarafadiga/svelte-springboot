@@ -4,15 +4,15 @@ import java.util.*;
 
 public class MatrizAdjacencia {
 	private int[][] matriz;
-	private List<Vertice> vertices;
+	private List<vertex> vertices;
 	private int qtdVertices;
 
-	public MatrizAdjacencia(int [][] matriz, List<Vertice> vertices,int qtdVertices) {
+	public MatrizAdjacencia(int [][] matriz, List<vertex> vertices,int qtdVertices) {
 		this.matriz = matriz;
 		this.vertices = vertices;
 		this.qtdVertices = qtdVertices;
 	}
-	public MatrizAdjacencia(List<Vertice> vertices) {
+	public MatrizAdjacencia(List<vertex> vertices) {
 		this.vertices = vertices;
 		this.qtdVertices = vertices.size();
 		matriz = new int[qtdVertices][qtdVertices];
@@ -28,8 +28,8 @@ public class MatrizAdjacencia {
 	}
 
 	public void adicionarAresta(int indiceVerticeInicial, int indiceVerticeFinal) {
-		Vertice verticeInicial = vertices.get(indiceVerticeInicial);
-		Vertice verticeFinal = vertices.get(indiceVerticeFinal);
+		vertex verticeInicial = vertices.get(indiceVerticeInicial);
+		vertex verticeFinal = vertices.get(indiceVerticeFinal);
 		if (indiceVerticeInicial == indiceVerticeFinal) {
 			matriz[indiceVerticeInicial][indiceVerticeInicial] = 1;
 			verticeInicial.addGrau();
@@ -42,12 +42,12 @@ public class MatrizAdjacencia {
 		}
 	}
 
-	public List<Vertice> getAdjacencias(int indiceVertice) {
+	public List<vertex> getAdjacencias(int indiceVertice) {
 		int linha = indiceVertice;
-		List<Vertice> adjacencias = new ArrayList<>();
+		List<vertex> adjacencias = new ArrayList<>();
 		for (int j = 0; j < vertices.size(); j++) {
 			if (matriz[linha][j] == 1) {
-				Vertice vertice = vertices.get(j);
+				vertex vertice = vertices.get(j);
 				adjacencias.add(vertice);
 			}
 		}

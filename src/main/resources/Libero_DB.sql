@@ -97,6 +97,12 @@ CREATE TABLE comentarios (
     descricao           VARCHAR(400)        NOT NULL,
 PRIMARY KEY(id_com));
 
+CREATE TABLE avaliacao (
+    id_av       INT IDENTITY(1,1),
+    nota        INT
+PRIMARY KEY(id_av)
+);
+
 CREATE TABLE assuntosdeusuario (
     id_usuario          INT                 NOT NULL,
     id_assunto          INT                 NOT NULL,
@@ -106,6 +112,22 @@ CREATE TABLE assuntosdeusuario (
 PRIMARY KEY(id_usuario, id_assunto),
 FOREIGN KEY (id_usuario) REFERENCES usuario(id_usr),
 FOREIGN KEY (id_assunto) REFERENCES assunto(id_as));
+
+CREATE TABLE avaliacoesdeusuario(
+    id_usuario      INT                     NOT NULL,
+    id_avaliacao    INT                     NOT NULL
+PRIMARY KEY(id_usuario, id_avaliacao),
+FOREIGN KEY(id_usuario) REFERENCES usuario(id_usr),
+FOREIGN KEY(id_avaliacao) REFERENCES avaliacao(id_av),
+);
+
+CREATE TABLE avaliacoesderoadmap(
+    id_roadmap      INT                     NOT NULL,
+    id_avaliacao    INT                     NOT NULL
+PRIMARY KEY(id_roadmap, id_avaliacao),
+FOREIGN KEY(id_roadmap) REFERENCES roadmap(id_roa),
+FOREIGN KEY(id_avaliacao) REFERENCES avaliacao(id_av),
+);
 
 CREATE TABLE comentariosderoadmap (
     id_comentariosderoa INT                 NOT NULL,
@@ -216,6 +238,32 @@ INSERT INTO roadmap VALUES
 
 INSERT INTO detalhes VALUES
 (3,2);
+
+INSERT INTO avaliacao VALUES 
+(5),
+(3),
+(4),
+(2),
+(4),
+(5),
+(5),
+(4),
+(5),
+(1);
+
+INSERT INTO avaliacoesdeusuario VALUES
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5);
+
+INSERT INTO avaliacoesderoadmap VALUES
+(1,6),
+(1,7),
+(1,8),
+(1,9),
+(1,10);
 
 INSERT INTO verticeassunto VALUES
 (	1	,	2	,	1	)
@@ -831,10 +879,57 @@ AS
 
 GO
 
+GO
+CREATE PROCEDURE sp_iud_verticeassunto (@cod CHAR(1), @id INT, @from_id INT, @to_id INT, @peso INT, @saida VARCHAR(50) OUTPUT)
+AS
+    IF(UPPER(@cod) = 'I')
+    BEGIN
+        SET IDENTITY_INSERT palavraschave ON;
+        INSERT INTO verticeassunto VALUES
+        (@from_id, @to_id, @peso)
+        SET @saida = 'Vertice assunto inserido com sucesso'
+    END
+    ELSE
+    BEGIN
+        IF (UPPER(@cod) = 'U')
+        BEGIN
+            UPDATE verticeassunto
+            SET from_id = @from_id,
+                to_id = @to_id,
+                peso = @peso
+        WHERE id = @id
+        SET @saida = 'Vertice assunto atualizado com sucesso'
+        END
+        ELSE
+        BEGIN
+            IF (UPPER(@cod) = 'D')
+            BEGIN
+                    DELETE verticeassunto
+                    WHERE id = @id
+                    SET @saida = 'Vertice assunto excluido com sucesso'
+                END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Codigo invalido',16,1)
+            END
+        END
+        SET IDENTITY_INSERT verticeassunto OFF;  
+    END
+
+GO
+
 --/
 SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem FROM assunto a;
 
 SELECT r.id_roa, r.criadoem, r.qtdfavoritos, r.qtdcompartilhamento, r.fonte, r.descricao, r.nome, r.atualizadoem FROM roadmap r;
+
+SELECT v.id, v.from_id, v.to_id, v.peso FROM verticeassunto v;
+
+SELECT * from usuario;
+
+SELECT  u.id_usr, u.email, u.imagempadrao, u.descricao, u.qtdfavoritos, 
+        u.lingua, u.locacao, u.nome, u.notificacoes, u.imagemdoperfilurl,
+        u. contribuidor, u.staff, u.professor FROM usuario u WHERE u.id_usr = 2;
 
 SELECT * from detalhes;
 SELECT * from midiasdedetalhes;
@@ -849,6 +944,8 @@ SELECT * from verticeassunto;
 SELECT * from verticepalavraschave;
 
 SELECT * from assuntosdeusuario;
+
+SELECT * from avaliacoesdeusuario;
 
 SELECT a.id_as, a.criadoem, a.qtdfavoritos, a.qtdcompartilhamento, a.fonte, a.descricao, a.atualizadoem,
     u.nome, u.descricao FROM assunto a, usuario u, assuntosdeusuario adeu

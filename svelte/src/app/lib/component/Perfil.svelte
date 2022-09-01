@@ -1,6 +1,6 @@
 <script>
 import Rectangle from "../objects/Rectangle.svelte";
-export let username;
+export let nome, criadoem;
 
 let src = '/profile-picture.png'
 
@@ -12,7 +12,7 @@ let src = '/profile-picture.png'
                 <img src={src} alt="Profile default" /> 
             </figure>
             <div>
-                Bem vindo(a), {username}.
+                Bem vindo(a), {nome}. Criado em: {criadoem}
             </div>
             <div class="carreiras">
                 Carreiras

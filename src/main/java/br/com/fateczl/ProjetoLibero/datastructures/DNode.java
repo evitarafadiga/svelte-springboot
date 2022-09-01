@@ -42,27 +42,27 @@ public class DNode<E> implements Position {
 		return 0;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void main(String[] args) {
-	String s = "Nó A";
-	String t = "Nó B";
-	String u = "Nó C";
+	// @SuppressWarnings({ "rawtypes", "unchecked" })
+	// public static void main(String[] args) {
+	// String s = "Nó A";
+	// String t = "Nó B";
+	// String u = "Nó C";
 		
 		
 	
-	DNode n = new DNode(null, null, s);	
-	DNode o = new DNode(null, null, t);
-	DNode p = new DNode(null, null, u);
+	// DNode n = new DNode(null, null, s);	
+	// DNode o = new DNode(null, null, t);
+	// DNode p = new DNode(null, null, u);
 	
-	n.setNext(o);
-	o.setNext(p);
-	p.setNext(n);
+	// n.setNext(o);
+	// o.setNext(p);
+	// p.setNext(n);
 	
-	NodePositionList<DNode> lista = new NodePositionList<DNode>();
+	// NodePositionList<DNode> lista = new NodePositionList<DNode>();
 	
-	lista.addFirst(n);
+	// lista.addFirst(n);
 		
-	System.out.println(lista.isEmpty());
-	}  
+	// System.out.println(lista.isEmpty());
+	// }  
 
 }

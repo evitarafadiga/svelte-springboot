@@ -9,7 +9,7 @@ public class Grafo {
 	private int qtdAtualVertices = 0;
 	private Map<String, Integer> rotulosEmIndices = new HashMap<String, Integer>();
 	
-	private List<Vertice> vertices = new ArrayList<Vertice>();
+	private List<vertex> vertices = new ArrayList<vertex>();
 	MatrizAdjacencia matrizAdjacencia = new MatrizAdjacencia(vertices);
 	
 	public Grafo() {
@@ -27,7 +27,7 @@ public class Grafo {
 
 	public void adicionarVertice(String rotulo) throws Exception {
 		if (qtdAtualVertices <= qtdMaximaVertices - 1) {
-			Vertice novoVertice = new Vertice(rotulo);
+			vertex novoVertice = new vertex(rotulo);
 			this.vertices.add(novoVertice);
 			this.rotulosEmIndices.put(rotulo, qtdAtualVertices);
 			qtdAtualVertices++;
@@ -36,11 +36,11 @@ public class Grafo {
 		}
 	}
 
-	public List<Vertice> getVertices() {
+	public List<vertex> getVertices() {
 		return this.vertices;
 	}
 
-	public Vertice getVertice(String rotulo) {
+	public vertex getVertice(String rotulo) {
 		this.existeVerticeOrThrow(rotulo);
 		int indice = this.rotulosEmIndices.get(rotulo);
 		return this.vertices.get(indice);
@@ -56,7 +56,7 @@ public class Grafo {
 		this.matrizAdjacencia.adicionarAresta(indiceVerticeInicial, indiceVerticeFinal);
 	}
 
-	public List<Vertice> getAdjacencias(String vertice) {
+	public List<vertex> getAdjacencias(String vertice) {
 		this.existeVerticeOrThrow(vertice);
 		int indiceVertice = this.rotulosEmIndices.get(vertice);
 		return this.matrizAdjacencia.getAdjacencias(indiceVertice);
@@ -77,7 +77,7 @@ public class Grafo {
 	private void criarMatrizAdjacencia() {
 		if(this.matrizAdjacencia == null){
 			this.matrizAdjacencia = new MatrizAdjacencia(new
-			ArrayList<Vertice>(this.vertices));
+			ArrayList<vertex>(this.vertices));
 			}
 	}
 }

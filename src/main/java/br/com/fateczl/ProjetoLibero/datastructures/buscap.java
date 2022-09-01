@@ -36,69 +36,69 @@ public class buscap {
 	
 	static listaadj Adj[];
 	
-	public static void main(String args[]) {
-		vertice novo;
+	// public static void main(String args[]) {
+	// 	vertice novo;
 		
-		int tam, org, dest, op, num, tipo;
-		String menu;
+	// 	int tam, org, dest, op, num, tipo;
+	// 	String menu;
 		
-		System.out.println("\n Tipo do grafo (1 - não orientado, 2 - orientado:");
-		tipo = entrada.nextInt();
+	// 	System.out.println("\n Tipo do grafo (1 - não orientado, 2 - orientado:");
+	// 	tipo = entrada.nextInt();
 		
-		System.out.println("\n Digite o numero de vertices do grafo:");
-		tam = entrada.nextInt();
-		//alocacao de memoria
-		Adj = new listaadj[tam+1];
-		marcado = new int [tam+1];
-		//inicializacao de variaveis
-		for(int i = 1; i <= tam; i++) {
-			Adj[i]= new listaadj();
-			marcado[i] = 0;
-		}
+	// 	System.out.println("\n Digite o numero de vertices do grafo:");
+	// 	tam = entrada.nextInt();
+	// 	//alocacao de memoria
+	// 	Adj = new listaadj[tam+1];
+	// 	marcado = new int [tam+1];
+	// 	//inicializacao de variaveis
+	// 	for(int i = 1; i <= tam; i++) {
+	// 		Adj[i]= new listaadj();
+	// 		marcado[i] = 0;
+	// 	}
 		
-		System.out.println("\n Arestas do grafo: VerticeOrigem (-1 para parar):");
-		org = entrada.nextInt();
+	// 	System.out.println("\n Arestas do grafo: VerticeOrigem (-1 para parar):");
+	// 	org = entrada.nextInt();
 		
-		System.out.println("\n Arestas do grafo: VerticeDestino(-1 para parar):");
-		dest= entrada.nextInt();
+	// 	System.out.println("\n Arestas do grafo: VerticeDestino(-1 para parar):");
+	// 	dest= entrada.nextInt();
 		
-		while(org != -1 && dest != -1) {
-			novo = new vertice();
-			novo.num = dest;
-			novo.prox = Adj[org].listav;
-			Adj[org].listav = novo;
+	// 	while(org != -1 && dest != -1) {
+	// 		novo = new vertice();
+	// 		novo.num = dest;
+	// 		novo.prox = Adj[org].listav;
+	// 		Adj[org].listav = novo;
 			
-			if(tipo==1) {
-				novo = new vertice();
-				novo.num = org;
-				novo.prox = Adj[dest].listav;
-				Adj[dest].listav = novo;
-			}
-			System.out.println("\n Arestas do grafo: VerticeOrigem(-1 para parar):");
-			org = entrada.nextInt();
-			System.out.println("\n Arestas do grafo: VerticeDestino(-1 para parar):");
-			dest = entrada.nextInt();
-		} do {
-			menu = 	"\n1-Busca em profundidade"+
-					"\n2-Mostrar lista de adjacencias"+
-					"\n4-Sair"+
-					"\nDigite sua opcao: ";
-			System.out.println(menu);
-			op = entrada.nextInt();
+	// 		if(tipo==1) {
+	// 			novo = new vertice();
+	// 			novo.num = org;
+	// 			novo.prox = Adj[dest].listav;
+	// 			Adj[dest].listav = novo;
+	// 		}
+	// 		System.out.println("\n Arestas do grafo: VerticeOrigem(-1 para parar):");
+	// 		org = entrada.nextInt();
+	// 		System.out.println("\n Arestas do grafo: VerticeDestino(-1 para parar):");
+	// 		dest = entrada.nextInt();
+	// 	} do {
+	// 		menu = 	"\n1-Busca em profundidade"+
+	// 				"\n2-Mostrar lista de adjacencias"+
+	// 				"\n4-Sair"+
+	// 				"\nDigite sua opcao: ";
+	// 		System.out.println(menu);
+	// 		op = entrada.nextInt();
 			
-			switch(op) {
-				case 1: System.out.println("Digite um vertice de partida da busca: ");
-						num = entrada.nextInt();
-						System.out.println(" "+ num);
-						buscaprof(Adj, tam, num);
-						for(int i = 1; i<= tam; i++) marcado[i] = 0;
-						break;
-				case 2: mostrar_Adj(Adj, tam);
-						break;
-			}
-		} while (op!=4);
+	// 		switch(op) {
+	// 			case 1: System.out.println("Digite um vertice de partida da busca: ");
+	// 					num = entrada.nextInt();
+	// 					System.out.println(" "+ num);
+	// 					buscaprof(Adj, tam, num);
+	// 					for(int i = 1; i<= tam; i++) marcado[i] = 0;
+	// 					break;
+	// 			case 2: mostrar_Adj(Adj, tam);
+	// 					break;
+	// 		}
+	// 	} while (op!=4);
 		
-	}
+	// }
 	static void buscaprof(listaadj Adj[], int tam, int v) {
 		vertice vert;
 		int w;
