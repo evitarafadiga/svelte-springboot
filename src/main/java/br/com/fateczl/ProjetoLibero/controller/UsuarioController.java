@@ -32,12 +32,12 @@ public class UsuarioController {
 	}
 	
 	@GetMapping
-	public Usuario getUsuario(@RequestParam("id") int id) {
-		
+	//public Usuario getUsuario(@RequestParam(value="id", required="false") int id) {
+	public Usuario getUsuario() {
 		Usuario u = new Usuario();
 		String erro= "";
 		try {
-			u = uDao.getUsuario(id);
+			u = uDao.getUsuario(1);
 		} catch (ClassNotFoundException | SQLException e) {
 			erro = e.getMessage();
 		} 

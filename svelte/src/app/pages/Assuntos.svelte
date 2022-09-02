@@ -4,7 +4,7 @@
 </script>
       
 <div class="container">
-    <h1>Assuntos de usuário</h1>
+    <h1>Meus Assuntos</h1>
     <div class="wrapper">
         <GetListAssuntoDeUsuario id="assunto"/>
     </div>   

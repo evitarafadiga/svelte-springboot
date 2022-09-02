@@ -24,7 +24,7 @@
     {#each response as element}
     <Perfil nome={element.nome} criadoem={element.criadoem} id={element.id} descricao={element.descricao}> 
 	</Perfil>
-     
+     {element.nome}
     {/each}
 {:catch error}
     <p style="color: red">{error.message}</p>

@@ -2601,7 +2601,7 @@ var app = (function () {
 			c: function create() {
 				div1 = element("div");
 				h1 = element("h1");
-				h1.textContent = "Todos os assuntos";
+				h1.textContent = "Todos os Assuntos";
 				t_1 = space();
 				div0 = element("div");
 				getlistassunto.$$.fragment.c();
@@ -2983,13 +2983,13 @@ var app = (function () {
 			c: function create() {
 				div1 = element("div");
 				h1 = element("h1");
-				h1.textContent = "Assuntos de usuário";
+				h1.textContent = "Meus Assuntos";
 				t_1 = space();
 				div0 = element("div");
 				getlistassuntodeusuario.$$.fragment.c();
 				add_location(h1, file$e, 6, 4, 212);
 				div0.className = "wrapper svelte-17nl0ux";
-				add_location(div0, file$e, 7, 4, 246);
+				add_location(div0, file$e, 7, 4, 240);
 				div1.className = "container svelte-17nl0ux";
 				add_location(div1, file$e, 5, 0, 183);
 			},
@@ -3043,13 +3043,13 @@ var app = (function () {
 	const file$f = "src\\app\\pages\\Roadmaps.svelte";
 
 	function create_fragment$f(ctx) {
-		var p;
+		var h1;
 
 		return {
 			c: function create() {
-				p = element("p");
-				p.textContent = "Roadmaps";
-				add_location(p, file$f, 4, 0, 25);
+				h1 = element("h1");
+				h1.textContent = "Meus Roadmaps";
+				add_location(h1, file$f, 4, 0, 25);
 			},
 
 			l: function claim(nodes) {
@@ -3057,7 +3057,7 @@ var app = (function () {
 			},
 
 			m: function mount(target, anchor) {
-				insert(target, p, anchor);
+				insert(target, h1, anchor);
 			},
 
 			p: noop,
@@ -3066,7 +3066,7 @@ var app = (function () {
 
 			d: function destroy(detaching) {
 				if (detaching) {
-					detach(p);
+					detach(h1);
 				}
 			}
 		};
@@ -4046,9 +4046,9 @@ var app = (function () {
 				t2 = space();
 				getlistroadmaps.$$.fragment.c();
 				add_location(h1, file$k, 8, 4, 196);
-				div0.className = "wrapper svelte-17nl0ux";
+				div0.className = "wrapper svelte-yelzrg";
 				add_location(div0, file$k, 9, 4, 228);
-				div1.className = "container svelte-17nl0ux";
+				div1.className = "container svelte-yelzrg";
 				add_location(div1, file$k, 7, 0, 167);
 			},
 
@@ -4062,8 +4062,8 @@ var app = (function () {
 				append(div1, t1);
 				append(div1, div0);
 				mount_component(trends, div0, null);
-				append(div0, t2);
-				mount_component(getlistroadmaps, div0, null);
+				append(div1, t2);
+				mount_component(getlistroadmaps, div1, null);
 				current = true;
 			},
 
@@ -4122,7 +4122,7 @@ var app = (function () {
 				p = element("p");
 				t = text(t_value);
 				set_style(p, "color", "red");
-				add_location(p, file$l, 29, 4, 576);
+				add_location(p, file$l, 29, 4, 590);
 			},
 
 			m: function mount(target, anchor) {
@@ -4244,7 +4244,7 @@ var app = (function () {
 
 	// (24:4) {#each response as element}
 	function create_each_block$4(ctx) {
-		var current;
+		var t0, t1_value = ctx.element.nome, t1, current;
 
 		var perfil = new Perfil({
 			props: {
@@ -4261,10 +4261,14 @@ var app = (function () {
 		return {
 			c: function create() {
 				perfil.$$.fragment.c();
+				t0 = space();
+				t1 = text(t1_value);
 			},
 
 			m: function mount(target, anchor) {
 				mount_component(perfil, target, anchor);
+				insert(target, t0, anchor);
+				insert(target, t1, anchor);
 				current = true;
 			},
 
@@ -4292,6 +4296,11 @@ var app = (function () {
 
 			d: function destroy(detaching) {
 				perfil.$destroy(detaching);
+
+				if (detaching) {
+					detach(t0);
+					detach(t1);
+				}
 			}
 		};
 	}
@@ -4675,15 +4684,16 @@ var app = (function () {
 				if (default_slot) default_slot.c();
 				img.src = ctx.src;
 				img.alt = "[O]";
-				img.className = "svelte-pihxs1";
-				add_location(img, file$p, 24, 4, 351);
-				add_location(figure, file$p, 23, 2, 337);
+				img.className = "svelte-1xrsvvv";
+				add_location(img, file$p, 32, 4, 470);
+				figure.className = "svelte-1xrsvvv";
+				add_location(figure, file$p, 31, 2, 456);
 
 				a.href = a_href_value = "#/" + ctx.url;
-				a.className = "svelte-pihxs1";
-				add_location(a, file$p, 26, 2, 395);
-				div.className = "flex svelte-pihxs1";
-				add_location(div, file$p, 22, 0, 315);
+				a.className = "svelte-1xrsvvv";
+				add_location(a, file$p, 34, 2, 514);
+				div.className = "flex svelte-1xrsvvv";
+				add_location(div, file$p, 30, 0, 434);
 			},
 
 			l: function claim(nodes) {

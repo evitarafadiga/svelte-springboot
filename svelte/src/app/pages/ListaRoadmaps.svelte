@@ -9,8 +9,8 @@
     <h1>Todos os Roadmaps</h1>
     <div class="wrapper">
         <Trends />
-		<GetListRoadmaps />
-    </div>   
+    </div>
+    <GetListRoadmaps />
 </div>
 
 
@@ -21,7 +21,6 @@
     }
 
     .wrapper {
-        display: flex;
         flex-wrap: wrap;  
     }
 

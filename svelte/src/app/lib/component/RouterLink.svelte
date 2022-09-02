@@ -12,11 +12,19 @@
     text-align: center;
   }
   img {
-  vertical-align: middle;
+    vertical-align: middle;
+    max-width: 200px;
+    max-height: 60px;
+  }
+
+  figure {
+    max-width: 200px;
+    max-height: 60px;
   }
 
   .flex {
     display: inline-flex;
+    
   }
 </style>
 
