@@ -2,6 +2,11 @@ HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+
+### API KEYS ###
+
+application-dev.properties
+
 ### STS ###
 .apt_generated
 .classpath

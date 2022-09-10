@@ -19,21 +19,7 @@ public class ListaAssuntosDeUsuarioController {
     @Autowired
     AssuntoDao aDao;
 
-    @GetMapping
-    public List<Assunto> getListAssuntoDeUsuario() {
-        int id = 1;
-
-        List<Assunto> listaAssuntosDeUsuario = new ArrayList<Assunto>();
-        @SuppressWarnings("unused")
-		String erro = "";
-        
-        try {
-            listaAssuntosDeUsuario = aDao.listaAssuntosDeUsuario(id);
-        } catch (ClassNotFoundException | SQLException e) {
-			erro = e.getMessage();
-		}
-        return listaAssuntosDeUsuario;
-    }
+   
     
 
 }

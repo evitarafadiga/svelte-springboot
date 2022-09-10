@@ -1,4 +1,4 @@
-package br.com.fateczl.ProjetoLibero.datastructures;
+package br.com.fateczl.ProjetoLibero;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import br.com.fateczl.ProjetoLibero.datastructures.ListaPrior;
 import br.com.fateczl.ProjetoLibero.model.Vertice;
 import br.com.fateczl.ProjetoLibero.persistence.VerticeAssuntoDao;
 
@@ -21,7 +23,7 @@ public class CaminhoMinimo2
 {
 		@Autowired
 		VerticeAssuntoDao vDao;
-		
+				
 		public static class vertice 
 		{
 			int num;
@@ -41,6 +43,7 @@ public class CaminhoMinimo2
 		static int pai[];
 		static int dist[];
 		static listaadj Adj[];
+	
 	@Test
 	public void contextLoads() 
 	{

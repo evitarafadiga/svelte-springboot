@@ -6,7 +6,7 @@ public class ListaPrior {
 
 	static int vet[];
 	static Scanner entrada = new Scanner(System.in);
-	static int tam;
+	public static int tam;
 
 	public ListaPrior(int n) 
 	{

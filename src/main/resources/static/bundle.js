@@ -1,4 +1,4 @@
-var app = (function () {
+var app = (function (navigation) {
 	'use strict';
 
 	function noop() {}
@@ -4800,7 +4800,28 @@ var app = (function () {
 
 	const file$q = "src\\app\\lib\\component\\Sidenav.svelte";
 
-	// (36:14) <RouterLink url='perfil' src={srcprofile}>
+	// (34:18) <RouterLink on:click={handleClick} url='' src={srclogo}>
+	function create_default_slot_6(ctx) {
+		var t;
+
+		return {
+			c: function create() {
+				t = text("Home");
+			},
+
+			m: function mount(target, anchor) {
+				insert(target, t, anchor);
+			},
+
+			d: function destroy(detaching) {
+				if (detaching) {
+					detach(t);
+				}
+			}
+		};
+	}
+
+	// (41:14) <RouterLink url='perfil' src={srcprofile}>
 	function create_default_slot_5(ctx) {
 		var t;
 
@@ -4821,7 +4842,7 @@ var app = (function () {
 		};
 	}
 
-	// (41:14) <RouterLink url='assuntos' src={srcmytopics}>
+	// (46:14) <RouterLink url='assuntos' src={srcmytopics}>
 	function create_default_slot_4(ctx) {
 		var t;
 
@@ -4842,7 +4863,7 @@ var app = (function () {
 		};
 	}
 
-	// (44:14) <RouterLink url='lista-assuntos' src={srctopics}>
+	// (49:14) <RouterLink url='lista-assuntos' src={srctopics}>
 	function create_default_slot_3(ctx) {
 		var t;
 
@@ -4863,7 +4884,7 @@ var app = (function () {
 		};
 	}
 
-	// (47:14) <RouterLink url='roadmaps' src={srcmyroadmaps}>
+	// (52:14) <RouterLink url='roadmaps' src={srcmyroadmaps}>
 	function create_default_slot_2(ctx) {
 		var t;
 
@@ -4884,7 +4905,7 @@ var app = (function () {
 		};
 	}
 
-	// (50:14) <RouterLink url='lista-roadmaps' src={srcroadmaps}>
+	// (55:14) <RouterLink url='lista-roadmaps' src={srcroadmaps}>
 	function create_default_slot_1$1(ctx) {
 		var t;
 
@@ -4905,7 +4926,7 @@ var app = (function () {
 		};
 	}
 
-	// (56:14) <RouterLink url='signout'src={srcpower} >
+	// (61:14) <RouterLink url='signout'src={srcpower} >
 	function create_default_slot$9(ctx) {
 		var t;
 
@@ -4930,9 +4951,15 @@ var app = (function () {
 		var style, t1, main, nav, div2, div0, ul0, li0, h2, t2, div1, ul1, li1, t3, br0, t4, br1, t5, li2, t6, li3, t7, li4, t8, li5, t9, br2, t10, br3, t11, br4, t12, li6, current;
 
 		var routerlink0 = new RouterLink({
-			props: { url: "", src: srclogo },
+			props: {
+			url: "",
+			src: srclogo,
+			$$slots: { default: [create_default_slot_6] },
+			$$scope: { ctx }
+		},
 			$$inline: true
 		});
+		routerlink0.$on("click", handleClick);
 
 		var routerlink1 = new RouterLink({
 			props: {
@@ -5039,39 +5066,39 @@ var app = (function () {
 				routerlink6.$$.fragment.c();
 				add_location(style, file$q, 1, 4, 19);
 				h2.className = "svelte-11jy79x";
-				add_location(h2, file$q, 28, 14, 735);
+				add_location(h2, file$q, 33, 14, 829);
 				li0.className = "svelte-11jy79x";
-				add_location(li0, file$q, 27, 12, 715);
+				add_location(li0, file$q, 32, 12, 809);
 				ul0.className = "svelte-11jy79x";
-				add_location(ul0, file$q, 26, 10, 697);
+				add_location(ul0, file$q, 31, 10, 791);
 				div0.className = "content svelte-11jy79x";
-				add_location(div0, file$q, 25, 8, 664);
+				add_location(div0, file$q, 30, 8, 758);
 				li1.className = "svelte-11jy79x";
-				add_location(li1, file$q, 34, 12, 892);
-				add_location(br0, file$q, 37, 12, 1006);
-				add_location(br1, file$q, 38, 12, 1024);
+				add_location(li1, file$q, 39, 12, 1013);
+				add_location(br0, file$q, 42, 12, 1127);
+				add_location(br1, file$q, 43, 12, 1145);
 				li2.className = "svelte-11jy79x";
-				add_location(li2, file$q, 39, 12, 1042);
+				add_location(li2, file$q, 44, 12, 1163);
 				li3.className = "svelte-11jy79x";
-				add_location(li3, file$q, 42, 12, 1166);
+				add_location(li3, file$q, 47, 12, 1287);
 				li4.className = "svelte-11jy79x";
-				add_location(li4, file$q, 45, 12, 1298);
+				add_location(li4, file$q, 50, 12, 1419);
 				li5.className = "svelte-11jy79x";
-				add_location(li5, file$q, 48, 12, 1424);
-				add_location(br2, file$q, 51, 12, 1558);
-				add_location(br3, file$q, 52, 12, 1576);
-				add_location(br4, file$q, 53, 12, 1594);
+				add_location(li5, file$q, 53, 12, 1545);
+				add_location(br2, file$q, 56, 12, 1679);
+				add_location(br3, file$q, 57, 12, 1697);
+				add_location(br4, file$q, 58, 12, 1715);
 				li6.className = "svelte-11jy79x";
-				add_location(li6, file$q, 54, 12, 1612);
+				add_location(li6, file$q, 59, 12, 1733);
 				ul1.className = "svelte-11jy79x";
-				add_location(ul1, file$q, 33, 10, 874);
-				add_location(div1, file$q, 32, 8, 857);
+				add_location(ul1, file$q, 38, 10, 995);
+				add_location(div1, file$q, 37, 8, 978);
 				div2.className = "wrapper";
-				add_location(div2, file$q, 24, 6, 633);
+				add_location(div2, file$q, 29, 6, 727);
 				nav.className = "svelte-11jy79x";
-				add_location(nav, file$q, 23, 4, 620);
+				add_location(nav, file$q, 28, 4, 714);
 				main.className = "svelte-11jy79x";
-				add_location(main, file$q, 22, 0, 608);
+				add_location(main, file$q, 27, 0, 702);
 			},
 
 			l: function claim(nodes) {
@@ -5125,6 +5152,7 @@ var app = (function () {
 			p: function update(changed, ctx) {
 				var routerlink0_changes = {};
 				if (changed.srclogo) routerlink0_changes.src = srclogo;
+				if (changed.$$scope) routerlink0_changes.$$scope = { changed, ctx };
 				routerlink0.$set(routerlink0_changes);
 
 				var routerlink1_changes = {};
@@ -5227,6 +5255,10 @@ var app = (function () {
 
 	let srclogo = '/logo.png';
 
+	function handleClick() {
+			navigation.goto('/');
+		}
+
 	class Sidenav extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
@@ -5312,5 +5344,5 @@ var app = (function () {
 
 	return app;
 
-}());
+}(navigation));
 //# sourceMappingURL=bundle.js.map

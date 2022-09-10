@@ -1,4 +1,4 @@
-package tech.worldwild.application;
+package br.com.fateczl.ProjetoLibero;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

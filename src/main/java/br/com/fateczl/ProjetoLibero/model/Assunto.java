@@ -1,5 +1,13 @@
 package br.com.fateczl.ProjetoLibero.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonPropertyOrder("assunto")
+@JsonDeserialize(builder = Assunto.Builder.class)
 public class Assunto {
 	
 	private Contribuidor contribuidor;
@@ -14,6 +22,8 @@ public class Assunto {
 	private final String descricao;
 	private final String atualizadoEm;
 	
+	@JsonPOJOBuilder(withPrefix = "")
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Builder {
 		
 		private final int id;
@@ -25,7 +35,7 @@ public class Assunto {
 		private String criadoEm = "1/1/2022";
 		private String atualizadoEm = "1/1/2022";
 		
-		public Builder(int id) {
+		public Builder(@JsonProperty("id") int id) {
 			this.id = id;
 		}
 		

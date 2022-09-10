@@ -9,7 +9,8 @@
 
 <script>
   import RouterLink from './RouterLink.svelte'
-
+  import { goto } from '$app/navigation';
+	
   let srcprofile = '/gear.svg';
   let srctopics = '/collection.svg';
   let srcroadmaps = '/book-fill.svg';
@@ -17,6 +18,10 @@
   let srcmyroadmaps = '/book.svg';
   let srcpower = '/power.svg';
   let srclogo = '/logo.png';
+  
+  function handleClick() {
+		goto('/');
+	}
 
 </script>
 
@@ -26,7 +31,7 @@
         <div class="content">
           <ul>
             <li>
-              <h2><RouterLink url='' src={srclogo}></RouterLink></h2>
+              <h2><RouterLink on:click={handleClick} url='' src={srclogo}>Home</RouterLink></h2>
             </li>
           </ul>     
         </div>

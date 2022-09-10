@@ -1,4 +1,4 @@
-package br.com.fateczl.ProjetoLibero.controller.rest;
+package br.com.fateczl.ProjetoLibero.rest;
 
 import java.util.List;
 
