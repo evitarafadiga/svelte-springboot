@@ -3,7 +3,7 @@ import MiniProfile from "../component/MiniProfile.svelte";
 import TitleArea from "../component/TitleArea.svelte";
 import Rectangle from "./Rectangle.svelte";
 
-export let nome, desc, id, fav, comp, criado, att, fonte;
+export let nome, desc, id, fav, comp, criado, att, fonte, username;
 
 </script>
 
@@ -19,26 +19,22 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
                     <h3>Descrição</h3> {desc}
                 </div>
                 <div class="box box2">
-                    <MiniProfile />
+                    <MiniProfile username={username} />
                 </div>
-                <div class="box box3"><h3>Compartilhamentos</h3> {comp}</div>
-                <div class="box box4"><h3>Favoritos</h3> {fav}</div>
+                <div class="box box3">
+                    <h3>Compartilhamentos</h3> {comp}
+                </div>
+                <div class="box box4">
+                    <h3>Favoritos</h3> {fav}
+                </div>
                 <div class="box box5">
 
-                    <h3>Assuntos</h3>
                 </div>
-                <div class="box box6">
-                    <h3>Assuntos</h3>
-                    <h4>ID: {id} </h4>
-                    <br> 
-                    <h4>Criado em: {criado}</h4>
-                    <h4>Atualizado em: {att}</h4>
-                </div>
-                <div class="box box6">
-                    <h3>Fonte</h3> {fonte}
-                </div>
+                
                 <div class="box box7">
                     <h3>Assuntos relacionados</h3>
+                    <h3>Assuntos</h3>
+                    <slot></slot>
                 </div>
             </div>
         </div>
@@ -58,18 +54,14 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
         padding: 0 0 5px 0;
     }
 
-    h4 {
-        margin: 1em;
-        font-size: 10px;
-        color: #535353;
-    }
     h3 {
-        margin: 1em;
-        font-size: 12px;
+        margin: 0.5em;
+        font-size: 11px;
         color: #535353;
     }
 
     .wrapper {
+        margin: 10px;
         display: grid;
         grid-template-columns: auto auto;
         grid-auto-rows: auto auto;
@@ -82,11 +74,11 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
     .box1 {
         text-align: justify;
         grid-column-start: 1;
-        grid-column-end: 4;
+        grid-column-end: 3;
         grid-row-start: 1;
     }
     .box2 {
-        grid-column-start: 4;
+        grid-column-start: 3;
         grid-row-start: 1;
         grid-column-end: 6;
     }
@@ -105,13 +97,6 @@ export let nome, desc, id, fav, comp, criado, att, fonte;
         grid-column-start: 3;
         grid-column-end: 6;
         grid-row-start: 2;
-        grid-row-end: 4;
-    }
-
-    .box6 {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 3;
     }
 
     .box7 {

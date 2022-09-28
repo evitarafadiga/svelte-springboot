@@ -7,13 +7,22 @@ const production = !process.env.ROLLUP_WATCH;
 
 export default {
 	input: 'src/main.js',
-	output: {
+	output: { 
+		globals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      'prop-types': 'PropTypes'
+    },
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
 		file: '../src/main/resources/static/bundle.js'
 	},
-	external: [ ],
+	external: [
+    'react',
+    'react-dom',
+    'prop-types'
+  ],
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
