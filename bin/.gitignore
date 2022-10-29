@@ -32,3 +32,15 @@ application-dev.properties
 
 ### VS Code ###
 .vscode/
+/.editorconfig
+/.github/
+/.gitignore
+/.mvn/
+/README.md
+/images/
+/mvnw
+/mvnw.cmd
+/package-lock.json
+/pom.xml
+/src/
+/svelte/

@@ -11,7 +11,7 @@
                 <img src={src} alt="Profile default" /> 
             </figure>
             <div>
-                <h4>Criado por: {username}</h4>
+                <h4>Criador: {username}</h4>
             </div>
         </div>
     </main>
@@ -19,7 +19,7 @@
     
     <style>
         .wrapper {
-            width: 80px;
+            width: 120px;
             height: 54px;
         }
     

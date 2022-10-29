@@ -9,7 +9,6 @@
 
 <script>
   import RouterLink from './RouterLink.svelte'
-  import { goto } from '$app/navigation';
 	
   let srcprofile = '/gear.svg';
   let srctopics = '/collection.svg';

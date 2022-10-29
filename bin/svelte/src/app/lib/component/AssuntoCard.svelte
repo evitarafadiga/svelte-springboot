@@ -6,10 +6,10 @@
 </script>
 
 <main>
-    <Rectangle>
-        <p>{title}</p>
-        {descricao}
-    </Rectangle>  
+    <button>
+        <p>{title}</p>{descricao}
+        
+    </button>  
 </main>
 
 <Modal>
@@ -25,9 +25,9 @@
     }
 
     button {
-        max-width: 700px;
-        height: 60px;
-        background-color: #BD6248;
+        min-width: 380px;
+        height: 80px;
+        background-color: #aadbee;
         border-radius: 5px;
         justify-content: center;
         text-align: center;
